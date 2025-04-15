@@ -704,5 +704,37 @@
       "prompt": "content"
     },
     "folder": "python"
+  },
+  "giraffe_web_ui_with_thought": {
+    "file_name": "giraffe_web_ui_with_thought.json",
+    "columns": {
+      "prompt": "instruction",
+      "query": "input",
+      "response": "output"
+    }
+  },
+  "giraffe_web_ui_with_describe": {
+    "file_name": "giraffe_web_ui_with_describe.json",
+    "columns": {
+      "prompt": "instruction",
+      "query": "input",
+      "response": "output"
+    }
+  },
+  "giraffe_web_ui_with_faq": {
+    "file_name": "giraffe_web_ui_with_faq.json",
+    "columns": {
+      "prompt": "instruction",
+      "query": "input",
+      "response": "output"
+    }
+  },
+  "giraffe_web_ui_with_thought_en": {
+    "file_name": "giraffe_web_ui_with_thought_en.json",
+    "columns": {
+      "prompt": "instruction",
+      "query": "input",
+      "response": "output"
+    }
   }
 }
