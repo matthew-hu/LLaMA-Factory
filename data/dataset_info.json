@@ -713,6 +713,22 @@
       "response": "output"
     }
   },
+  "giraffe_web_ui_with_thought2": {
+    "file_name": "giraffe_web_ui_with_thought2.json",
+    "columns": {
+      "prompt": "instruction",
+      "query": "input",
+      "response": "output"
+    }
+  },
+  "giraffe_web_ui_with_thought3": {
+    "file_name": "giraffe_web_ui_with_thought3.json",
+    "columns": {
+      "prompt": "instruction",
+      "query": "input",
+      "response": "output"
+    }
+  },
   "giraffe_web_ui_with_describe": {
     "file_name": "giraffe_web_ui_with_describe.json",
     "columns": {

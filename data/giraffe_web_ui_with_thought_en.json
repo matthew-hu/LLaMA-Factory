@@ -947,7 +947,7 @@
     {
         "instruction": "使用RobotFramework标准库和EasyUILib编写或重构WebUI自动化脚本，注意代码缩进等格式要正确",
         "input": "Find the div element on the page with class='css-wgd6t3' and scroll the element up and down by 300px.",
-        "output": "<thought>\n完成这个任务的第一步是使用可用的关键字来找到页面上的指定元素。对于这个问题，可以使用\"FindElem\"关键字，并通过jQuery选择器来指定查找元素的条件。在本例中，选择器应该是 div[class='css-wgd6t3']。\n\n第二步是对找到的元素进行滚动操作。根据提供的关键字，ScrollElementUpDown 可以用来对某个元素进行上下滚动操作。这个关键字需要传入元素的选择器和滚动比例或者滚动的具体像素值。在要求中，需要滚动300px，因此我们可以使用该关键字来完成这一操作。\n\n</thought>\n\n<code_block>\n# 查找class='css-wgd6t3'的div元素\n${elem}  FindElem | div[class='css-wgd6t3']\n\n# 将找到的元素上下滚动300px\nScrollElementUpDown | ${elem} | 300\n</code_block>"
+        "output": "<thought>\n完成这个任务的第一步是使用可用的关键字来找到页面上的指定元素。对于这个问题，可以使用\"FindElem\"关键字，并通过jQuery选择器来指定查找元素的条件。在本例中，选择器应该是 div[class='css-wgd6t3']。\n\n第二步是对找到的元素进行滚动操作。根据提供的关键字，ScrollUpDown 可以用来对某个元素进行上下滚动操作。这个关键字需要传入元素的选择器和滚动比例或者滚动的具体像素值。在要求中，需要滚动300px，因此我们可以使用该关键字来完成这一操作。\n\n</thought>\n\n<code_block>\n# 查找class='css-wgd6t3'的div元素\n${elem}  FindElem | div[class='css-wgd6t3']\n\n# 将找到的元素上下滚动300px\nScrollUpDown | ${elem} | 300\n</code_block>"
     },
     {
         "instruction": "使用RobotFramework标准库和EasyUILib编写或重构WebUI自动化脚本，注意代码缩进等格式要正确",

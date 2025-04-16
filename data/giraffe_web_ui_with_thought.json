@@ -2697,7 +2697,7 @@
     {
         "instruction": "使用RobotFramework标准库和EasyUILib编写或重构WebUI自动化脚本，注意代码缩进等格式要正确",
         "input": "将 elem 向下滚动 50",
-        "output": "<thought>\n给定需求是将元素向下滚动50%，可以直接使用关键字`ScrollElementUpDown`，指定元素和滚动百分比。\n</thought>\n\n<code_block>\n# 将元素elem向下滚动50%\nScrollElementUpDown | ${elem} | 50%\n</code_block>"
+        "output": "<thought>\n给定需求是将元素向下滚动50%，可以直接使用关键字`ScrollUpDown`，指定元素和滚动百分比。\n</thought>\n\n<code_block>\n# 将元素elem向下滚动50%\nScrollUpDown | ${elem} | 50%\n</code_block>"
     },
     {
         "instruction": "使用RobotFramework标准库和EasyUILib编写或重构WebUI自动化脚本，注意代码缩进等格式要正确",
@@ -3837,7 +3837,7 @@
     {
         "instruction": "使用RobotFramework标准库和EasyUILib编写或重构WebUI自动化脚本，注意代码缩进等格式要正确",
         "input": "将文本为 ‘资产门户’ 的元素向下滚动 50%",
-        "output": "<thought>\n首先需要定位文本为“资产门户”的元素，然后使用ScrollElementUpDown关键字对该元素进行向下滚动50%的操作。\n</thought>\n\n<code_block>\n# 查找文本为‘资产门户’的元素\n${elem}  FindByText | 资产门户\n\n# 对该元素向下滚动50%\nScrollElementUpDown | ${elem} | 50%\n</code_block>"
+        "output": "<thought>\n首先需要定位文本为“资产门户”的元素，然后使用ScrollUpDown关键字对该元素进行向下滚动50%的操作。\n</thought>\n\n<code_block>\n# 查找文本为‘资产门户’的元素\n${elem}  FindByText | 资产门户\n\n# 对该元素向下滚动50%\nScrollUpDown | ${elem} | 50%\n</code_block>"
     },
     {
         "instruction": "使用RobotFramework标准库和EasyUILib编写或重构WebUI自动化脚本，注意代码缩进等格式要正确",
@@ -4317,7 +4317,7 @@
     {
         "instruction": "使用RobotFramework标准库和EasyUILib编写或重构WebUI自动化脚本，注意代码缩进等格式要正确",
         "input": "元素${elem}向右滚动到80%处",
-        "output": "<thought>\n我们需要将元素${elem}向右滚动到80%处，可以直接使用提供的关键字ScrollElementLeftRight，传递selector为${elem}和percent为80%。\n</thought>\n\n<code_block>\n# 将元素${elem}向右滚动到80%处\nScrollElementLeftRight | ${elem} | 80%\n</code_block>"
+        "output": "<thought>\n我们需要将元素${elem}向右滚动到80%处，可以直接使用提供的关键字ScrollLeftRight，传递selector为${elem}和percent为80%。\n</thought>\n\n<code_block>\n# 将元素${elem}向右滚动到80%处\nScrollLeftRight | ${elem} | 80%\n</code_block>"
     },
     {
         "instruction": "使用RobotFramework标准库和EasyUILib编写或重构WebUI自动化脚本，注意代码缩进等格式要正确",
@@ -4847,7 +4847,7 @@
     {
         "instruction": "使用RobotFramework标准库和EasyUILib编写或重构WebUI自动化脚本，注意代码缩进等格式要正确",
         "input": "查找文本为 ‘数据类型’ 的表格头，将此元素向右滚动",
-        "output": "<thought>\n我们需要查找一个表格头元素，文本为“数据类型”。可以使用`FindByText`关键字查找这个元素。找到该元素后，需要将其向右滚动。可以使用`ScrollElementLeftRight`关键字来实现滚动操作。\n</thought>\n\n<code_block>\n# 查找文本为‘数据类型’的表格头元素\n${elem}  FindByText | 数据类型 | tag=th\n\n# 将找到的元素向右滚动到80%处\nScrollElementLeftRight | ${elem} | 80%\n</code_block>"
+        "output": "<thought>\n我们需要查找一个表格头元素，文本为“数据类型”。可以使用`FindByText`关键字查找这个元素。找到该元素后，需要将其向右滚动。可以使用`ScrollLeftRight`关键字来实现滚动操作。\n</thought>\n\n<code_block>\n# 查找文本为‘数据类型’的表格头元素\n${elem}  FindByText | 数据类型 | tag=th\n\n# 将找到的元素向右滚动到80%处\nScrollLeftRight | ${elem} | 80%\n</code_block>"
     },
     {
         "instruction": "使用RobotFramework标准库和EasyUILib编写或重构WebUI自动化脚本，注意代码缩进等格式要正确",
@@ -8187,7 +8187,7 @@
     {
         "instruction": "使用RobotFramework标准库和EasyUILib编写或重构WebUI自动化脚本，注意代码缩进等格式要正确",
         "input": "将id 为scrollContainer的元素，滑动到最底部",
-        "output": "<thought>\n解决此问题的思路是使用ScrollElementUpDown关键字将scrollContainer元素滚动到100%，以达到滚动到底部的效果。\n</thought>\n\n<code_block>\n# 使用FindElem关键字查找id为scrollContainer的元素\n${scroll_container}  FindElem  | [id=scrollContainer]\n\n# 使用ScrollElementUpDown关键字将scrollContainer元素滚动到最底部\nScrollElementUpDown  | ${scroll_container}  | 100%\n</code_block>"
+        "output": "<thought>\n解决此问题的思路是使用ScrollUpDown关键字将scrollContainer元素滚动到100%，以达到滚动到底部的效果。\n</thought>\n\n<code_block>\n# 使用FindElem关键字查找id为scrollContainer的元素\n${scroll_container}  FindElem  | [id=scrollContainer]\n\n# 使用ScrollUpDown关键字将scrollContainer元素滚动到最底部\nScrollUpDown  | ${scroll_container}  | 100%\n</code_block>"
     },
     {
         "instruction": "使用RobotFramework标准库和EasyUILib编写或重构WebUI自动化脚本，注意代码缩进等格式要正确",
@@ -14692,7 +14692,7 @@
     {
         "instruction": "使用RobotFramework标准库和EasyUILib编写或重构WebUI自动化脚本，注意代码缩进等格式要正确",
         "input": "滚动条向下移动，请输入对方名称 设置为 测试字节，检查${text}内是否包含  运行成功",
-        "output": "<thought>\n这个场景描述的任务是滚动页面或元素，然后设置一个字段的值，最后检查一个变量是否包含特定文本。具体步骤如下：\n1. 使用`PageDown`关键字滚动页面。\n2. 通过`SetField`关键字将对方名称字段设置为'测试字节'。\n3. 使用`Should Contain`关键字检查变量`${text}`中是否包含'运行成功'。\n\n因为不明确需要滚动哪一部分，我假设是整个页面进行滚动。如果有具体的元素需要滚动，使用`ScrollElementUpDown`关键字。\n</thought>\n\n<code_block>\n# 向下滚动1次，假设页面需要滚动\nPageDown | 1\n\n# 设置对方名称为'测试字节'\nSetField | 对方名称 | 测试字节\n\n# 检查变量${text}是否包含'运行成功'\nShould Contain | ${text} | 运行成功\n</code_block>"
+        "output": "<thought>\n这个场景描述的任务是滚动页面或元素，然后设置一个字段的值，最后检查一个变量是否包含特定文本。具体步骤如下：\n1. 使用`PageDown`关键字滚动页面。\n2. 通过`SetField`关键字将对方名称字段设置为'测试字节'。\n3. 使用`Should Contain`关键字检查变量`${text}`中是否包含'运行成功'。\n\n因为不明确需要滚动哪一部分，我假设是整个页面进行滚动。如果有具体的元素需要滚动，使用`ScrollUpDown`关键字。\n</thought>\n\n<code_block>\n# 向下滚动1次，假设页面需要滚动\nPageDown | 1\n\n# 设置对方名称为'测试字节'\nSetField | 对方名称 | 测试字节\n\n# 检查变量${text}是否包含'运行成功'\nShould Contain | ${text} | 运行成功\n</code_block>"
     },
     {
         "instruction": "使用RobotFramework标准库和EasyUILib编写或重构WebUI自动化脚本，注意代码缩进等格式要正确",
@@ -16532,7 +16532,7 @@
     {
         "instruction": "使用RobotFramework标准库和EasyUILib编写或重构WebUI自动化脚本，注意代码缩进等格式要正确",
         "input": "把class=report-tabs-wrapper页面区域向下滑动50%",
-        "output": "<thought>\n在这个场景中，我们需要使用一个适当的关键字来实现将一个特定的页面元素向下滚动50%的操作。提供的关键字中，`ScrollElementUpDown` 可以用于此任务。我们需要先构建一个jQuery选择器来选择目标元素。根据提供的信息，目标元素的class是`report-tabs-wrapper`，我们可以通过jQuery选择器`.report-tabs-wrapper`来访问这个元素。然后使用`ScrollElementUpDown`关键字来滚动该元素到指定的百分比位置。\n</thought>\n\n<code_block>\n# 将class为report-tabs-wrapper的页面区域向下滚动50%\nScrollElementUpDown | [class=report-tabs-wrapper] | 50%\n</code_block>"
+        "output": "<thought>\n在这个场景中，我们需要使用一个适当的关键字来实现将一个特定的页面元素向下滚动50%的操作。提供的关键字中，`ScrollUpDown` 可以用于此任务。我们需要先构建一个jQuery选择器来选择目标元素。根据提供的信息，目标元素的class是`report-tabs-wrapper`，我们可以通过jQuery选择器`.report-tabs-wrapper`来访问这个元素。然后使用`ScrollUpDown`关键字来滚动该元素到指定的百分比位置。\n</thought>\n\n<code_block>\n# 将class为report-tabs-wrapper的页面区域向下滚动50%\nScrollUpDown | [class=report-tabs-wrapper] | 50%\n</code_block>"
     },
     {
         "instruction": "使用RobotFramework标准库和EasyUILib编写或重构WebUI自动化脚本，注意代码缩进等格式要正确",
@@ -16652,7 +16652,7 @@
     {
         "instruction": "使用RobotFramework标准库和EasyUILib编写或重构WebUI自动化脚本，注意代码缩进等格式要正确",
         "input": "把左侧菜单滑到最上方",
-        "output": "<thought>\n首先，我们需要找到左侧菜单元素。根据提示，左侧菜单的元素的class通常包含\"menu\"。我们可以使用FindElemToTheDirectionOf来查找左侧菜单元素，然后使用ScrollElementUpDown将该元素滚动到顶部。\n</thought>\n\n<code_block>\n# 查找屏幕左侧菜单元素\n${menu_elem}  FindElemToTheDirectionOf | SCREEN_CENTER | left | [class*=menu]\n\n# 滚动菜单元素到顶部\nScrollElementUpDown | ${menu_elem} | 0\n</code_block>"
+        "output": "<thought>\n首先，我们需要找到左侧菜单元素。根据提示，左侧菜单的元素的class通常包含\"menu\"。我们可以使用FindElemToTheDirectionOf来查找左侧菜单元素，然后使用ScrollUpDown将该元素滚动到顶部。\n</thought>\n\n<code_block>\n# 查找屏幕左侧菜单元素\n${menu_elem}  FindElemToTheDirectionOf | SCREEN_CENTER | left | [class*=menu]\n\n# 滚动菜单元素到顶部\nScrollUpDown | ${menu_elem} | 0\n</code_block>"
     },
     {
         "instruction": "使用RobotFramework标准库和EasyUILib编写或重构WebUI自动化脚本，注意代码缩进等格式要正确",
@@ -17077,7 +17077,7 @@
     {
         "instruction": "使用RobotFramework标准库和EasyUILib编写或重构WebUI自动化脚本，注意代码缩进等格式要正确",
         "input": "点击菜单：标准型加速器，将 id 为xx 的元素向右滚动，页面应该存在 ${modelName}",
-        "output": "<thought>\n为了实现该场景，首先需要点击菜单“标准型加速器”。假设这是一个在页面上的显式菜单项，可以直接使用 `ClickMenu` 关键字。接下来，我们需要将 id 为 xx 的元素向右滚动，可以使用 `ScrollElementLeftRight` 关键字。最后，我们需要校验页面中是否存在 ${modelName} 这个文本。这可以通过 `CheckHasText` 关键字来实现。\n</thought>\n\n<code_block>\n# 点击标准型加速器菜单\nClickMenu | 标准型加速器\n\n# 将 id 为 xx 的元素向右滚动到80%处\nScrollElementLeftRight | [id=xx] | 80%\n\n# 校验页面中存在 ${modelName}\nCheckHasText | ${modelName}\n</code_block>"
+        "output": "<thought>\n为了实现该场景，首先需要点击菜单“标准型加速器”。假设这是一个在页面上的显式菜单项，可以直接使用 `ClickMenu` 关键字。接下来，我们需要将 id 为 xx 的元素向右滚动，可以使用 `ScrollLeftRight` 关键字。最后，我们需要校验页面中是否存在 ${modelName} 这个文本。这可以通过 `CheckHasText` 关键字来实现。\n</thought>\n\n<code_block>\n# 点击标准型加速器菜单\nClickMenu | 标准型加速器\n\n# 将 id 为 xx 的元素向右滚动到80%处\nScrollLeftRight | [id=xx] | 80%\n\n# 校验页面中存在 ${modelName}\nCheckHasText | ${modelName}\n</code_block>"
     },
     {
         "instruction": "使用RobotFramework标准库和EasyUILib编写或重构WebUI自动化脚本，注意代码缩进等格式要正确",
@@ -18487,7 +18487,7 @@
     {
         "instruction": "使用RobotFramework标准库和EasyUILib编写或重构WebUI自动化脚本，注意代码缩进等格式要正确",
         "input": "将 class 包含 virtual-list-holder-inner 的元素向下移动/滑动/滚动 50%",
-        "output": "<thought>\n首先，我们需要找到包含特定class的元素，即`class包含virtual-list-holder-inner`。假设该元素需要滚动，因此我们需要使用`ScrollElementUpDown`关键字来实现滚动操作。给定的百分比是50%，我们需要将元素向下滚动到50%的位置。\n</thought>\n\n<code_block>\n# 滚动 class包含virtual-list-holder-inner 的元素向下移动50%\nScrollElementUpDown | [class*=virtual-list-holder-inner] | 50\n</code_block>"
+        "output": "<thought>\n首先，我们需要找到包含特定class的元素，即`class包含virtual-list-holder-inner`。假设该元素需要滚动，因此我们需要使用`ScrollUpDown`关键字来实现滚动操作。给定的百分比是50%，我们需要将元素向下滚动到50%的位置。\n</thought>\n\n<code_block>\n# 滚动 class包含virtual-list-holder-inner 的元素向下移动50%\nScrollUpDown | [class*=virtual-list-holder-inner] | 50\n</code_block>"
     },
     {
         "instruction": "使用RobotFramework标准库和EasyUILib编写或重构WebUI自动化脚本，注意代码缩进等格式要正确",
@@ -19662,7 +19662,7 @@
     {
         "instruction": "使用RobotFramework标准库和EasyUILib编写或重构WebUI自动化脚本，注意代码缩进等格式要正确",
         "input": "找到页面上class='css-wgd6t3'的div元素，并将元素上下滚动300px",
-        "output": "<thought>\n完成这个任务的第一步是使用可用的关键字来找到页面上的指定元素。对于这个问题，可以使用\"FindElem\"关键字，并通过jQuery选择器来指定查找元素的条件。在本例中，选择器应该是 div[class='css-wgd6t3']。\n\n第二步是对找到的元素进行滚动操作。根据提供的关键字，ScrollElementUpDown 可以用来对某个元素进行上下滚动操作。这个关键字需要传入元素的选择器和滚动比例或者滚动的具体像素值。在要求中，需要滚动300px，因此我们可以使用该关键字来完成这一操作。\n\n</thought>\n\n<code_block>\n# 查找class='css-wgd6t3'的div元素\n${elem}  FindElem | div[class='css-wgd6t3']\n\n# 将找到的元素上下滚动300px\nScrollElementUpDown | ${elem} | 300\n</code_block>"
+        "output": "<thought>\n完成这个任务的第一步是使用可用的关键字来找到页面上的指定元素。对于这个问题，可以使用\"FindElem\"关键字，并通过jQuery选择器来指定查找元素的条件。在本例中，选择器应该是 div[class='css-wgd6t3']。\n\n第二步是对找到的元素进行滚动操作。根据提供的关键字，ScrollUpDown 可以用来对某个元素进行上下滚动操作。这个关键字需要传入元素的选择器和滚动比例或者滚动的具体像素值。在要求中，需要滚动300px，因此我们可以使用该关键字来完成这一操作。\n\n</thought>\n\n<code_block>\n# 查找class='css-wgd6t3'的div元素\n${elem}  FindElem | div[class='css-wgd6t3']\n\n# 将找到的元素上下滚动300px\nScrollUpDown | ${elem} | 300\n</code_block>"
     },
     {
         "instruction": "使用RobotFramework标准库和EasyUILib编写或重构WebUI自动化脚本，注意代码缩进等格式要正确",
@@ -20772,7 +20772,7 @@
     {
         "instruction": "使用RobotFramework标准库和EasyUILib编写或重构WebUI自动化脚本，注意代码缩进等格式要正确",
         "input": "将“入驻意愿”往上滚动到最顶层",
-        "output": "<thought>\n要将“入驻意愿”文案滚动到最顶层，我们可以先定位到包含“入驻意愿”的元素。然后，我们使用 `ScrollElementUpDown` 关键字将包含该元素的区域向上滚动到最顶层。 首先使用 `FindByText` 定位到“入驻意愿”所在的元素，然后使用 `ScrollElementUpDown` 实现滚动。\n</thought>\n\n<code_block>\n# 查找文本为“入驻意愿”的元素\n${elem}  FindByText | 入驻意愿\n\n# 将该元素向上滚动到最顶层\nScrollElementUpDown | ${elem} | 0%\n</code_block>"
+        "output": "<thought>\n要将“入驻意愿”文案滚动到最顶层，我们可以先定位到包含“入驻意愿”的元素。然后，我们使用 `ScrollUpDown` 关键字将包含该元素的区域向上滚动到最顶层。 首先使用 `FindByText` 定位到“入驻意愿”所在的元素，然后使用 `ScrollUpDown` 实现滚动。\n</thought>\n\n<code_block>\n# 查找文本为“入驻意愿”的元素\n${elem}  FindByText | 入驻意愿\n\n# 将该元素向上滚动到最顶层\nScrollUpDown | ${elem} | 0%\n</code_block>"
     },
     {
         "instruction": "使用RobotFramework标准库和EasyUILib编写或重构WebUI自动化脚本，注意代码缩进等格式要正确",
@@ -20927,17 +20927,17 @@
     {
         "instruction": "使用RobotFramework标准库和EasyUILib编写或重构WebUI自动化脚本，注意代码缩进等格式要正确",
         "input": "将 需求明细 文案向下滚动",
-        "output": "<thought>\n为了实现这个任务，我们需要执行以下步骤：\n1. 查找包含“需求明细”文本的元素。\n2. 对找到的元素执行向下滚动操作，将其滚动到100%。\n我们可以使用`FindByText`来查找包含特定文本的元素。找到元素后，我们将使用`ScrollElementUpDown`关键字来完成滚动操作。\n</thought>\n\n<code_block>\n# 查找包含需求明细文案的元素\n${detail_elem}  FindByText | 需求明细\n\n# 将找到的元素向下滚动到100%\nScrollElementUpDown | ${detail_elem} | 100%\n</code_block>"
+        "output": "<thought>\n为了实现这个任务，我们需要执行以下步骤：\n1. 查找包含“需求明细”文本的元素。\n2. 对找到的元素执行向下滚动操作，将其滚动到100%。\n我们可以使用`FindByText`来查找包含特定文本的元素。找到元素后，我们将使用`ScrollUpDown`关键字来完成滚动操作。\n</thought>\n\n<code_block>\n# 查找包含需求明细文案的元素\n${detail_elem}  FindByText | 需求明细\n\n# 将找到的元素向下滚动到100%\nScrollUpDown | ${detail_elem} | 100%\n</code_block>"
     },
     {
         "instruction": "使用RobotFramework标准库和EasyUILib编写或重构WebUI自动化脚本，注意代码缩进等格式要正确",
         "input": "对包含事件详情的区域向下滚动 50%",
-        "output": "<thought>\n首先需要找到包含文本“事件详情”的元素，可以使用`FindByText`关键字。找到该元素后，可以使用`ScrollElementUpDown`关键字对该元素进行滚动。需要注意的是，滚动关键字不需要额外指定滚动的方向，因为它的设计就是为了对元素进行上下滚动，因此只需指定滚动的百分比即可。\n</thought>\n\n<code_block>\n# 查找包含事件详情的元素\n${elem}  FindByText | 事件详情\n\n# 对包含事件详情的元素向下滚动 50%\nScrollElementUpDown | ${elem} | 50%\n</code_block>"
+        "output": "<thought>\n首先需要找到包含文本“事件详情”的元素，可以使用`FindByText`关键字。找到该元素后，可以使用`ScrollUpDown`关键字对该元素进行滚动。需要注意的是，滚动关键字不需要额外指定滚动的方向，因为它的设计就是为了对元素进行上下滚动，因此只需指定滚动的百分比即可。\n</thought>\n\n<code_block>\n# 查找包含事件详情的元素\n${elem}  FindByText | 事件详情\n\n# 对包含事件详情的元素向下滚动 50%\nScrollUpDown | ${elem} | 50%\n</code_block>"
     },
     {
         "instruction": "使用RobotFramework标准库和EasyUILib编写或重构WebUI自动化脚本，注意代码缩进等格式要正确",
         "input": "对弹框中包含文本 豆包大模型 的元素进行滚动 90%",
-        "output": "<thought>\n首先，根据场景要求，我们需要在弹框中对包含文本“豆包大模型”的元素进行操作。这里的关键步骤是要找到文本为“豆包大模型”的元素。我们可以使用`FindByText`关键字来找到这个元素。为了在弹框中找到这个元素，我们需要确保关键字使用了正确的选择器，即`POPUP`。找到元素后，我们需要对该元素进行上下滚动操作，这可以通过`ScrollElementUpDown`关键字实现，其中需要提供选择器和滚动百分比作为参数。\n</thought>\n\n<code_block>\n# 查找弹框中包含文本 豆包大模型 的元素\n${elem}  FindByText | 豆包大模型 | base=POPUP\n\n# 对找到的元素进行上下滚动到90%处\nScrollElementUpDown | ${elem} | 90%\n</code_block>"
+        "output": "<thought>\n首先，根据场景要求，我们需要在弹框中对包含文本“豆包大模型”的元素进行操作。这里的关键步骤是要找到文本为“豆包大模型”的元素。我们可以使用`FindByText`关键字来找到这个元素。为了在弹框中找到这个元素，我们需要确保关键字使用了正确的选择器，即`POPUP`。找到元素后，我们需要对该元素进行上下滚动操作，这可以通过`ScrollUpDown`关键字实现，其中需要提供选择器和滚动百分比作为参数。\n</thought>\n\n<code_block>\n# 查找弹框中包含文本 豆包大模型 的元素\n${elem}  FindByText | 豆包大模型 | base=POPUP\n\n# 对找到的元素进行上下滚动到90%处\nScrollUpDown | ${elem} | 90%\n</code_block>"
     },
     {
         "instruction": "使用RobotFramework标准库和EasyUILib编写或重构WebUI自动化脚本，注意代码缩进等格式要正确",

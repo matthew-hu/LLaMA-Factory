@@ -1,1106 +1,1106 @@
 [
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "什么是 EasyUILIb",
         "output": "EasyUILib 是一个处理 WebUI 自动化的 RobotFramework 关键字库，底层基于 Selenium 实现，提供与浏览器交互的多种关键字，如点击、字段填写、等待、校验、表格操作、图片Diff等"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "如何进行点击操作，有哪些关键字可用，具体如何使用，你能给出一些示例吗",
         "output": "在进行WebUI自动化编写时，进行点击操作可以使用以下关键字：Click、ClickElem、ClickTextOneByOne 和 ClickWhiteArea。 \n\n1. Click 关键字用于点击文本，其中idx表示相同txt中的第几个，0表示第一个，-1表示最后一个，base是基准元素（特殊值POPUP表示弹出层/弹窗）。示例如下：\n```\n   # 点击通过，不包括全通过\n   Click | 通过 | exclude=全通过\n\n   # 点击 id=a 元素中的 OK\n   Click | OK | base=[id=a]\n\n   # 点击弹窗中的确认\n   Click | 确认 | base=POPUP\n\n   # 点击弹出层中的编辑\n   Click | 编辑 | base=POPUP\n```\n\n2. ClickElem 关键字用于点击jquery选择器表示的元素，base是基准元素（特殊值POPUP表示弹出层/弹窗）。示例如下：\n```\n   # 点击第5个name包含a且id为x且包含OK的元素\n   ClickElem | [id=x][name*=a]:contains(OK):eq(4)\n\n   # 点击id=x的div或name=x的span\n   ClickElem | div[id='x'],span[name='x']\n\n   # 点击取消button\n   ClickElem | button:contains(取消)\n```\n\n3. ClickTextOneByOne 关键字用于依次点击 args 中给定的一个或多个文本，base是基准元素（特殊值POPUP表示弹出层/弹窗）。示例如下：\n```\n   # 点击下一页，然后点击删除，最后点击确定\n   ClickTextOneByOne | 下一页 | 删除 | 确定\n\n   # 先点击添加，再点击确定\n   ClickTextOneByOne | 添加 | 确定\n```\n   \n4. ClickWhiteArea 关键字用于点击空白处。示例如下：\n```\n   ClickWhiteArea\n```\n使用这些关键字可以轻松实现自动化的点击操作。"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "处理Alert的关键字有哪些，如何使用",
         "output": "在进行WebUI自动化编写时，处理Alert的关键字有以下几个：\n\n1. AcceptAlert：接受/确认/确定警告\n2. DismissAlert：取消/消除警告\n3. CheckAlertHas：校验/检查警告弹窗中包含文本\n\n以下是这些关键字的使用示例：\n\n```robotframework\n# 接受/确定警告框\nAcceptAlert\n\n# 取消/关闭警告框\nDismissAlert\n\n# 校验警告框中包含指定的文本，例如\"操作成功\"和\"请再试一次\"\nCheckAlertHas | 操作成功 | 请再试一次\n```"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "处理警告弹框的关键字有哪些，如何使用",
         "output": "在进行WebUI自动化编写时，处理警告弹框的关键字有以下几个：\n\n1. AcceptAlert：接受/确认/确定警告\n2. DismissAlert：取消/消除警告\n3. CheckAlertHas：校验/检查警告弹窗中包含文本\n\n使用这些关键字的例子：\n\n```\n# 接受/确认/确定警告弹框\nAcceptAlert\n\n# 取消/消除警告弹框\nDismissAlert\n\n# 校验/检查警告弹窗中包含\"警告\"和\"错误\"文本\nCheckAlertHas | 警告 | 错误\n```"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "如何接受/确认/确定警告，使用哪个关键字",
         "output": "在进行WebUI自动化编写时，我们可以使用`AcceptAlert`关键字来接受/确认/确定警告，这个关键字没有参数。使用这个关键字，测试脚本将会在运行到这一步时尝试接受当前页面上的警告框，如果没有警告框，那么这个关键字将会失败。\n\n这是一个使用`AcceptAlert`关键字的示例代码：\n```robotframework\n# 1. 点击删除按钮\nClick | 删除\n# 2. 接受弹出的警告框\nAcceptAlert\n```\n在这个例子中，首先点击了删除按钮，这个操作可能会弹出一个警告框需要用户确认。然后我们使用`AcceptAlert`关键字接受这个警告。这就完成了接受警告的过程。"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "如何取消/消除警告，使用哪个关键字",
         "output": "在进行WebUI自动化编写时，如果想要取消或消除警告，我们可以使用\"DismissAlert\"关键字。这个关键字表示取消或消除当前页面上的警告弹窗。\n\n例如：\n```robotframework\nDismissAlert\n```\n这条脚本会关闭当前页面上的警告弹窗。需要注意的是，这个关键字只能用于点击警告弹窗上的取消、忽略或关闭等按钮，而不能用于点击确认或接受按钮。如果需要点击确认或接受按钮，应该使用\"AcceptAlert\"关键字。"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "如何校验/检查警告弹窗中包含文本",
         "output": "在进行WebUI自动化编写时，可以使用关键字`CheckAlertHas`来校验/检查警告弹窗中包含文本。以下是一些使用此关键字的示例：\n\n例1：校验警告弹窗中包含文本 “保存成功”\n```\nCheckAlertHas | 保存成功\n```\n\n例2：校验警告弹窗中包含文本 “错误” 和 “请输入用户名”\n```\nCheckAlertHas | 错误 | 请输入用户名\n```"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "如何获取页面标题",
         "output": "在进行WebUI自动化编写时，获取页面标题主要用到的是GetTitle关键字。\n\nGetTitle关键字可以获取当前浏览器窗口的标题，它没有参数。\n\n例如，你可能在脚本中看到如下的使用方式：\n\n```RobotFramework\n# 获取页面标题并存储到变量title中\n${title}  GetTitle\n\n# 接着你可以使用这个变量title进行其他操作或者进行验证\nLog  ${title}\nShould be Equal  ${title}  我的网页标题\n```\n以上代码首先使用GetTitle关键字获取当前页面的标题，并将获取到的标题存储在变量title中，然后分别将获得的标题打印出来以及和预期的标题进行对比。"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "如何获取当前URL",
         "output": "在进行WebUI自动化编写时，RobotFramework的EasyUiLib关键字库提供了一个\"GetCurrentUrl\"的关键字，可以帮助我们获取当前页面的URL。\n\n以下是一些例子：\n```robotframework\n# 获取当前页面的URL并将其赋值给变量current_url\n${current_url}  GetCurrentUrl\n\n# 获取当前页面的URL，并打印出来\n${current_url}  GetCurrentUrl\nLog  ${current_url}\n\n# 获取当前页面的URL，并验证其是否与预期的URL相等\n${current_url}  GetCurrentUrl\nShould Be Equal  ${current_url}  http://www.example.com\n```\n这些示例演示了如何使用\"GetCurrentUrl\"关键字来获取当前的URL，并将其赋值给一个变量，或者打印出来，或者与预期的URL进行比较。"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "如何获取元素的给定属性值",
         "output": "在进行WebUI自动化编写时，可以使用GetElemAttr关键字来获取元素的给定属性值。下面是一些例子：\n\n1. 获取id为\"example\"的元素的\"class\"属性值：\n   ```\n   ${val}  GetElemAttr | [id=example] | class\n   ```\n\n2. 获取name为\"username\"的input元素的\"value\"属性值：\n   ```\n   ${val}  GetElemAttr | input[name=\"username\"] | value\n   ```\n\n3. 获取具有特定文本的按钮的\"disabled\"属性值：\n   ```\n   ${val}  GetElemAttr | button:contains(提交) | disabled\n   ```"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "如何获取给定元素的文本",
         "output": "在进行WebUI自动化编写时，可以使用GetElemText关键字获取给定元素的文本。以下是一些示例：\n\n1. 获取id为\"x\"的元素的文本\n```\n${val}  GetElemText | [id=\"x\"]\n```\n\n2. 获取class为\"A\"且包含\"OK\"文本的span元素的文本\n```\n${val}  GetElemText | span[class=\"A\"]:contains(OK)\n```\n\n3. 获取name为\"B\"的input元素的文本\n```\n${val}  GetElemText | input[name=\"B\"]\n```\n\n通过这些示例，你可以根据元素的属性或文本内容来获取对应元素的文本。"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "如何获取字段name关联的页面控件的值",
         "output": "在进行WebUI自动化编写时，可以使用GetFieldVal关键字获取字段name关联的页面控件的值。这是一些具体的例子：\n\n1. 假设我们有一个文本输入框，它的标签为\"用户名\"，我们想要获取该输入框中的值:\n\n```\n${username_value}  GetFieldVal | 用户名\n```\n\n2. 如果我们有一个下拉列表框，它的标签为\"城市\"，我们想要获取选中项的值:\n\n```\n${city_value}  GetFieldVal | 城市\n```\n\n3. 如果我们有一个单选按钮组，它的标签为\"性别\"，我们想要获取选中项的值:\n\n```\n${gender_value}  GetFieldVal | 性别\n```\n\n在以上示例中，我们都通过GetFieldVal关键字获取了与给定名称关联的页面控件的值，并将其存储在相应的变量（例如${username_value}，${city_value}和${gender_value}）中。"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "如何获取页面文本",
         "output": "在进行WebUI自动化编写时，可以使用`GetPageText`关键字来获取页面文本。以下是一些示例：\n\n获取页面文本并将其分配给变量：\n```\n${pageText}  GetPageText\n```\n\n获取页面文本并与预期的文本进行比较：\n```\n${pageText}  GetPageText\nShould Contain  ${pageText}  期望的文本\n```\n\n加载页面后，等待页面包含特定的文本：\n```\nWaitText  文本1\n```"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "如何获取当前激活的（获得焦点的，光标所在的）元素",
         "output": "在进行WebUI自动化编写时，可以使用关键字GetActiveElem来获取当前激活的（获得焦点的，光标所在的）元素。以下是一个示例：\n\n```\n# 获取当前激活的元素\n${active_elem}  GetActiveElem\n```\n\n如何获取当前激活的（获得焦点的，光标所在的）元素，请举些例子说明：\n要获取当前激活的元素，可以使用关键字GetActiveElem。以下是一个示例：\n\n```\n# 获取当前激活的元素\n${active_elem}  GetActiveElem\n```\n\n在这个例子中，我们使用GetActiveElem关键字获取当前激活的元素并将其存储在变量${active_elem}中。之后可以对这个元素进行其他操作，例如：\n```\n# 获取激活元素的文本\n${active_text}  GetElemText  ${active_elem}\n\n# 获取激活元素的某个属性\n${active_attr}  GetElemAttr  ${active_elem}  attrName\n```"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "如果获取给定页面字段的值",
         "output": "在进行WebUI自动化编写时，如果需要获取给定页面字段的值，我们可以使用EasyUiLib提供的关键字GetFieldVal。以下是具体的使用示例：\n\n```\n# 获取字段名为\"姓名\"的字段值，把值存储在变量${val}中\n${val}  GetFieldVal | 姓名    \n\n# 获取字段名为\"年龄\"的字段值，把值存储在变量${ageValue}中\n${ageValue}  GetFieldVal | 年龄    \n\n# 获取字段名为\"邮箱\"的字段值，把值存储在变量${emailValue}中\n${emailValue}  GetFieldVal | 邮箱\n```\n\n以上代码会从页面上找到对应字段名的控件，然后获取其值。（字段名可能是input控件的placeholder，也可能是控件旁边的label等）。注意，获取到的值会被存储在指定的变量中，后续可以通过这个变量来使用这个值。"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "如何获取页面文本",
         "output": "在进行WebUI自动化编写时，我们可以使用 GetPageText 关键字从页面中获取所有文本。这个关键字没有任何参数，用法非常简单。当你执行该关键字时，它将返回当前页面中所有可见文本的字符串。\n\n例如，你可以这样写：\n```\n# 获取页面文本并存放到变量pageText中\n${pageText}=   GetPageText\n\n# 输出获取到的页面文本\nLog  ${pageText}\n```\n在这个例子中，我们首先调用 GetPageText 来获取页面的所有文本，并将其存储在变量pageText中。然后，我们使用Log关键字来输出获取到的文本，以便于后续操作和校验。"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "如何获取当前激活的页面元素",
         "output": "在进行WebUI自动化编写时，可以使用关键字`GetActiveElem`来获取当前激活的页面元素，该元素代表了当前获得焦点的元素，例如光标所在的输入框等。\n\n示例代码：\n```\n# 获取当前激活的页面元素\n${active_elem}  GetActiveElem\n\n# 对当前激活的页面元素进行一些操作，比如点击、设置属性等\nClickElem | ${active_elem}\n```"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "GetElemAttr 关键字用法举例",
         "output": "在进行WebUI自动化编写时，可以使用关键字 `GetElemAttr` 来获取页面元素的属性。例如：\n\n获取id为x的元素的name属性：\n```\n${val}  GetElemAttr | [id=\"x\"] | name\n```\n\n获取class为A的元素的data-id属性：\n```\n${val}  GetElemAttr | [class=A] | data-id\n```\n\n获取文本为\"确定\"的按钮元素的disabled属性：\n```\n${val}  GetElemAttr | button:contains(确定) | disabled"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "GetElemText 关键字用法举例",
         "output": "在进行WebUI自动化编写时，我们可以使用Robot Framework提供的GetElemText关键字来获取页面元素的文本。例如：\n\n获取id为x的元素的文本，可以这样写：\n```\n${val}  GetElemText | [id=\"x\"]\n```\n这条命令的含义是，获取id等于\"x\" 的页面元素的文本，并将这个文本值赋给变量val。\n\n同样，如果我们要获取class包含A的元素的文本，可以这样写：\n```\n${val}  GetElemText | [class*=A]\n```\n这条命令表示获取class属性包含\"A\"的元素的文本，并将这个文本值赋给变量val。\n\n所以，关于如何获取页面元素文本的问题，一般是使用GetElemText关键字，后面跟上一个jquery选择器来指定你要获取文本的元素，然后将获取到的文本赋给一个变量以便后续使用。"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "GetFieldVal 关键字用法举例",
         "output": "在进行WebUI自动化编写时，我们可以使用RobotFramework的关键字 \"GetFieldVal\" 来获取页面字段的值。\n\n这个关键字的作用是获取指定字段名关联的页面控件的值。它的使用格式如下：\n```\nGetFieldVal | name\n```\n其中，name是要获取的字段名。\n\n举个例子，如果我们要获取名为\"A\"的字段的值，我们的代码可以这样写：\n```\n${val}  GetFieldVal | A\n```\n执行上述代码后，\"${val}\" 这个变量就会存储名为\"A\"的字段的值。"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "如何打开浏览器",
         "output": "在进行WebUI自动化编写时，打开浏览器可以使用OpenBrowser关键字。在使用这个关键字时，你可以传递一些可选参数，比如你想要打开的默认URL及需要注入页面的cookies等。\n\n如下面的例子：\n\n1. 打开默认浏览器并访问指定的URL：\n\n```\nOpenBrowser | https://www.example.com\n```\n\n2. 打开名为\"mybrowser\"的浏览器，没有特定的URL或cookies：\n\n```\nOpenBrowser | name=mybrowser\n```\n\n3. 打开浏览器，访问默认URL，并注入特定的cookies：\n\n```\nOpenBrowser | https://www.example.com | cookies=${mycookies}\n```\n\n4. 打开名为\"mybrowser\"的浏览器，访问指定的URL，并注入特定的cookies：\n\n```\nOpenBrowser | https://www.example.com | cookies=${mycookies} | name=mybrowser\n```\n\n使用这个关键字后，会启动一个新的浏览器会话，你可以通过测试脚本在这个会话中进行页面的访问、元素的查询、操作等等。"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "如何关闭浏览器",
         "output": "在进行WebUI自动化编写时，可以使用CloseBrowser关键字来关闭浏览器。例如：\n\n```\n# 关闭浏览器\nCloseBrowser\n```\n\n如果需要在关闭浏览器时进行错误检测，请设置check参数为True：\n\n```\n# 关闭浏览器，并进行错误检测\nCloseBrowser | check=True\n```"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "如何校验/检查页面是否存在异常提示",
         "output": "在进行WebUI自动化编写时，我们可以使用EasyUiLib库提供的关键字来校验/检查页面是否存在异常提示。常用的关键字有`CheckErrMsg`、`CheckErrExclude`和`CheckErrInclude`。以下是一些示例：\n\n1. 使用`CheckErrMsg`来校验/检查页面是否存在异常提示。如果有异常提示，此关键字会主动抛出异常。\n```\nCheckErrMsg\n```\n\n2. 使用`CheckErrExclude`来校验是否存在异常提示，同时排除特定的文本作为异常提示。例如，我们想检查是否有异常提示，但是排除\"正常\"和\"无错误\"这两个文本。\n```\nCheckErrExclude | 正常 | 无错误\n```\n\n3. 使用`CheckErrInclude`来校验是否存在异常提示，同时将特定的文本也算作异常提示。例如，我们想检查是否有异常提示，但是把\"警告\"和\"注意\"这两个文本也算作异常。\n```\nCheckErrInclude | 警告 | 注意\n```\n\n使用以上关键字，你可以轻松地校验/检查页面是否存在异常提示并相应地处理这些异常。"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "如何校验页面是否存在异常提示，同时忽略一部分文本不算异常",
         "output": "在进行WebUI自动化编写时，你可以使用`CheckErrExclude | txt1 | txt2 | ...`这个关键字进行实现。这个关键字的功能是校验页面是否存在异常提示，同时忽略的文本不算作异常。\n\n例如，我们想要检查页面上是否有异常提示，但是我们希望忽略\"请稍后...\"和\"加载中...\"这两个信息，因为他们是正常的等待页面加载的提示，不应该被视为异常。那么我们可以这样编写测试脚本：\n\n```\nCheckErrExclude | 请稍后... | 加载中...\n```\n\n在这个代码中，我们使用`CheckErrExclude`关键字来检查页面上是否存在异常提示，同时忽略掉\"请稍后...\"和\"加载中...\"这两种提示信息。如果页面上存在其他的提示信息，那么`CheckErrExclude`会将其识别为异常并抛出，如果只有这两种信息或者没有任何提示信息，那么`CheckErrExclude`则不会抛出异常。\n\n此外，假设我们想忽略的提示信息有很多，我们可以在`CheckErrExclude`后面继续添加想要忽略的提示文本，例如：\n\n```\nCheckErrExclude | 请稍后... | 加载中... | 数据处理中... | 正在保存...\n```\n\n在这个代码中，我们忽略了\"请稍后...\"，\"加载中...\"，\"数据处理中...\"以及\"正在保存...\"这四种提示信息，其他的提示信息会被`CheckErrExclude`识别为异常并抛出。"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "如何校验页面是否存在异常提示，同时把一部分额外的文本也都当做异常来对待",
         "output": "在进行WebUI自动化编写时，我们可以使用EasyUiLib提供的关键字来对页面进行异常提示的校验。如果还要把额外的文本也一起当成异常来对待，我们可以使用 `CheckErrInclude` 关键字。\n\n下面是一些使用例子：\n\n```\n# 校验是否存在异常提示，其中“用户名不能为空”和“密码错误”也会被当作是异常\nCheckErrInclude | 用户名不能为空 | 密码错误\n```\n\n在这个例子中，“用户名不能为空”和“密码错误”这两个文本即使在正常的页面里也会被当做是异常来处理，如果出现这两个文本，那么测试就会失败。"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "如何校验页面是否同时包含文本多个",
         "output": "在进行WebUI自动化编写时，我们可以使用关键字 `CheckHasText` 来校验页面是否同时包含多个文本。该关键字可以接收多个文本参数，如果页面上同时包含这些文本参数对应的内容，脚本执行会成功进行，否则将会触发校验失败。\n\n例如，我们可以通过以下脚本来检查页面是否同时包含文本 \"登录\" 和 \"注册\" ：\n```robotframework\nCheckHasText | 登录 | 注册\n```\n\n又例如，我们也可以通过以下脚本来检查页面是否同时包含文本 \"首页\"，\"产品\" 和 \"联系我们\"：\n```robotframework\nCheckHasText | 首页 | 产品 | 联系我们\n```\n\n这样，我们就可以方便地校验页面是否同时包含多个需要的文本内容，从而更好地进行自动化测试。"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "如何校验页面是否包含至少一个给定的文本",
         "output": "在进行WebUI自动化编写时，想要校验页面是否包含至少一个给定的文本，可以使用RobotFramework（RF）框架中的关键字“CheckHasAnyText”。该关键字后面可以跟多个参数，它会检查当前页面是否包含这些参数中的任意一个文本。如果页面上存在任一参数文本，那么测试就会通过，否则测试失败。下面举几个例子说明。\n\n例1：\n```\n# 校验页面上是否包含“登录”或“注册”文本\nCheckHasAnyText | 登录 | 注册\n```\n上面的代码会检查当前页面是否出现“登录”或“注册”这两个词中的任一个，如果出现则测试通过，否则测试失败。\n\n例2：\n```\n# 校验页面上是否包含“提交”或“取消”或“编辑”文本\nCheckHasAnyText | 提交 | 取消 | 编辑\n```\n上面的代码会检查当前页面是否出现“提交”、“取消”或“编辑”这三个词中的任一个，如果出现则测试通过，否则测试失败。"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "如何校验页面是否包含给定的元素",
         "output": "在进行WebUI自动化编写时，校验页面是否包含给定的元素可以通过使用EasyUiLib库中的关键字实现。以下是一些使用实例：\n\n使用 `CheckHasElem` 关键字，传入一个jquery选择器参数，如果页面包含该jquery选择器表示的元素，则校验通过，否则失败。例如：`CheckHasElem | span[id='x']` 表示检查页面是否包含id为x的span元素。\n\n使用 `CheckNotHasElem` 关键字，传入一个jquery选择器参数，如果页面不包含该jquery选择器表示的元素，则校验通过，否则失败。例如：`CheckNotHasElem | div[class='y']` 表示检查页面是否不包含class为y的div元素。\n\n使用 `IsAnyElemExisting` 关键字，传入一个或多个jquery选择器及一个可选的timeout参数，如果在指定时间内（默认为3秒）页面出现了任意一个jquery选择器表示的元素，则返回True，否则返回False。例如：`${exist}  IsAnyElemExisting | span[id='x']` 表示检查id为x的span元素是否存在，存在则返回True，不存在则返回False。\n\n以上就是一些校验页面是否包含给定元素的方法和实例，你可以根据实际情况选择合适的方法进行校验。"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "如何校验页面是否不包含给定的文本",
         "output": "在进行WebUI自动化编写时，可以使用EasyUiLib库中的`CheckNotHasText`关键字来校验页面是否不包含给定的文本。`CheckNotHasText`关键字会检查网页上是否不包含所列出的所有文本，如果有任何一个文本在网页上出现，测试会失败。\n\n以下是一些使用`CheckNotHasText`关键字的示例：\n\n- 校验页面不包含 \"未知错误\" 这个文本，可以这样写：\n```robot\nCheckNotHasText | 未知错误\n```\n\n- 校验页面同时不包含 \"错误\" 和 \"警告\" 这两个文本，可以这样写：\n```robot\nCheckNotHasText | 错误 | 警告\n```\n\n此外，如果你想校验页面是否不包含特定的元素，可以使用`CheckNotHasElem`关键字。例如，校验页面不包含id为`error-msg`的元素，可以这样写：\n```robot\nCheckNotHasElem | [id=error-msg]\n```\n\n以上示例都是在校验web页面中是否不包含某些特定文本或元素。当不包含时，测试才会通过。"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "如何校验页面是否不包含给定的元素",
         "output": "在进行WebUI自动化编写时，我们可以使用`CheckNotHasElem`关键字来校验页面是否不包含给定的元素。这个关键字需要一个参数`selector`，它是一个jquery选择器，并且它会返回一个布尔值，如果页面不包含该元素，那么返回True，否则返回False。\n\n例如，如果我们想要校验页面上不存在id为`myId`的元素，那么可以这样写：\n\n```\nCheckNotHasElem | [id=myId]\n```\n\n如果我们想要校验页面上不存在class为`myClass`的元素，那么可以这样写：\n\n```\nCheckNotHasElem | [class=myClass]\n```\n\n如果我们想要校验页面上不存在包含文本`myText`的元素，那么可以这样写：\n\n```\nCheckNotHasElem | :contains('myText')\n```\n\n以上就是如何使用`CheckNotHasElem`关键字来校验页面是否不包含给定的元素。"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "CheckHasAnyText 关键字用法举例",
         "output": "在进行WebUI自动化编写时，`CheckHasAnyText`关键字常常用来校验页面上是否包含给定的一个或多个文本中的任何一个。以下是一些使用`CheckHasAnyText`关键字的示例：\n\n1.如果你想检查页面上是否包含\"登录\"或\"注册\"这两个按钮，你可以使用以下的测试脚本：\n```\nCheckHasAnyText | 登录 | 注册  \n```\n\n2.假设你想确认页面中是否包含\"成功\"或\"完成\"，这通常在提交或操作完成后进行校验，你可以这样编写：\n```\nCheckHasAnyText | 成功 | 完成 \n```\n\n3.如果你想检查你的网页是否包含\"错误\"或\"失败\"这样的异常提示，你可以采用以下的脚本：\n```\nCheckHasAnyText | 错误 | 失败 \n```\n\n以上案例都是基于`CheckHasAnyText`关键字进行的相关操作，实际使用时可以根据需要进行调整和修改。"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "如何勾选复选框",
         "output": "在进行WebUI自动化编写时，如果你想勾选一个复选框，你可以使用`CheckBoxOn`关键字。这个关键字需要一个参数，也就是你要勾选的复选框name。\n\n比如，下面的脚本会勾选名为\"已阅读\"的复选框：\n```\nCheckBoxOn | 已阅读\n```\n\n如果你想取消勾选一个复选框，你可以使用`CheckBoxOff`关键字，用法和`CheckBoxOn`一样。例如，以下的脚本会取消勾选名为\"已阅读\"的复选框：\n```\nCheckBoxOff | 已阅读\n```\n\n注意: \"已阅读\"只是一个例子，你需要将其替换为你要操作的复选框的实际name。"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "如何取消勾选复选框",
         "output": "在进行WebUI自动化编写时，可以使用EasyUiLib中的`CheckBoxOff`关键字取消勾选复选框。以下是一些例子：\n\n```\n# 取消勾选名为\"同意协议\"的复选框\nCheckBoxOff | 同意协议\n```\n\n以上示例代码会自动找到页面上名为\"同意协议\"的复选框并取消勾选。"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "CheckBoxOn 关键字用法举例",
         "output": "在进行WebUI自动化编写时，我们可以使用CheckBoxOn关键字来勾选指定的复选框。以下是一些使用CheckBoxOn关键字的例子：\n\n例1：勾选名为\"同意\"的复选框\n\n```robotframework\nCheckBoxOn | 同意\n```\n\n例2：勾选名为\"已阅读\"的复选框\n\n```robotframework\nCheckBoxOn | 已阅读\n```\n\n通过使用CheckBoxOn关键字，我们可以方便地在自动化测试脚本中操作复选框，实现勾选功能。"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "如何点击给定基准元素周围上下左右的元素",
         "output": "在进行WebUI自动化编写时，我们可以通过使用EasyUiLib库提供的关键字 ClickElemToTheDirectionOf、ClickTextToTheDirectionOf 和 ClickIconToTheDirectionOf 去点击给定基准元素周围上下左右的元素。\n\n例如，我们可以通过以下脚本来实现点击基准元素周围的元素：\n\n1. 点击基准元素 \"暂不处理\" 右下方的 class 包含 cancel 的元素：\n```\nClickElemToTheDirectionOf | 暂不处理 | bottomRight | [class*=cancel]\n```\n\n2. 点击基准元素 ${elem} 左上角的 name 为 a 的元素：\n```\nClickElemToTheDirectionOf | ${elem} | topLeft | [name=a]\n```\n\n3. 点击基准元素 \"验证码\" 下方的文本 \"登录\"：\n```\nClickTextToTheDirectionOf | 验证码 | bottom | 登录\n```\n\n4. 点击基准元素 \"知道了\" 上方的关闭小图标：\n```\nClickIconToTheDirectionOf | 知道了 | top | close\n```\n\n5. 点击屏幕下方的 id=x 的元素：\n```\nClickElemToTheDirectionOf | SCREEN_CENTER | bottom | [id=x]\n```\n\n这些关键字中第一个参数都是基准元素，第二个参数是方向，第三个参数是目标元素的选择器或文本或图标。在这些操作中，基准元素可以是特定的元素，也可以是特殊值 SCREEN_CENTER 表示屏幕中心。 方向参数可以是 left/right/top/bottom/topLeft/bottomRight/topRight/bottomLeft 之一。"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "如何点击给定基准元素周围上下左右的文本",
         "output": "在进行WebUI自动化编写时，如果需要点击给定基准元素周围上下左右的文本，我们可以使用关键字`ClickTextToTheDirectionOf`，它的参数有`base`，`direction`和`text`。\n\n其中，`base`是我们指定的基准元素，`direction`可以选择的方向有left/right/top/bottom/topLeft/bottomRight/topRight/bottomLeft，`text`就是我们需要点击的目标文本。\n\n这里举几个例子说明：\n\n示例1：点击验证码下方的登录\n```robot\nClickTextToTheDirectionOf | 验证码 | bottom | 登录\n```\n在这个示例中，基准元素为\"验证码\"，我们要点击的是位于验证码元素下方的文本\"登录\"。\n\n示例2：点击知道了上方的关闭\n```robot\nClickTextToTheDirectionOf | 知道了 | top | 关闭\n```\n在这个示例中，基准元素为\"知道了\"，我们要点击的是位于\"知道了\"元素上方的文本\"关闭\"。\n\n示例3：点击屏幕下方的确定\n```robot\nClickTextToTheDirectionOf | SCREEN_CENTER | bottom | 确定\n```\n在这个示例中，基准元素为屏幕中心，我们要点击的是位于屏幕中心元素下方的文本\"确定\"。\n\n希望这些示例可以帮助你理解如何使用`ClickTextToTheDirectionOf`关键字。"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "如何点击给定基准元素周围上下左右的Icon小图标",
         "output": "在进行WebUI自动化编写时，可以使用EasyUiLib库中的`ClickIconToTheDirectionOf`关键字来点击给定基准元素周围上下左右的Icon小图标。这个关键字的作用是点击基准元素指定方位的目标Icon，关键字的参数中，base表示基准元素，direction表示方位，可以是left/right/top/bottom/topLeft/bottomRight/topRight/bottomLeft之一，icon表示图标的名称。\n\n例如，我们有一个基准元素为'例子'，我们想点击它右边的'编辑'小图标，可以这样写：\n```\nClickIconToTheDirectionOf | 例子 | right | 编辑\n```\n在这个例子中,'例子'就是我们的基准元素，'right'是方位参数，表示我们想操作的元素在基准元素的右边，而'编辑'就是我们要点击的图标名称。\n\n再比如我们想点击基准元素'测试'下方的'保存'小图标，可以这样写：\n```\nClickIconToTheDirectionOf | 测试 | bottom | 保存\n```\n在这个例子中,'测试'是我们的基准元素，'bottom'是方位参数，表示我们想操作的元素在基准元素的下方，而'保存'就是我们要点击的图标名称。"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "如何将鼠标移动到给定基准元素周围上下左右的元素",
         "output": "在进行WebUI自动化编写时，我们可以使用EasyUiLib提供的一些关键字方便的将鼠标移动到给定基准元素上下左右周围的元素。具体方法如下：\n\n1. 如果需要将鼠标移动到基准元素给定方位的目标元素上，我们可以使用 `MoveToElemToTheDirectionOf` 关键字。下面的例子将鼠标移动到基准元素（这里假设已存储在变量`${elem}`中）的左侧的一个name为a的元素上。\n\n   ```\n   MoveToElemToTheDirectionOf | ${elem} | left | [name=a]\n   ```\n\n2. 如果需要将鼠标移动到基准元素给定方位的目标文本上，我们可以使用 `MoveToTextToTheDirectionOf` 关键字。下面的例子将鼠标移动到基准元素（这里假设是文本'姓名'）的下方的一个文本'年龄'上。\n\n   ```\n   MoveToTextToTheDirectionOf | 姓名 | bottom | 年龄\n   ```\n\n3. 如果需要将鼠标移动到基准元素给定方位的目标icon小图标上，我们可以使用 `MoveToIconToTheDirectionOf` 关键字。下面的例子将鼠标移动到基准元素（假设是屏幕中心 SCREEN_CENTER）的右侧的一个icon小图标（图标名称假设为'more'）上。\n\n   ```\n   MoveToIconToTheDirectionOf | SCREEN_CENTER | right | more\n   ```\n\n通过上述关键字，我们可以方便地使鼠标在页面上的各个位置移动以进行各种操作。"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "如何将鼠标移动到给定基准元素周围上下左右的文本",
         "output": "在进行WebUI自动化编写时，可以使用以下关键字来将鼠标移动到给定基准元素周围上下左右的文本：\n\n- MoveToTextToTheDirectionOf：将鼠标移动到基准元素给定方向的目标文本上，参数包括base（基准元素）、direction（方向）和text（目标文本）。\n\n例如：\n\n1. 将鼠标移动到\"用户名\"文本左侧的\"密码\"文本上：\n```\nMoveToTextToTheDirectionOf | 用户名 | left | 密码\n```\n\n2. 将鼠标移动到\"搜索\"文本下方的\"高级搜索\"文本上：\n```\nMoveToTextToTheDirectionOf | 搜索 | bottom | 高级搜索\n```\n\n3. 将鼠标移动到\"确定\"文本右侧的\"取消\"文本上：\n```\nMoveToTextToTheDirectionOf | 确定 | right | 取消\n```\n\n4. 将鼠标移动到\"提交\"文本上方的\"保存\"文本上：\n```\nMoveToTextToTheDirectionOf | 提交 | top | 保存\n```"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "如何将鼠标移动到给定基准元素周围上下左右的Icon小图标",
         "output": "在进行WebUI自动化编写时，RobotFramework的EasyUiLib库提供了`MoveToIconToTheDirectionOf`关键字来实现将鼠标移动到给定基准元素周围上下左右的Icon小图标。\n\n以下是一些具体的例子：\n\n如要移动到“设置”文本元素右边的“更多”图标上，可以这样写：\n```\nMoveToIconToTheDirectionOf | 设置 | right | more\n```\n\n如果要移动到id为'container'的元素下方的'close'小图标上，可以这样写：\n```\nMoveToIconToTheDirectionOf | [id=container] | bottom | close\n```\n\n如果要移动到屏幕中心左边的'home'小图标上，可以这样写：\n```\nMoveToIconToTheDirectionOf | SCREEN_CENTER | left | home\n```\n\n其中，`MoveToIconToTheDirectionOf`后面的`base`参数是基准元素，可以是特定的文本或者是jQuery选择器，特殊值`SCREEN_CENTER`表示屏幕中心；`direction`参数表示目标元素相对于基准元素的方位，可以是left/right/top/bottom/topLeft/bottomRight/topRight/bottomLeft之一；`icon`参数是目标小图标的名称。"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "如何点击给定文本中的任意一个",
         "output": "在进行WebUI自动化编写时，如果需要点击给定文本中的任意一个，可以使用EasyUiLib库中的\"ClickAny\"关键字。该关键字的参数为需要尝试点击的文本，可以提供一个或者多个，他会尝试按照提供的文本参数顺序，点击第一个找到的对应文本。\n\n例子如下：\n\n```robotframework\n# 尝试点击页面上的提交或者确定按钮，哪个先找到点击哪个\nClickAny | 提交 | 确定\n```\n\n以上代码中，\"ClickAny\"关键字会尝试首先寻找页面上的\"提交\"按钮，如果找到了，就点击它。如果没有找到\"提交\"按钮，就会继续寻找\"确定\"按钮，如果找到了，则点击它。如果都没有找到，该步骤会失败。\n\n另外，我们还可以设置\"timeout\"参数以改变默认的等待时间，如：\n\n```robotframework\n# 尝试点击页面上的提交或者确定按钮，最多等待5秒\nClickAny | 提交 | 确定 | timeout=5\n```\n\n以上代码中，\"ClickAny\"关键字会最多等待5秒时间尝试寻找并点击\"提交\"或\"确定\"按钮，如果5秒内找到了就点击，否则该步骤会失败。"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "如何在尝试点击某个元素但是元素不存在也不报错",
         "output": "在进行WebUI自动化编写时，如果需要尝试点击某个元素，但这个元素可能不存在而且我们也不需要报错，可使用关键字 ClickIfElemExists。这个关键字的作用就是尝试点击界面上jquery选择器表示的元素。如果元素不存在，它就简单地跳过，不会抛出任何错误。例如：\n\n```robotframework\n# 尝试点击id为'x'的div元素\nClickIfElemExists | div[id='x']\n\n# 尝试点击class为'y'的span元素\nClickIfElemExists | span[class='y']\n```\n\n以上这两行代码，如果div元素的id为'x'或者span元素的class为'y'存在，它就会点击这个元素，如果不存在，它就会忽略并继续执行下一行代码，而不会报错。这样就可以满足在元素可能不存在的情况下安全地尝试点击元素的需要。"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "如何点击一个给定的文本",
         "output": "在进行WebUI自动化编写时，点击给定的文本，我们需要使用关键字 `Click`。`Click` 的基本用法如下：\n```\nClick | txt | idx=0\n```\n其中，`txt` 是你要点击的文本。`idx` 参数可以选择相同文本中的第几个，0代表第一个，-1代表最后一个。\n\n以下是一些具体实用例子：\n\n1. 点击文本\"提交\"，代码如下：\n```\nClick | 提交\n```\n这行代码将会寻找页面上的文本\"提交\"，并点击它。\n\n2. 点击第3个\"确定\"按钮，代码如下：\n```\nClick | 确定 | idx=2\n```\n这行代码将会找到页面上所有的\"确定\"按钮，并点击第3个。\n\n3. 如果你想点击一个弹窗中的\"确认\"按钮，你可以这样做：\n```\nClick | 确认 | base=POPUP\n```\n这行代码将会在弹窗中找到\"确认\"按钮，并点击它。\n\n要注意的是，`Click`是大小写敏感的，因此确保你的文本匹配页面上的确切文本。"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "如何点击一个给定的元素",
         "output": "在进行WebUI自动化编写时，可以使用多种关键字来操作和点击给定的元素。\n\n例如：\n\n如果你想点击某个特定的文本，比如点击 \"确定\"，可以使用 Click 关键字，其代码为：\n```\nClick | 确认\n```\n该命令会在页面上寻找第一个文本为 \"确定\" 的元素并点击。\n\n如果你想点击的元素是通过jquery选择器表示的，可以使用 ClickElem 关键字。比如你要点击第5个name包含a且id为x且包含OK的元素，那么代码为：\n```\nClickElem | [id=x][name*=a]:contains(OK):eq(4)\n```\n如果你想点击id是x的div或name是x的span，那么代码为：\n```\nClickElem | div[id='x'],span[name='x']\n```\n在上述示例中，ClickElem 后面的内容都是jquery选择器的表达式，它们可以非常精确地定位你想操作的元素。\n\n如果想点击一系列的文本，比如想先点击 \"添加\"，然后点击 \"确定\"，那么可以使用 ClickTextOneByOne 关键字，代码如下：\n```\nClickTextOneByOne | 添加 | 确定\n```\n此外，如果要点击的元素在某个特定的基准元素或弹出层/弹窗内，那么需要在 Click 或 ClickElem 后面加上 base 参数，比如要点击 id为a 的元素中的 \"OK\"，那么代码为：\n```\nClick | OK | base=[id=a]\n```\n同样，如果要点击弹窗中的 \"确认\"，则代码为：\n```\nClick | 确认 | base=POPUP\n```\n\n以上所述的所有操作都是点击动作，可能会引发页面的刷新，加载或者跳转等行为。并且，这些操作在实际操作前会先确认元素是否存在并可见，如果元素不存在或者不可见，那么就会抛出异常。\n"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "如何依次点击多个给定的文本",
         "output": "在进行WebUI自动化编写时，可以使用 ClickTextOneByOne 关键词依次点击多个给定的文本。关键字格式如下：\n```\nClickTextOneByOne | args | base=\n```\n其中，args 是要依次点击的一个或多个文本，base 是基准元素（特殊值POPUP表示弹出层/弹窗）。\n\n示例：\n\n1. 依次点击\"下一页\"，\"删除\" 和 \"确定\"：\n```\nClickTextOneByOne | 下一页 | 删除 | 确定\n```\n\n2. 先点击\"添加\"，再点击\"确定\"：\n```\nClickTextOneByOne | 添加 | 确定\n```"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "如何获取剪切板内容",
         "output": "在进行WebUI自动化编写时，如果需要获取剪切板的内容，可以使用`GetCopied`关键词。这个关键词会返回剪切板当前的文本内容。\n\n举个例子，如果你想获取剪切板的内容并将其赋值给一个变量，可以使用如下代码：\n```\n${val}  GetCopied\n```\n\n在这个例子中，`${val}`是一个变量，`GetCopied`是RF的关键词，该关键词会获取剪切板的内容并将其赋值给`${val}`。此后，你就可以在其它地方通过`${val}`来使用这个剪切板的内容了。"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "如何将给定文本粘贴到给定元素或粘贴到光标所在位置",
         "output": "在进行WebUI自动化编写时，如果需要将给定文本粘贴到给定元素，我们可以使用关键字`Paste`。这个关键字接收两个参数，第一个是jquery选择器，用于定位到要粘贴文本的元素。第二个参数是要粘贴的文本。例如，如果我们需要将\"123\"这个文本粘贴到id为\"x\"的span元素中，我们可以这样编写测试脚本：\n\n```python\nPaste | span[id=x] | 123\n```\n\n其中，“span[id=x]”是一个jquery选择器，它表示的是id为\"x\"的span元素。\"123\"则是我们要粘贴的文本。\n\n有时候，我们可能不知道要粘贴文本的确切位置，只知道这个位置当前是光标激活的。在这种情况下，我们可以把`Paste`关键字的第一个参数设置为空。例如，如果我们需要将\"123\"这个文本粘贴到当前光标激活的位置，我们可以这样编写测试脚本：\n\n```python\nPaste | ${EMPTY} | 123\n```\n\n其中，`${EMPTY}`是RF框架的一个内置变量，它表示的就是空。所以这段脚本的意思就是在当前光标激活的位置粘贴文本\"123\"。"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "如何输入 ctrl + a",
         "output": "在进行WebUI自动化编写时，可以使用关键字 SendCtrlA 实现输入 ctrl + a 的功能。以下是一些示例：\n\n1. 在光标激活的位置输入 ctrl + a：\n```\nSendCtrlA\n```\n\n2. 在 id 为 input_box 的元素中输入 ctrl + a：\n```\nSendCtrlA | [id=input_box]\n```"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "如何输入 ctrl + c",
         "output": "在进行WebUI自动化编写时，我们可以使用关键字 \"SendCtrlC\" 来模拟键盘输入 ctrl + c 操作。下面是一些具体的使用示例：\n\n如果你想把当前光标处的内容复制到剪贴板，那么你可以直接使用 \"SendCtrlC\" 关键字，不需要提供任何参数：\n```\nSendCtrlC\n```\n上面的命令会将光标处的文本复制到剪贴板。\n\n如果你想复制某个特定元素的文字，你可以通过传递一个 jQuery 选择器作为参数给 \"SendCtrlC\" 关键字，例如：\n```\nSendCtrlC | [id=mytext]\n```\n在上面的例子中，\"[id=mytext]\" 是一个 ID 选择器，上面的命令会将 ID 是 \"mytext\" 的元素的文本复制到剪贴板。\n\n请注意，使用 SendCtrlC 关键字后，你可能需要通过 SendCtrlV 关键字来把剪贴板的内容粘贴到某个地方。这个操作也同样可以通过传递一个 jQuery 选择器作为参数来粘贴到特定元素的位置，或者如果不传递参数则会在当前光标处进行粘贴。\n"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "如何输入 ctrl + v",
         "output": "在进行WebUI自动化编写时，如果你想实现在某个元素内输入 ctrl + v（也就是粘贴操作），你可以使用SendCtrlV关键字。下面是一些例子：\n\n1）如果你想在当前光标所在位置输入 ctrl + v，你可以直接调用 SendCtrlV 无需任何参数，即：\n```\nSendCtrlV\n```\n\n2) 如果你想在特定的元素中输入 ctrl + v，你需要提供该元素的jquery选择器作为参数。例如，如果你希望在id为'user-id'的元素中进行粘贴操作，你可以这样写：\n```\nSendCtrlV  | [id=user-id]\n```\n\n请注意，jquery选择器需要根据实际的页面元素进行适当的调整。你可以通过元素的id、class或其他属性选择元素。只需要把选择器作为SendCtrlV的参数传入即可。"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "如何进行拖拽",
         "output": "在进行WebUI自动化编写时，可以使用EasyUiLib中的DAndD关键字来实现拖拽操作。下面举几个例子说明：\n\n1. 将id为\"tea\"的元素拖拽到class为\"shop\"的元素上：\n```\nDAndD | [id=\"tea\"] | [class=\"shop\"]\n```\n\n2. 将文本为\"小学\"的元素拖拽到文本为\"学历\"的元素上：\n```\nDAndD | 小学 | 学历\n```\n\n这里的源元素（srcElem）和目标元素（targetElem）可以通过文本（如\"小学\"和\"学历\"）或jQuery选择器（如\"[id=\"tea\"]\"和\"[class=\"shop\"]\"）来指定。"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "如何向编辑器中输入文本",
         "output": "在进行WebUI自动化编写时，我们可以使用`FillEditor`关键字来向编辑器中输入文本。例如：\n```robotframework\n# 向第一个编辑器中输入文本“Hello World”\nFillEditor | Hello World \n\n# 向第2个编辑器中输入文本“Hello RobotFramework”\nFillEditor | Hello RobotFramework | idx=1\n```\n在上述示例中，`FillEditor`关键字后面紧跟着的是我们想要输入的文本，然后`idx`参数是可选的，它表示我们想要向第几个编辑器中输入文本。`idx`的默认值是0，表示第一个编辑器，以此类推。\n"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "如何登录飞书",
         "output": "在进行WebUI自动化编写时，使用RobotFramework和EasyUiLib库，你可以利用`LoginFeiShu`关键字来实现飞书的登录操作。这个关键字需要一个会话ID（session）参数，表示登录飞书使用的用户信息。\n\n具体示例代码如下：\n```robot\n# 以某个用户的会话ID登录飞书\nLoginFeiShu | abcdefg1234567\n```\n在这个例子中， `abcdefg1234567` 是用户的会话ID，通过替换为实际的会话ID来登录指定的飞书账户。"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "如何填写页面表单字段",
         "output": "在进行WebUI自动化编写时，可以使用EasyUiLib关键字库中的SetField和BatchSetFields关键字来填写页面表单字段。以下是一些示例：\n\n1. 输入姓名为张三：\n```\nSetField | 姓名 | 张三\n```\n\n2. 设置第2个年龄字段为18并回车：\n```\nSetField | 年龄 | 18 | idx=1 | enter=True\n```\n\n3. 在弹窗中设置性别为man：\n```\nSetField | 性别 | man | base=POPUP\n```\n\n4. 在学生信息下方的性别字段设置为woman：\n```\nSetField | 性别 | woman | near=学生信息\n```\n\n5. 批量填写用户名和密码：\n```\nBatchSetFields | 用户名=user1 | 密码=pwd1\n```\n\n这些关键字可以帮助你在自动化测试中轻松地填写页面上的表单字段。"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "如何填写一个给定的页面控件区域",
         "output": "在进行WebUI自动化编写时，可以使用“FillArea”关键字来填写一个给定的页面控件区域。该关键字后面需要两个参数，第一个参数是jquery选择器，它表示了你想要操作的页面控件区域，第二个参数是用于填充的值，可以是一串字符，也可以是多个值，每个值用|分隔。\n\n下面举些例子来说明：\n\n如果你想在页面上根据class选择器选择到div元素（该元素的class包含A），并在该区域输入\"ct\" \"=\" \"NY\"，那么你需要写的脚本代码如下：\n```\nFillArea | div[class*=A] | ct | = | NY\n```\n\n如果你想在页面上根据id选择器选择到input元素（该元素id为'username'），并在该区域输入'admin'，那么你需要写的脚本代码如下：\n```\nFillArea | input[id='username'] | admin\n```\n\n如果你想在页面上选择到名为'selectModel'的下拉菜单，并选择下拉菜单中的第3个选项，那么你需要写的脚本代码如下：\n```\nFillArea | select[name='selectModel'] | OPTIONS_3\n```\n在以上的例子中，'OPTIONS_i'是一个特殊的参数值，表示选中第 i 个选项，i 从 1 开始。这用于操作如下拉菜单这样的控件。"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "如何输入文本",
         "output": "在进行WebUI自动化编写时，输入文本可以用到多种关键字，具体示例如下：\n\n1. 使用 `SetField` 关键字：比如你需要在        name字段中输入“张三”，可以这样使用：`SetField | 姓名 | 张三`。如果你需要在第二个Age字段中输入“18”并按回车，可以这样写：`SetField | Age | 18 | idx=1 | enter=True`。\n\n2. 使用 `FillArea` 关键字：比如你需要在class包含A的div中输入\"ct\" \"=\" \"NY\"，可以这样写：`FillArea | div[class*=A] | ct | = | NY`。\n\n3. 使用 `BatchSetFields` 关键字：当你需要同时设置多个字段的值时，可以使用`BatchSetFields`关键字。例如你需要同时输入用户名为user1, 密码为pwd1，可以这样写：`BatchSetFields | 用户名=user1 | 密码=pwd1`。\n\n4. 使用 `SendText` 关键字：如果你需要在光标激活位置输入可选文本，你可以使用 `SendText` 关键字，比如你需要输入文本“hello”，可以这样写：`SendText | hello |`。\n\n这些都是在编写RF框架自动化测试时，输入文本的常用方法。"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "如何切换到 iframe",
         "output": "在进行WebUI自动化编写时，如果涉及到的页面中包含iframe，我们需要进行iframe的切换才能对iframe内的元素进行操作。在RobotFramework中使用EasyUiLib关键字库进行iframe的切换可以使用\"ToFrame\"关键字，它需要一个参数表示jquery选择器，用于选择要切换的iframe。\n\n例如，如果我们需要切换到页面上的第一个iframe，可以编写如下代码：\n```\nToFrame | iframe:eq(0)\n```\n\n如果我们需要切换到name为y的frame，可以编写如下代码：\n```\nToFrame | iframe[name=y]\n```\n这些代码会让测试框架切换到指定的iframe中，然后我们就可以在这个iframe中进行相关操作。\n\n切换完成后，如果需要切出iframe，可以使用\"ExitFrame\"关键字，无需任何参数，例如：\n```\nExitFrame\n```\n这样就可以将控制权切换回主页面了。"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "如何退出 iframe",
         "output": "在进行WebUI自动化编写时，退出iframe是一个非常常见的操作。在RobotFramework的EasyUiLib库中，有一个专门用于退出iframe的关键字：ExitFrame。这个关键字的用法非常简单，它没有任何参数，直接在脚本中调用即可退出当前的iframe。\n\n以下是一个使用ExitFrame的示例：\n\n```robotframework\n# 进入name为y的frame\nToFrame | iframe[name=y]\n\n# 先做一些iframe里的操作\n# ...\n\n# 现在我们需要退出iframe\nExitFrame\n\n# 此时我们已回到了原始的document中\n```\n\n在这个例子中，我们首先使用 `ToFrame` 关键字进入了一个name为y的iframe，做了一些操作之后，通过 `ExitFrame` 关键字退出了iframe。\n\n需要注意的是，如果你在一个iframe中又进入了另一个iframe，那么需要调用两次 `ExitFrame` 关键字才能回到最初的document中，因为 `ExitFrame` 关键字只能够退出到上一级的context中。"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "如何点击icon小图标",
         "output": "在进行WebUI自动化编写时，点击小图标可以通过使用关键字ClickIcon来实现。以下是一些使用此关键字的示例：\n\n1. 如果你想要点击名为'more'（通常表示为...）的小图标，可以使用以下命令：\n\n```robot\nClickIcon | more\n```\n\n这行命令表示点击页面上名为'more'的图标。\n\n\n2. 如果你想要点击某个特定元素（例如用变量${elem}表示）中的'plus'图标，你可以这样编写：\n\n```robot\nClickIcon | plus | base=${elem}\n```\n\n这行命令表示在${elem}元素中找到'plus'图标并点击。\n\n在上述命令中，'more'和'plus'是小图标的名字，'base'参数用于指定基准元素，如果不设置'base'参数，那么默认在整个页面查找小图标。此外，还可以通过'idx'参数来指定要点击第几个小图标，索引从0开始，-1表示最后一个。"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "如何进行元素截图并和基准图对比",
         "output": "在进行WebUI自动化编写时，我们可以使用EasyUiLib库中的`ElemScreenshot`和`ImageDiff`关键字来进行元素截图和基准图对比。\n\n首先，我们使用`ElemScreenshot`关键字，参数为jQuery选择器，来截取页面上某个元素的截图。比如我们要获取id为\"aSection\"的元素的截图，可以这样写：\n\n```robotframework\nElemScreenshot| [id=aSection]\n```\n\n然后，我们可以使用`ImageDiff`关键字将截取的图片与之前存储的基准图进行对比。`ImageDiff`关键字的参数为选择器、图片名称以及相似度。其中，选择器默认为空表示全屏截图，图片名称可选，表示图片名称，相似度可选，默认为0.99，表示要求的图片相似度。\n\n例如，我们可以将刚刚截取的图片与名为\"baselinePic\"的基准图进行对比，要求相似度为0.95，就可以这样写：\n\n```robotframework\nImageDiff | [id=aSection] | baselinePic | sim=0.95\n```\n\n如果我们只需要进行全屏截图对比，可以直接使用`ImageDiff`关键字，如下：\n\n```robotframework\nImageDiff\n```\n\n这就是如何使用RobotFramework和EasyUiLib进行元素截图和基准图对比的示例。具体的使用情况会视你的测试需求和环境进行调整。"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "如何判断页面是否包含给定的一个或多个文本",
         "output": "在进行WebUI自动化编写时，我们可以使用Robot Framework 中的关键字来判断页面是否包含给定的一个或多个文本。这在我们进行自动化测试时，需要确认页面上是否已成功显示某些预期的文本时非常有用。\n\n根据你想要检查的文本数量和类型，Robot Framework 提供了不同的关键字能够实现这一需求。\n\n如果你想判断页面上是否同时包含多个给定的文本，我们可以采用以下关键字：\n\n```robot\nCheckHasText | txt1 | txt2 | ...\n```\n这个关键字表示页面是否同时包含文本 txt1、txt2、...。如果页面同时包含了所有这些文本，则测试通过。\n\n例如，我们验证一个学生信息页面，是否包含\"姓名\"，\"学号\"，\"年级\"等字段，可以写作：\n```robot\nCheckHasText | 姓名 | 学号 | 年级\n```\n\n如果你想判断页面上是否包含这些给定文本中的任何一个，我们可以使用以下关键字：\n\n```robot\nCheckHasAnyText | txt1 | txt2 | ...\n```\n这个关键字表示页面是否包含文本 txt1，txt2，...中的任何一个。如果页面包含了这些文本中的任何一个，则测试通过。\n\n例如，我们去验证一个登录错误页面，是否显示了\"用户名错误\"或者\"密码错误\"，可以写作：\n```robot\nCheckHasAnyText | 用户名错误 | 密码错误\n```\n以上就是使用Robot Framework进行WebUI自动化时，如何通过使用不同的关键字来判断页面上是否包含给定的一个或多个文本的方法和例子。"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "如何判断页面是否存在给定文本中的至少一个文本",
         "output": "在进行WebUI自动化编写时，可以使用关键字 `IsAnyTextExisting` 来判断页面是否存在给定文本中的至少一个文本。以下是一些例子。\n\n例如，如果我们想要判断页面上是否存在文本 \"登录\" 或 \"注册\"，可以这样编写代码：\n\n```\n${exist}  IsAnyTextExisting | 登录 | 注册\n```\n\n这行代码中， `${exist}` 是一个布尔值变量，如果页面上存在 \"登录\" 或 \"注册\" 中的任意一个文本，它的值将为 `True`，否则为 `False`。\n\n在需要根据页面文本存在与否执行不同操作的场景下，可以结合 `IF` 语句来使用：\n\n```\n${exist}  IsAnyTextExisting | 登录 | 注册\nIF  ${exist}\n    Log  页面上存在登录或注册文本\nELSE\n    Log  页面上不存在登录和注册文本\nEND\n```\n\n在这段代码中，如果页面上存在 \"登录\" 或 \"注册\" 中的任意一个文本，将输出 \"页面上存在登录或注册文本\"；否则，将输出 \"页面上不存在登录和注册文本\"。"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "如何判断页面是否存在给定的元素",
         "output": "在进行WebUI自动化编写时，我们可以通过使用EasyUiLib提供的关键字来判断页面是否存在给定的元素。以下是一些具体的使用示例。\n\n如果我们要判断一个或多个特定文本是否存在于当前页面中：\n\n```robotframework\n#首先，我们使用IsAnyTextExisting关键字，该关键字接受一个或多个文本作为参数，并返回一个布尔值来表示它们是否存在。\n${exist}  IsAnyTextExisting | \"文本1\" | \"文本2\"\n\n#然后，我们可以使用RF的IF语句来根据${exist}的值进行相应的操作。\nIF  ${exist}\n    Log  \"文本存在\"\nELSE\n    Log  \"文本不存在\"\nEND\n```\n\n如果我们要判断特定的jQuery选择器代表的元素是否存在于当前页面中：\n\n```robotframework\n#我们使用IsAnyElemExisting关键字，该关键字接受一个或多个选择器作为参数，并返回一个布尔值来表示它们是否存在。\n${exist}  IsAnyElemExisting | \"#id\" | \".class\"\n\n#然后，我们可以使用RF的IF语句来根据${exist}的值进行相应的操作。\nIF  ${exist}\n    Log  \"元素存在\"\nELSE\n    Log  \"元素不存在\"\nEND\n```\n\n这些都是使用RobotFramework和EasyUiLib来判断页面是否存在给定元素的方法。"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "如何判断某个给定的变量是否存在",
         "output": "在进行WebUI自动化编写时，我们可以使用IsVarExisting关键字来判断给定的变量是否存在。\n\n以下是一些具体的使用示例：\n```Robot\n# 判断变量x是否存在，如果存在则返回True，否则返回False\n${exist}  IsVarExisting | x\n```\n\n在这个例子中，'x'是我们要检查是否存在的变量名。如果变量'x'存在，'${exist}' 将被设置为True，否则， '${exist}' 将被设置为 False。\n\n我们还可以在判断语句中使用这个关键字来执行特定的操作。例如：\n\n```Robot\n# 如果变量y存在，则在日志中记录一个消息\n${exist}  IsVarExisting | y\nIF  '${exist}' == 'True'\n    Log  Variable y exists.\nELSE \n    Log  Variable y does not exist.\nEND\n```\n在这个例子中，我们首先使用IsVarExisting关键字来检查变量'y'是否存在，并将结果存储在'${exist}'中。然后我们使用一个IF/ELSE语句来检查'${exist}'的值。如果'${exist}'的值为'True'，则我们在日志中记录一条消息说变量'y'存在。如果'${exist}'的值为'False'，则我们在日志中记录一条消息说变量'y'不存在。"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "如何判断 URL 是否包含给定文本",
         "output": "在进行WebUI自动化编写时，如果需要判断URL是否包含给定的文本，可以使用关键字 `IsURLContains`。它会返回一个布尔值，如果URL中包含给定的文本，返回值为 True，否则为 False。\n\n以下是使用示例：\n```\n# 判断URL是否包含\"text\"\n${status}  IsURLContains | text\n# 如果URL中包含\"text\"，则打印\"URL contains 'text'\"\nIF  ${status}\n    Log  URL contains 'text'\nEND\n```"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "如何判断页面标题是否包含给定文本",
         "output": "在进行WebUI自动化编写时，我们可以使用EasyUiLib的关键字IsTitleContains来判断页面标题是否包含给定的文本，这个关键字会返回一个布尔值，如果标题包含给定的文本，就返回True，否则返回False。\n\n以下是一个使用示例：\n```robotframework\n# 判断页面标题是否包含\"欢迎\"\n${status}  IsTitleContains | 欢迎\nLog  ${status}\n# ${status} 的值为True或False，当页面标题包含\"欢迎\"时为True，否则为False\n```\n\n在这个例子中，我们首先使用IsTitleContains关键字判断页面标题是否包含\"欢迎\"，然后将返回的结果存储在变量${status}中，最后使用Log关键字打印出来。这样就可以清晰地看到页面标题是否包含了特定的文本。"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "如何从 JSON 对象中获取给定字段的值",
         "output": "在进行WebUI自动化编写时，我们可以使用 \"GetValuesFromJson\"关键字从JSON对象中获取给定字段的值。\n\n举例来说，假设我们有一个名为\"respJson\"的JSON对象如下：\n```json\n{\n    \"name\": \"Tom\",\n    \"age\": 30,\n    \"hobby\": [\"reading\", \"playing games\"]\n}\n```\n\n如果你想获取\"name\"字段的值，你可以这样做：\n```robot\n${value}  GetValuesFromJson | ${respJson} | name\n```\n执行以上代码后，变量`${value}`将会存储名为\"Tom\"的值。\n\n如果你想获取\"hobby\"字段的值，你可以这样做：\n```robot\n${value}  GetValuesFromJson | ${respJson} | hobby\n```\n执行以上代码后，`${value}`将会存储一个列表[\"reading\", \"playing games\"]。\n这样，你就可以通过RobotFramework脚本从JSON对象中提取需要的字段值了。"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "如何向 localStorage 中添加 key, value 对",
         "output": "在进行WebUI自动化编写时，我们可以使用RobotFramework的关键字\"LocalStorageSetItem\"向localStorage中添加key,value对。例如：\n\n```\nLocalStorageSetItem | username | admin   # 将 username 设置为 admin\nLocalStorageSetItem | password | 123456  # 将 password 设置为 123456\n```\n\n这两行代码就是向localStorage中分别添加了用户名和密码的键值对。其中\"LocalStorageSetItem\"是关键字，后面的竖线隔开的\"username\"和\"admin\"分别是key和value，具体的值可以根据实际情况进行修改。"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "如何从 localStorage 中获取名为key的项对应的值",
         "output": "在进行WebUI自动化编写时，我们可以使用关键字 `LocalStorageGetItem` 来从localStorage中获取名为key的项对应的值。下面我举一个具体的例子来说明如何使用这个关键字。\n\n例如，我们要获取 localStorage 中名为 'username' 的项对应的值，我们可以编写如下代码：\n\n```\n${username}  LocalStorageGetItem  |  username\n```\n\n这条命令将从localStorage中获取键为'username'的项的值，并将这个值赋给变量 `${username}`。"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "如何从 localStorage 中删除名为key的项",
         "output": "在进行WebUI自动化编写时，可以使用关键字 LocalStorageRemoveItem 来从 localStorage 中删除名为key的项。以下是示例：\n\n```\n# 从 localStorage 中删除名为 \"username\" 的项\nLocalStorageRemoveItem | username\n```\n\n如需从 localStorage 中删除其他名为 key 的项，只需将具体的 key 名称替换即可。"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "如何通过文本定位元素，如何查找包含给定文本的元素",
         "output": "在进行WebUI自动化编写时，通过文本定位元素或查找包含给定文本的元素我们可以使用FindElem, FindByText关键字，也可以利用jquery选择器。\n\n例如：\n```\n1. 使用FindElem关键字，查找文本为'OK'的 span元素，此时selector应为 \"span:contains(OK)\"，使用方式如下：\n${elem}  FindElem | span:contains(OK)\n\n2. 使用FindByText关键字，直接查找文本为'OK'的元素，使用方式如下：\n${elem}  FindByText | OK\n\n3. 当我们想要在某个特定的元素下查找包含给定文本的元素如何操作呢？比如我们想要在id为‘main’的div下查找包含'OK'的元素，使用FindElem关键字，selector为 \"#main div:contains(OK)\"，使用方式如下：\n${elem}  FindElem | [id=main] div:contains(OK)\n```\n以上代表了三种不同的查找方式，可以根据实际需要进行选择。"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "如何通过 jquery selector 定位元素",
         "output": "在进行WebUI自动化编写时，我们可以通过jquery selector定位页面中的元素。jquery selector是一种强大的工具，用于选择和操作HTML元素。通过它，你可以选择元素的名称，属性，属性值，甚至是元素之间的亲属关系。以下是一些常见的jquery selector的例子：\n\n1. 通过元素名称选择： \"div\" 选择所有的div元素。\n\n2. 通过类选择： \".className\" 选择所有class属性中包含className的元素。\n\n3. 通过id选择： \"#idName\" 选择id属性为idName的元素。\n\n4. 通过属性选择： \"[name='value']\" 选择name属性为value的元素。\n\n5. 多属性选择： \"[name='value'][id='idName']\" 选择name属性为value且id属性为idName的元素。\n\n6. 包含文本的元素选择： \":contains('text')\" 选择包含文本text的元素。\n\n7. 通过元素位置选择： \":eq(index)\" 选择第index个元素，index从0开始。\n\n8. 首个和尾部元素选择： \":first\" 和 \":last\" 分别选择第一个和最后一个元素。\n\n9. 子元素选择： \"parent > child\" 选择parent的直接子元素child。\n\n10. 同级元素选择： \"prev + next\" 选择prev的下一个同级元素next。\n\n以上就是jquery selector的一些常见用法，通过组合使用这些选择器，你可以轻松地定位到页面上的任何元素。"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "如何查找元素的父元素",
         "output": "在进行WebUI自动化编写时，我们常常需要进行元素的定位操作，其中有时需要定位到某个元素的父元素。在我们的EasyUiLib库中，提供了一个叫 `FindParentElem` 的关键词可以完成这个任务。\n\n举个例子来说，假设我们已经找到了一个元素elem，并且我们想找到它的父元素，同时我们知道这个父元素的name属性是a，那么我们可以按照以下方式编写代码：\n```\n${parent} FindParentElem | ${elem} | [name=a]\n```\n这段代码的意思是，查找元素elem的name属性为a的父元素，并把找到的父元素赋值给变量parent。\n\n还有一个例子，假设我们已经找到了一个元素elem，并且我们想找到它的父元素，但我们并不知道这个父元素的任何属性，那么我们可以按照以下方式编写代码：\n```\n${parent} FindParentElem | ${elem}\n```\n这段代码的意思是，查找元素elem的父元素，并把找到的父元素赋值给变量parent。\n\n注意，它会找到离这个元素elem最近的父元素，如果要找的父元素并不是离这个元素elem最近的父元素，那么可能需要连续多次使用这个关键词来找到目标父元素。"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "如何打开/访问 URL",
         "output": "在进行WebUI自动化编写时，我们可以使用`OpenUrl`关键字来打开或访问指定的URL。例如：\n```\n# 打开/访问百度首页\nOpenUrl | https://www.baidu.com\n\n# 访问产品页面，其中 ${产品地址} 是一个已定义的变量，代表产品的网址\nOpenUrl | ${产品地址}\n```\n在上述例子中，`OpenUrl`后面跟着的是你想要访问的网址，它可以是一个明确的网址，如`https://www.baidu.com`，也可以是一个变量，如`${产品地址}`，代表一个预先定义好的网址。"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "如何点击菜单",
         "output": "在进行WebUI自动化编写时，您可以使用ClickMenu关键字来点击菜单。以下是一些使用ClickMenu关键字的示例：\n\n1. 点击顶级菜单“文件”：\n```\nClickMenu | 文件\n```\n\n2. 点击“文件”菜单下的“新建”子菜单：\n```\nClickMenu | 文件 | 新建\n```\n\n3. 点击“文件”菜单下的“新建”子菜单，然后点击“文档”子菜单：\n```\nClickMenu | 文件 | 新建 | 文档\n```\n\n通过这种方式，您可以根据需要点击任意级别的菜单和子菜单。只需按照菜单顺序依次列出要点击的菜单项即可。"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "如何使用鼠标点击给定元素",
         "output": "在进行WebUI自动化编写时，我们可以使用键字\"MClick\"、\"DClick\"以及\"RClick\"对给定元素进行鼠标点击操作。\n\n\"MClick\"代表鼠标单击操作，\"DClick\"代表鼠标双击操作，\"RClick\"代表鼠标右击操作，这三个关键字后面都必须跟上需要点击的元素的选择器。\n\n例如，如果我们想要单击文本为\"确定\"的元素，可以编写如下代码：\n```\nMClick | 确定\n```\n这行代码的作用是查找页面上文本为\"确定\"的元素，并执行鼠标单击操作。\n\n如果我们想要双击id为\"ok\"的按钮元素，可以编写如下代码：\n```\nDClick | button[id=\"ok\"]\n```\n这行代码的作用是查找页面上id为\"ok\"的按钮元素，并执行鼠标双击操作。\n\n如果我们想要右击class为\"cancel\"的元素，可以编写如下代码：\n```\nRClick | [class=cancel]\n```\n这行代码的作用是查找页面上class为\"cancel\"的元素，并执行鼠标右击操作。\n\n请注意，这里的选择器可以是任何有效的jQuery选择器。"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "如何使用鼠标双击给定元素",
         "output": "在进行WebUI自动化编写时，如果想要实现鼠标双击给定元素的操作，我们可以使用关键字 `DClick`。这个关键字后面需要紧跟一个参数，表示你要双击的元素的jquery选择器。以下是几个实际的使用例子：\n\n例如，如果你需要双击id为'ok'的元素，可以编写的脚本如下：\n```\n# 鼠标双击id为'ok'的元素 \nDClick | [id=ok]\n```\n如果需要双击class为'myClass'且包含文本'OK'的元素，可以编写的脚本如下：\n```\n# 鼠标双击class为'myClass'，包含文本'OK'的元素\nDClick | [id=myClass]:contains('OK')\n```\n如果需要双击id为'x'的div或name为'x'的span元素，可以编写的脚本如下：\n```\n# 鼠标双击id为'x'的div或name为'x'的span元素\nDClick | div[id='x'],span[name='x']\n```\n需要注意的是，在选择器中，#表示id，.表示class，:contains('OK')表示元素的文本包含'OK'。"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "如何使用鼠标右击给定元素",
         "output": "在进行WebUI自动化编写时，我们可以使用RobotFramework的关键字“RClick”进行鼠标右击给定元素。以下举些例子进行说明：\n\n1. 如果我们想要右击页面上的一个按钮，该按钮的文本为“设置”，我们可以这样写：\n    ```\n    RClick | 设置\n    ```\n    这样的脚本会在界面中找到文本为“设置”的元素，并对其进行右击。\n\n2. 如果我们想要右击id为\"x\"的元素，我们可以使用jquery选择器进行定位，然后进行右击，脚本如下：\n    ```\n    RClick | [id='x']\n    ```\n    这样的脚本会找到id为\"x\"的元素，然后对其进行右击。\n\n3. 如果我们想要对弹出层/弹窗中的元素进行右击操作，我们可以设定基准元素为\"POPUP\"，如下所示：\n    ```\n    RClick | 取消 | base=POPUP\n    ```\n    这样的脚本将会在弹窗中找到文本为“取消”的元素，并对其进行右击。\n\n以上就是使用鼠标右击给定元素的例子，你可以根据实际的定位需求来选择不同的定位方式。"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "如何将鼠标移动到给定文本上",
         "output": "在进行WebUI自动化编写时，我们可以使用RobotFramework (RF) 框架中的关键字\"MoTo\"或\"MoToElem\"将鼠标移动到给定文本上。\n\n\"MoTo\"关键字可以移动鼠标到指定文本上，并以文本为基准进行水平或垂直的偏移。关键字的格式为：MoTo | txt | idx=0 | dx=0 | dy=0 。其中，txt为目标文本，idx表示在页面上与目标文本匹配的元素序号，dx和dy表示横向和纵向的偏移距离。例如：\n\n```\n# 鼠标移动到文本“保存”上\nMoTo | 保存  \n\n# 鼠标移动到页面上第2个“保存”文本上\nMoTo | 保存 | idx=1\n\n# 鼠标移动到“保存”文本右侧10px的位置\nMoTo | 保存 | dx=10\n```\n\n\"MoToElem\"关键字可以移动鼠标到jquery选择器所代表的元素上。关键字的格式为：MoToElem | selector | dx=0 | dy=0。其中，selector为jquery选择器，dx和dy同样表示横向和纵向的偏移距离。例如：\n\n```\n# 鼠标移动到id为'save'的元素上\nMoToElem | [id=save] \n\n# 鼠标移动到id为'save'元素下方10px的位置\nMoToElem | [id=save] | dy=10\n```\n\n综上，如果要将鼠标移动到给定文本上，可以根据实际情况选择使用\"MoTo\"或\"MoToElem\"关键字。"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "如何将鼠标移动到给定元素上",
         "output": "在进行WebUI自动化编写时，可以使用RobotFramework框架编写自动化测试脚本。在这里，我们可以使用EasyUiLib库中提供的关键字来实现鼠标移动到给定元素上的操作。以下是一些例子：\n\n1. 鼠标移动到文本\"姓名\"上：\n```\nMoTo | 姓名\n```\n\n2. 鼠标移动到id为\"x\"的元素上：\n```\nMoToElem | [id='x']\n```\n\n3. 鼠标移动到名为\"name\"的表单字段上：\n```\nMoToField | name\n```\n\n4. 鼠标移动到文本\"年龄\"上，然后在横向偏移10px，纵向偏移20px的位置：\n```\nMoTo | 年龄 | dx=10 | dy=20\n```\n\n5. 鼠标移动到id为\"x\"的元素上，然后在横向偏移-5px，纵向偏移10px的位置：\n```\nMoToElem | [id='x'] | dx=-5 | dy=10\n```"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "如何将鼠标移动到名为name的表单字段上",
         "output": "在进行WebUI自动化编写时，如果我们想要将鼠标移动到名为name的表单字段上，我们可以使用MoToField关键字。例如：\n\n```\nMoToField | name\n```\n这行代码会让鼠标移动到名为name的表单字段上。这里，name是你想要操作的表单字段的名称。"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "如何生成随机字符串",
         "output": "在进行WebUI自动化编写时，我们可以使用RobotFramework中的关键字`GenerateRandom`或`GenerateRandomWithPrefix`来生成随机字符串。\n\n例如：\n1. 如果我们想生成一个长度为15的由字母和数字组成的随机字符串，我们可以使用：\n    ```\n    ${num}  GenerateRandom  | 15 | [LETTERS][NUMBERS]\n    ```\n\n2. 如果我们想生成一个长度为7的由小写字母组成的随机字符串，我们可以调用：\n    ```\n    ${low}  GenerateRandom  | 7 | [LOWER]\n    ```\n    \n3. 如果想生成一个4位的16进制随机数，我们可以这样写：\n    ```\n    ${hex}  GenerateRandom | 4 | [NUMBERS]abcdef\n    ```\n\n4. 我们也支持生成包含中文的随机字符串，例如，生成长度为15的由中文和字母组成的随机字符串：\n    ```\n    ${hex}  GenerateRandom | 15 | 赵钱孙李周吴郑王冯陈褚卫蒋沈韩杨朱秦尤许何吕施张孔曹严华金魏陶姜戚[LETTERS]\n    ```\n\n5. 另外，如果我们想生成一个特定前缀，比如`auto`开头，总长度为20的随机字符串，我们可以使用`GenerateRandomWithPrefix`关键字：\n    ```\n    ${rand_str}  GenerateRandomWithPrefix | auto | 20 | [LETTERS][NUMBERS]\n    ```\n这样，我们就能生成各种各样的随机字符串来满足自动化测试的需求。"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "如何生成给定前缀的随机的字符串",
         "output": "在进行WebUI自动化编写时，如果要生成给定前缀的随机字符串，可以使用EasyUiLib库提供的`GenerateRandomWithPrefix`关键字。下面是一些使用此关键字的例子：\n\n1. 生成以\"prefix\"开头，长度为10，由大写英文字母和数字组成的随机字符串：\n```\n${random_string}  GenerateRandomWithPrefix  |  prefix  |  10  |  [LETTERS][NUMBERS]\n```\n此命令会输出如\"prefixX7G8J2\"这样的字符串。\n\n2. 生成以\"test\"开头，长度为15，由小写英文字母组成的随机字符串：\n```\n${random_string}  GenerateRandomWithPrefix  |  test  |  15  |  [LOWER]\n```\n此命令会输出如\"testabcdefghijk\"这样的字符串。\n\n3. 生成以 \"auto\" 开头，长度为20的随机字符串，由大写英文字母和数字组成：\n```\n${rand_str}  GenerateRandomWithPrefix | auto | 20 | [LETTERS][NUMBERS]\n```\n此命令将生成类似\"autoQWERTYUIOPASD56789\"这样的字符串。\n\n上述例子中，第一部分是前缀字符串，第二部分是随机字符串的总长度（包括前缀），第三部分是随机生成的字符集。字符集可以是大写字母[LETTERS]，小写字母[LOWER]，数字[NUMBERS]，也可以是你自定义的任何字符集。"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "如何获取给定元素的数量",
         "output": "在进行WebUI自动化编写时，我们可以使用Robotframework的关键字 GetElemCount 来获取给定元素的数量，这个关键字会返回jquery选择器所示元素的数量。\n\n例如，我们想要获取所有id为a的元素的数量，可以编写如下代码：\n```\n${cnt}  GetElemCount | [id=a]\n```\n在这行代码中，关键字GetElemCount后面跟的是jquery选择器[id=a]，表示所有id为a的元素。${cnt}则是用来存放元素数量的变量，代码执行后，${cnt}中存放的就是id为a的元素的数量。\n\n又比如，我们想要获取页面上所有class含有A的div元素的数量，可以编写如下代码：\n```\n${cnt}  GetElemCount | div[class*=A]\n```\n在这行代码中，jquery选择器div[class*=A]表示所有class含有A的div元素，${cnt}同样用来存放元素数量。"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "如何打印元素的空间位置和尺寸相关信息",
         "output": "在进行WebUI自动化编写时，可以使用`PrintElemRect`关键字打印元素的空间位置和尺寸相关信息。这个关键字需要传入一个jquery选择器，代表需要打印位置和尺寸信息的元素。\n\n例如，打印id为\"x\"的div元素的空间位置和尺寸信息：\n```\nPrintElemRect | div[id='x']\n```\n\n再例如，打印class为\"myClass\"的span元素的空间位置和尺寸信息：\n```\nPrintElemRect | span[class=myClass]\n```"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "如何发送 HTTP 请求",
         "output": "在进行WebUI自动化编写时，需要发送HTTP请求时，可以使用RobotFramework的关键字UiSendRequest。这个关键字可以发送GET、POST、PUT和DELETE等类型的请求，同时还可以设置请求体和请求头。\n\n关键字的格式如下：\n```\n${resp_json}  UiSendRequest | method | url | body=${None} | headers=${None}\n```\n这里的method是请求的类型，如GET、POST等，url是请求的地址，body是JSON格式的请求体，headers是JSON格式的请求头，resp_json用于接收返回的JSON格式的数据。\n\n以下是一些示例：\n\n1. 发送POST请求\n```\n# 向 https://ab.com 发送 post 请求, 请求体: {\"name\": \"a\"}, 请求头: {\"header1\": \"val1\"}\n${resp_json}  UiSendRequest | POST | https://ab.com | {\"name\": \"a\"} | {\"header1\": \"val1\"}\n```\n在这个例子中，我们发送了一个POST请求到https://ab.com，请求体中的内容为 {\"name\": \"a\"}，请求头中的内容为 {\"header1\": \"val1\"}。\n\n2. 发送GET请求\n```\n# 向 https://ab.com 发送 get 请求, 请求头: {\"header1\": \"val1\"}\n${resp_json}  UiSendRequest | GET | https://ab.com | ${None} | {\"header1\": \"val1\"}\n```\n在这个例子中，我们发送了一个GET请求到https://ab.com，因为GET请求一般不需要请求体，所以body我们设置为${None}，请求头中的内容为 {\"header1\": \"val1\"}。\n\n以上就是如何使用UiSendRequest关键字发送HTTP请求的例子，你可以根据需要进行修改和调整。"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "如何截图",
         "output": "在进行WebUI自动化编写时，我们可以使用以下关键字进行截图：\n\n1. 使用`Screenshot`关键字进行全屏截图。例如：\n``` \nScreenshot\n```\n这条命令会执行对当前屏幕的全屏截图。\n\n2. 使用`ChartScreenshot`关键字来截图某个图表。例如：\n``` \nChartScreenshot| 性别分布\n```\n这条命令会找到页面中名为\"性别分布\"的图表，并对其进行截图。\n\n3. 使用`ElemScreenshot`关键字来截图某个特定元素。例如：\n``` \nElemScreenshot| div.section button:eq(1)\n```\n这条命令会找到class为section的div元素中的第二个button，并对其进行截图。\n\n4. 使用`TableScreenshot`关键字来截图某个表格。例如：\n``` \nTableScreenshot | tbl=身高\n```\n这条命令会找到页面中id或name为\"身高\"的表格，并对其进行截图。\n\n5. 使用`GetPageScreenshotText`关键字来获取屏幕截图中的文本。例如：\n``` \n${txt}  GetPageScreenshotText\n```\n这条命令会获取当前屏幕截图中的文本，并将结果赋值给变量`${txt}`。\n\n6. 使用`GetElemScreenshotText`关键字来获取元素截图中的文本。例如：\n``` \n${txt}  GetElemScreenshotText | [id=a]\n```\n这条命令会获取id为\"a\"的元素截图中的文本，并将结果赋值给变量`${txt}`。\n\n以上就是在RobotFramework中进行截图的常用关键字及其用法，希望对你有所帮助。"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "如何进行图表截图",
         "output": "在进行WebUI自动化编写时，我们可以使用`ChartScreenshot`关键字进行图表截图。`ChartScreenshot`后面紧跟的`name`参数是你想要截取的图表的名称。\n\n例如，下面的代码将会截取一个命名为\"性别分布\"的图表的截图：\n\n```robotframework\nChartScreenshot| 性别分布\n```\n\n这条命令将会寻找网页上命名为\"性别分布\"的图表并对其进行截图。你需要保证\"性别分布\"这个名称在你要测试的页面上是唯一的，否则这个关键字可能无法找到正确的图表进行截图。"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "如何进行元素截图",
         "output": "在进行WebUI自动化编写时，我们可以使用\"ElemScreenshot\"这个关键字进行元素的截图，它需要我们提供一个jquery选择器作为参数。关键字的使用格式如下：ElemScreenshot| selector。其中，selector用于获取要截图的元素。\n\n举几个具体的实使用例子：\n- 如果我们想要截取id为'a'的元素的图片，那么可以这样编写：\n```robotframework\nElemScreenshot| [id=a]\n```\n- 如果我们想要截取类名为'myClass'的元素的图片，那么可以这样编写：\n```robotframework\nElemScreenshot| [class=myClass]\n```\n- 如果我们想要截取第一个button元素的图片，那么可以这样编写：\n```robotframework\nElemScreenshot| button:eq(0)\n```\n- 如果我们想要截取div.section中的第二个button的图片，那么可以这样编写：\n```robotframework\nElemScreenshot| div.section button:eq(1)\n```\n以上就是使用\"ElemScreenshot \"关键字进行元素截图的一些例子。"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "如何进行表格截图",
         "output": "在进行WebUI自动化编写时，你可以使用EasyUiLib库中的`TableScreenshot`关键字进行表格截图。这个关键字会根据传入的表格名称或id去找到相应的表格，并进行截图。举个例子，如果你想对名为\"学生信息\"的表格进行截图，你可以这样写：\n\n```\nTableScreenshot | tbl=学生信息\n```\n\n而如果你想对id为\"tbl1\"的表格进行截图，你可以这样写：\n\n```\nTableScreenshot | tbl=tbl1\n```\n\n值得注意的是，在使用`TableScreenshot`关键字之前，你需要确保当前页面中存在名称或id等于你传入的表格名称或id的表格，否则`TableScreenshot`关键字会找不到对应的表格，从而导致截图失败。"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "如何获取屏幕截图中的文本",
         "output": "在进行WebUI自动化编写时，如果需要获取屏幕截图中的文本，可以使用GetPageScreenshotText关键字。例如：\n\n```\n# 获取屏幕截图中的文本\n${txt}  GetPageScreenshotText\n```\n\n这将获取当前屏幕截图中的文本，并将其存储在变量${txt}中。如需进一步处理或校验这些文本，可以参考示例代码中的其他关键字和方法。"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "如何获取元素截图中的文本",
         "output": "在进行WebUI自动化编写时，我们可以使用EasyUiLib库提供的关键字GetElemScreenshotText来获取元素截图中的文本。这个方法需要我们传入一个参数，即jquery选择器selector，用于选择我们需要获取截图中文本的元素。\n\n这里有个使用示例：\n\n```robotframework\n# 获取id为a的元素截图中的文本\n${txt}=  GetElemScreenshotText | [id=a]\n```\n\n在这个例子中，我们使用jquery选择器`[id=a]`选择了id为a的元素，然后用GetElemScreenshotText关键字获取了这个元素的截图中的所有文本，并将这些文本赋值给变量`${txt}`。 当复杂查询时，可能需要用到多个属性或者伪类等进行定位，例如：\n\n```robotframework\n# 获取class包含A，name是B且文本是OK的第三个div元素截图中的文本\n${txt}=  GetElemScreenshotText | div[class*=A][name=B]:contains(OK):eq(2)\n```\n\n在这个例子中，我们使用了复杂的jquery选择器`div[class*=A][name=B]:contains(OK):eq(2)`，来选择class包含A，name是B，文本是OK的第三个div元素（jquery选择器eq从0开始计数），然后获取这个元素截图中的文本。这样就可以尽可能精确地定位到我们需要的元素，确保获取到的截图中的文本是我们期望的。"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "如何将页面进行上下滚动",
         "output": "在进行WebUI自动化编写时，使用EasyUiLib库中的关键字PageUp和PageDown可以实现页面的上下滚动。以下是一些使用的例子：\n\n1. 页面向上滚动1次（默认次数）：\n```\nPageUp\n```\n\n2. 页面向下滚动2次：\n```\nPageDown | times=2\n```\n\n3. 页面向上滚动3次：\n```\nPageUp | times=3\n```"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "如何将元素进行上下滚动",
-        "output": "在进行WebUI自动化编写时，可以使用关键字ScrollElementUpDown来将元素进行上下滚动。ScrollElementUpDown关键字需要提供两个参数：selector和percent。selector是一个jquery选择器，指定需要滚动的元素，percent是一个整数，表示滚动到元素总高度的百分比。以下是一些示例：\n\n```\n# 将id为elem1的元素向下滚动到50%处\nScrollElementUpDown | [id=elem1] | 50\n\n# 将class为scroll的元素向下滚动到底部\nScrollElementUpDown | [class=scroll] | 100\n\n# 将elem2向上滚动到顶部\nScrollElementUpDown | ${elem2} | 0\n```\n\n注意：percent值为0时，表示滚动到顶部；值为100时，表示滚动到底部。"
+        "output": "在进行WebUI自动化编写时，可以使用关键字ScrollUpDown来将元素进行上下滚动。ScrollUpDown关键字需要提供两个参数：selector和percent。selector是一个jquery选择器，指定需要滚动的元素，percent是一个整数，表示滚动到元素总高度的百分比。以下是一些示例：\n\n```\n# 将id为elem1的元素向下滚动到50%处\nScrollUpDown | [id=elem1] | 50\n\n# 将class为scroll的元素向下滚动到底部\nScrollUpDown | [class=scroll] | 100\n\n# 将elem2向上滚动到顶部\nScrollUpDown | ${elem2} | 0\n```\n\n注意：percent值为0时，表示滚动到顶部；值为100时，表示滚动到底部。"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "如何将元素进行左右滚动",
-        "output": "在进行WebUI自动化编写时，如果需要对某个元素进行左右滚动，可以使用`ScrollElementLeftRight`关键字。这个关键字接受两个参数，分别是元素的选择器（selector）和滚动的百分比（percent）。选择器用于确定要滚动的元素，百分比则表示滚动的距离，以元素的宽度为基准，例如，80%表示滚动到元素宽度的80%的位置。\n\n例如，如果要将id为`content`的元素滚动到右侧的80%的位置，可以这样写：\n\n```\nScrollElementLeftRight | [id=content] | 80\n```\n\n上面的代码表示，找到id为`content`的元素，并将其向右滚动到元素宽度的80%的位置。\n\n再例如，如果要将class为`scrollArea`的元素滚动到元素左侧的20%的位置，可以这样写：\n\n```\nScrollElementLeftRight | [class=scrollArea] | 20\n```\n\n上面的代码表示，找到class为`scrollArea`的元素，并将其向左滚动到元素宽度的20%的位置。"
+        "output": "在进行WebUI自动化编写时，如果需要对某个元素进行左右滚动，可以使用`ScrollLeftRight`关键字。这个关键字接受两个参数，分别是元素的选择器（selector）和滚动的百分比（percent）。选择器用于确定要滚动的元素，百分比则表示滚动的距离，以元素的宽度为基准，例如，80%表示滚动到元素宽度的80%的位置。\n\n例如，如果要将id为`content`的元素滚动到右侧的80%的位置，可以这样写：\n\n```\nScrollLeftRight | [id=content] | 80\n```\n\n上面的代码表示，找到id为`content`的元素，并将其向右滚动到元素宽度的80%的位置。\n\n再例如，如果要将class为`scrollArea`的元素滚动到元素左侧的20%的位置，可以这样写：\n\n```\nScrollLeftRight | [class=scrollArea] | 20\n```\n\n上面的代码表示，找到class为`scrollArea`的元素，并将其向左滚动到元素宽度的20%的位置。"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "如何解密一个在WebUI自动化中被加密的字符串",
         "output": "在进行WebUI自动化编写时，RobotFramework提供了一种内建关键字来做字符串解密，关键字为\"DecryptStr\"。\n\n语法如下：\n```\n${ret}  DecryptStr | string  \n```\n在这个关键字中，string 参数表示需要解密的字符串，解密完毕后的原文将会返回并存入到 ${ret} 中。\n\n示例：\n```robotframework\n# 假设我们有一个加密字符串 \"5f4dcc3b5aa765d61d8327deb882cf99\"\n${ret}  DecryptStr  5f4dcc3b5aa765d61d8327deb882cf99\n# 这时，${ret}中存储的就是解密后的字符串\n```\n\n注意，这只是一个示例，并且解密的方式取决于字符串是如何被加密的。因为加密方式不同，所以解密方式也会跟着变化。"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "如何选择选项",
         "output": "在进行WebUI自动化编写时，我们可以使用RobotFramework和EasyUiLib封装的关键字来选择选项。使用`SelectOption`关键字，你可以方便地选择名为指定名称的选项。\n\n例如，如果你要选择名为 `apple` 的选项，你可以使用以下代码：\n```robotframework\nSelectOption | apple\n```\n此代码将会选择名为`apple`的选项。\n\n此外，也提供了通过索引选择选项的方法。索引是从1开始的，例如，如果你想选择第二个选项，你可以使用以下代码：\n```robotframework\nSelectOption | OPTIONS_2\n```\n\n以上就是如何使用RobotFramework和EasyUiLib选择选项的相关示例。"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "RobotFramework Should系列校验关键字示例",
         "output": "在进行WebUI自动化编写时，RobotFramework的Should系列校验关键字可以用于断言和检查测试用例的执行结果，以下是一些示例：\n\n1. 校验两个字符串是否相等\n```\nShould Be Equal As Strings  ${x}  1  # 校验变量x字符串表示等于1\n```\n\n2. 校验一个条件是否成立\n```\nShould Be True  ${x} > 1  # 校验 x>1\n```\n\n3. 校验一个变量或字符串中不包含某个字符串\n```\nShould Not Contain  ${x}  hi  # 校验变量x中不包含hi\n```\n\n4. 校验一个变量或字符串中包含某个字符串\n```\nShould Contain  ${x}  hello  # 校验变量x中包含hello\n```\n\n5. 校验一个列表中包含某个元素\n```\nShould Contain Any  ${list}  item1  item2  # list contains item1 or item2\n```\n\n6. 校验一个字符串是否与正则表达式匹配\n```\nShould Match Regexp         ${output}  \\\\d{6}  # Output contains six numbers\n```\n\n7. 校验一个元素是否处于禁用状态\n```\nElement Should Be Disabled  ${jquerySelector}  # 校验元素被禁用\n```\n\n8. 校验一个元素是否处于启用状态\n```\nElement Should Be Enabled  button:contains(确定)  # 确定按钮应该处于可用状态\n```"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "如何获取表格行数",
         "output": "在进行WebUI自动化编写时，我们可以使用关键词 `GetRowCount` 来获取表格的行数。示例如下：\n\n示例1：获取表格的行数，并将行数存储在变量 `${rowCount}` 中\n```\n${rowCount}  GetRowCount\n```\n\n示例2：获取弹窗中表格的行数，并将行数存储在变量 `${popupRowCount}` 中\n```\n${popupRowCount}  GetRowCount | base=POPUP\n```\n\n示例3：获取 id 为 `myTable` 的表格的行数，并将行数存储在变量 `${myTableRowCount}` 中\n```\n${myTableRowCount}  GetRowCount | base=[id=myTable]\n```\n\n通过这些示例，您可以根据实际需要使用 `GetRowCount` 关键词来获取您关心的表格的行数。"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "如何获取给定表格行的值",
         "output": "在进行WebUI自动化编写时，要获取给定表格行的值，可以使用关键字`GetRowValues`，它将返回一个包含该行所有值的列表。下面是一些示例：\n\n1. 获取表格第一行的值，你可以写为：\n```robotframework\n@{vals}  GetRowValues | 1\n```\n2. 假设你有一个名为\"体重表格\"的表格，你想要获取\"Jack\"所在行的所有值，你可以这样写：\n```robotframework\n@{vals}  GetRowValues | Jack | tbl=体重表格\n```\n3. 假设你在处理一个弹窗中的表格，并且你希望获取最后一行的所有值，你可以这样写：\n```robotframework\n@{vals}  GetRowValues | -1 | base=POPUP\n```\n在上述示例中，`GetRowValues`后面的`|`分隔的元素分别表示行名称或行号（可以是负数，-1表示最后一行），以及表格所在的基准元素（在这个例子中是弹窗）。在第一个示例中，我们直接获取了第一行的值。在第二个示例中，我们通过指定表格名称来找到特定表格中特定行的值。在第三个示例中，我们获取了弹出框中的最后一行的值。"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "如何获取给定表格列的值",
         "output": "在进行WebUI自动化编写时，我们可以使用EasyUiLib库提供的 `GetColValues` 关键字来获取给定表格列的值。这个关键字接收两个参数`col_name/id` 和 `tbl` 。其中，`col_name/id`指的是你要获取值的表格列中的文本或者列号，`tbl`代表你要操作的表格，它是可选的，默认为1，代表第一个表格。\n\n让我们通过一些例子进行说明：\n\n```Robot\n# 获取第一个表格的第2列的所有值\n@{values}  GetColValues | 2 \n\n# 获取名为\"成绩\"列的所有值\n@{values}  GetColValues | 成绩\n\n# 获取弹窗中第一个表格的名为\"年龄\"列的所有值\n@{values}  GetColValues | 年龄 | base=POPUP\n\n# 获取第3个表格的第5列的所有值\n@{values}  GetColValues | 5 | tbl=3\n```\n\n以上就是获取表格列值的一些常用例子，你可以根据自己的实际需要进行调整和变化。旨在通过这些例子，可以帮助你更好地理解和使用 `GetColValues`关键字。"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "如何获取单元格的值",
         "output": "在进行WebUI自动化编写时，我们可以使用EasyUiLib提供的关键字`GetCellValue`来获取单元格的值。 \n\n这个关键字的参数包括`row_name/id`、`col_name/id`、`tbl`和`base`，分别代表表格行的文字或行号、表格列的文字或列号、表格的编号或名字以及表格所在的基准元素。\n\n例如，我们可以使用以下语句来获取第一行第一列单元格的值：\n\n```robotframework\n${val}  GetCellValue | 1 | 1 \n```\n\n在上述代码中，`1`是行名或行号，`1`是列名或列号。\n\n另一个例子，假如我们要获取名为\"用户列表\"的表格中，第三行，列名为\"年龄\"的单元格的值，我们可以这样编写：\n\n```robotframework\n${val}  GetCellValue | 3 | 年龄 | tbl=用户列表\n```\n\n在上述代码中，`3`是行名或行号，`年龄`是列名，`tbl=用户列表`表示在名为\"用户列表\"的表格中进行操作。\n\n这样，我们就可以获得指定单元格的值，并存储在变量`${val}`中，以便于后续的操作或验证。"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "如何等待表格行数变成给定的值",
         "output": "在进行WebUI自动化编写时，你可以使用RobotFramework中EasyUiLib库提供的`WaitRowCount`关键字来等待表格行数变成给定的值。该关键字的第一参数是你预期的表格行数，第二参数`tbl`是可选的，表示第几个表格，如果没有特别指定，默认为第一个表格，第三个参数`base`也是可选的，表示表格所在的基准元素，默认为空，特殊值为\"POPUP\"表示弹出层/弹窗。\n\n下面是几个使用`WaitRowCount`关键字的例子：\n\n- 等待第一个表格行数变为5：\n```\nWaitRowCount | 5\n```\n\n- 等待第二个表格行数变为10：\n```\nWaitRowCount | 10 | tbl=2\n```\n\n- 等待弹出层弹窗内的表格行数变为3：\n```\nWaitRowCount | 3 | base=POPUP\n```\n\n通过这种方式，你可以很方便地在自动化测试脚本中等待表格行数变成你期望的值。"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "如何检验表格行数量为给定的值",
         "output": "在进行WebUI自动化编写时，我们可以使用关键词`CheckRowCount`来校验表格行数量。该关键词需要两个参数，第一个参数`num`是期待的表格行数，第二个参数`tbl`是可选的，代表第几个表格，默认为第一个。\n\n下面是一些例子：\n\n1. 检验第一个表格的行数是否为5行：\n```\nCheckRowCount | 5 \n```\n2. 检验第二个表格的行数是否为10行：\n```\nCheckRowCount | 10 | tbl=2 \n```\n3. 如果表格在弹窗中，可以使用base参数，将其设为\"POPUP\"，例如检验弹窗中表格的行数是否为3行：\n```\nCheckRowCount | 3 | base=POPUP\n```\n使用这些例子，你可以根据实际情况对表格行数进行检验。"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "如何校验表格是否包含或不含有给定的文本",
         "output": "在进行WebUI自动化编写时，使用EasyUiLib关键字库，我们可以直接使用`CheckTableHas`和`CheckTableNotHas`函数来检查表格中是否包含或不包含某些文本。具体方法如下：\n\n例子1：检查\"身高\"表格是否包含\"180cm\"和\"170cm\"这两个文本，可以这样写：\n```\nCheckTableHas | 180cm | 170cm | tbl=身高\n```\n这一行代码的意思是：在名为\"身高\"的表格中，查找是否同时存在\"180cm\"和\"170cm\"这两个文本。\n\n例子2：检查\"体重\"表格是否不包含\"错误\"这个文本，可以这样写：\n```\nCheckTableNotHas | 错误 | tbl=体重\n```\n这一行代码的意思是：在名为\"体重\"的表格中，查找是否不存在\"错误\"这个文本。\n\n这两个关键字的第一个参数是要查找的一个或多个文本，参数\"tbl\"指的是要在哪个表格中进行查找，如果省略\"tbl\"参数，默认在第一个表格中查找。如果搜索到给定的文本，就返回True，否则返回False。\n\n注意，这些函数检查的是表格中的文本，而不是元素。"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "如何校验给定表格行是否包含或不含有给定的文本",
         "output": "在进行WebUI自动化编写时，我们可以使用关键字`CheckRowHas`和`CheckRowNotHas`来校验给定表格行是否包含或不含有给定的文本。\n\n如果我们想要校验某一行是否包含给定的文本，我们可以使用`CheckRowHas`关键字。比如我们想要检查表格中”张三“所在的行是否包含“25岁”和“男”，我们可以这样写：\n```\nCheckRowHas | 张三 | 25岁 | 男\n```\n这行代码的意思是，检查表格中\"张三\"所在的行是否包含\"25岁\"和\"男\"。\n\n如果我们想要校验某一行是否不含有给定的文本，我们可以使用`CheckRowNotHas`关键字。比如我们想要检查表格中”李四“所在的行是否不包含“18岁”和“女”，我们可以这样写：\n```\nCheckRowNotHas | 李四 | 18岁 | 女\n```\n这行代码的意思是，检查表格中\"李四\"所在的行是否不包含\"18岁\"和\"女\"。\n\n这两个关键字都需要我们在运行时提供表格的行标识和我们期待的文本，所以实际的测试脚本可能会根据需要进行不同的修改和调整。"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "如何校验给定表格列是否包含或不含有给定的文本",
         "output": "在进行WebUI自动化编写时，你可以使用框架中的`CheckColHas`和`CheckColNotHas`关键字来校验某个表格列是否包含或不包含某些文本。\n\n例如，若你想校验名为\"年龄\"的列是否包含\"18\"和\"20\"，你可以编写如下代码：\n```\nCheckColHas | 年龄 | 18 | 20\n```\n上述代码会检查\"年龄\"这一列中是否同时包含\"18\"和\"20\"两个文本。\n\n若你想校验第3列是否不包含\"错误\"，你可以编写如下代码：\n```\nCheckColNotHas | 3 | 错误\n```\n上述代码会检查第3列中是否不包含\"错误\"这个文本。"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "如何校验给定表格单元格是否包含或不含有给定的文本",
         "output": "在进行WebUI自动化编写时，可以使用RobotFramework的EasyUiLib库中的关键字“CheckCellHas”和“CheckCellNotHas”。这两个关键字都可以用来对给定的表格单元格进行文本内容检查。其中，“CheckCellHas”用于校验给定单元格是否包含指定的文本，“CheckCellNotHas”用于校验给定单元格是否不包含指定的文本。使用时需要提供三个参数，分别为：行标识（可以是行内容或者行号），列标识（可以是列内容或者列号）以及需要验证的文本。\n\n例如：\n\n1）如果要校验第一个表格中，\"张三\"所在行的\"年龄\"列是否包含\"18岁\"，可以使用以下代码：\n```\nCheckCellHas | 张三 | 年龄 | 18岁\n```\n执行这行代码，如果\"张三\"所在行的\"年龄\"列中包含\"18岁\"，那么测试通过。如果不包含，则测试失败。\n\n2）如果要校验第二个表格中，“李四”所在行的\"成绩\"列是否不包含\"不及格\"，可以使用以下代码：\n```\nCheckCellNotHas | 李四 | 成绩 | 不及格 | tbl=2\n```\n执行这行代码，如果\"李四\"所在行的\"成绩\"列中不包含\"不及格\"，那么测试通过。如果包含，则测试失败。"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "如何判断表格行是否包含文本",
         "output": "在进行WebUI自动化编写时，要判断表格行是否包含文本，我们可以使用EasyUiLib库中的 `IsRowContainsText` 关键字。这个关键字需要三个参数，即 \"row_name_or_id\", \"txt\", \"tbl\"。其中，\"row_name_or_id\" 是指需要判断的表格行的名字或者编号，\"txt\" 是指需要判断的文本，\"tbl\" 是指表格的名字或者编号。如果表格行中包含指定的文本，则返回True，否则返回False。\n\n例如，我们可以写一个这样的测试脚本：\n\n```robot\n# 判断表格第一行中是否存在文本 'Edit'\n${exist}  IsRowContainsText | 1 | Edit | tbl=1\n\n# 判断 'June' 所在表格行中是否存在 'New York'\n${exist}  IsRowContainsText | June | New York | tbl=1\n```\n\n在上面第一个例子中，我们判断了第1行是否包含 'Edit' 这个文本。第二个例子判断的是名为 'June' 的这一行是否包含 'New York' 的文本。\n\n在每次调用 `IsRowContainsText` 后，我们都将返回的结果存储在 \"${exist}\" 变量中，然后可以根据这个变量的值（True 或 False）来决定接下来的测试步骤。"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "如何判断表格行是否包含给定元素",
         "output": "在进行WebUI自动化编写时，RobotFramework配合EasyUiLib库提供了一些关键字来判断表格行是否包含给定元素。\n\n要判断表格行是否包含给定元素，我们可以使用关键字`IsRowContainsElem`，它需要三个参数，分别是`row_name_or_id`，`selector`和`tbl`。其中，`row_name_or_id`是需要检查的表格行的文本或行号，`selector`是需要查找的元素的jquery选择器，`tbl`是基准表格元素，默认为第一个表格，也可以传递jquery选择器字符串表示的表格。\n\n例如，我们有一个表格，这个表格中有一行的文本是 'Bob'，我们想判断这一行是否包含一个 id 为 'deleteBtn' 的元素，可以这么写：\n```robotframework\n${exist}  IsRowContainsElem | Bob | [id=deleteBtn]\n```\n执行以上代码后，如果 'Bob' 所在的表格行中包含 id 为 'deleteBtn' 的元素，那么变量 `${exist}` 的值就会是 True，否则就会是 False。\n\n此外，我们还可以在弹窗中的表格进行此类检查，只需要在基准表格元素参数 `base` 中传入特殊值 `POPUP`，例如：\n```robotframework\n${exist}  IsRowContainsElem | Bob | #deleteBtn | base=POPUP\n```\n以上例子会在弹窗中的表格里查找是否存在符合条件的元素。"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "如何判断表格列是否包含文本",
         "output": "在进行WebUI自动化编写时，可以使用IsColContainsText关键字来判断表格列是否包含指定文本。该关键字接受列名或列号作为参数，并返回True或False。\n\n例如代码：\n```\n# 判断第1列表格的状态列中是否包含“已完成”\n${status}  IsColContainsText | 状态 | 已完成 | tbl=1\n\n# 判断第2列表格的第3列中是否包含“已完成”\n${status}  IsColContainsText | 3 | 已完成 | tbl=2\n```\n在上面的例子中，我们分别检查了第1个表格的状态列和第2个表格的第3列，判断它们是否包含文本“已完成”。如果包含，返回True，否则返回False。"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "如何判断表格列是否包含给定元素",
         "output": "在进行WebUI自动化编写时，我们可以使用RobotFramework中提供的关键字来判断表格列是否包含给定元素。具体可以使用关键字 `IsColContainsElem` ，这个关键字需要传入三个参数，分别是 `col_name_or_id`、`selector` 和 `tbl`。其中，`col_name_or_id` 是表格列中的文本或列号，`selector` 是元素的jQuery选择器，`tbl` 是表格所在的基准元素的jQuery选择器。\n\n例如：如果我们要判断名称为“产品列表”的表格的“价格”列中是否包含`id='price'`的元素，那么我们可以这样编写代码：\n\n```robotframework\n${status}  IsColContainsElem  |  价格  |  [id='price']  |  tbl=产品列表\n```\n\n在这段代码中，`IsColContainsElem` 是我们用来判断表格列是否包含给定元素的关键字，`价格` 是我们想要检查的表格列名，`[id='price']` 是我们想要查找的元素的jQuery选择器，`tbl=产品列表`则表示该表格的基准元素的名字。`IsColContainsElem`关键字会返回一个`status`，如果`status`为`True`，就说明该列中包含这个元素，反之则不包含。\n\n可根据实际情况，自行调整脚本以满足自动化测试的需求。"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "如何点击表格行中的文本",
         "output": "在进行WebUI自动化编写时，要点击表格行中的文本，我们可以使用EasyUiLib中的关键字 ClickTextOfRow。\n\n例如，以下代码表示点击\"任务列表\"表格中含有\"Online\"文本的行中的\"OK\"：\n\n```\nClickTextOfRow | Online | OK | tbl=任务列表\n```\n\n这里，'ClickTextOfRow' 是在行中点击文本的关键字， 'Online' 是表格行中我们要寻找的特定文本，'OK' 是我们在找到的行中需要点击的文本，'任务列表'是我们要操作的表格的名称或id。\n\n再比如，下面的例子表示在弹出窗口中，点击含有\"PF7G\"的行中的复选框：\n\n```\nClickElemOfRow | PF7G | :checkbox | base=POPUP\n```\n\n这里，'ClickElemOfRow' 是在行中点击元素的关键字， 'PF7G' 是表格行中我们要寻找的特定文本，':checkbox' 是我们在找到的行中需要点击的元素的jquery选择器，'base=POPUP' 表示我们是在弹出窗口中要进行这个操作。\n\n注意需要根据具体的表格和需要点击的文本，替换对应的参数值。"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "如何点击表格行中的元素",
         "output": "在使用RobotFramework和EasyUiLib进行WebUI自动化编写时，我们可以使用多种关键字来点击表格行中的元素。\n\n举例来说，如果我们想点击某个特定文本（如\"保存\"）在某个特定行（如\"产品A\"所在的行）中，我们可以使用\"ClickTextOfRow\"关键字，具体写法如下：\n```\nClickTextOfRow | 产品A | 保存\n```\n该语句的意思是：找到包含\"产品A\"的那一行，在那一行中找到文本为\"保存\"的元素并点击。\n\n再比如，如果我们想要点击表格中某一行的特定元素（通过元素的jquery选择器来定位），我们可以使用\"ClickElemOfRow\"关键字，例如：\n```\nClickElemOfRow | 3 | button[name='submit']\n```\n该语句的意思是：找到表格的第3行，在那一行中找到name属性为'submit'的按钮并点击。\n\n还有一种情况，如果我们想点击表格行中的小图标，我们可以使用\"ClickIconOfRow\"关键字，比如：\n```\nClickIconOfRow | 1 | 'edit' | idx=2\n```\n该语句的意思是：点击表格第一行中的第3个（idx从0开始计数，故idx=2表示第3个）'edit'图标。\n\n以上都是在默认表格（即tbl参数默认值为1的情况）操作，如果有多个表格或者在弹窗中的表格，可以给tbl或base参数赋值，例如在弹窗中的表格点击第一行的\"取消\"：\n```\nClickTextOfRow | 1 | 取消 | base=POPUP\n```\n这就是在RobotFramework和EasyUiLib中点击表格行中元素的一些基本操作，希望可以帮助到你。"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "如何点击表格行中的icon小图标",
         "output": "在进行WebUI自动化编写时，我们可以使用ClickIconOfRow关键字来点击表格行中的icon小图标。这个关键字需要指定表格行标识row_name_or_id，图标名icon，以及图标的序号idx。同时，我们还可以指定操作的目标表格tbl和基准元素base参数。\n\n例如，以下是一些常见的使用案例。\n\n示例1. 点击名为“edit”的图标，该图标位于表格中名为“Online”的行中：\n```robotframework\nClickIconOfRow | Online | edit\n```\n\n示例2. 点击第一行中的第三个“edit”小图标：\n```robotframework\nClickIconOfRow | 1 | edit | idx=2\n```\n\n示例3. 在弹窗中的表格中点击“delete”小图标，该图标位于名为“TaskA”的行中：\n```robotframework\nClickIconOfRow | TaskA | delete | base=POPUP\n```\n\n示例4. 在第2个表格中点击“view”小图标，该图标位于第三行的位置：\n```robotframework\nClickIconOfRow | 3 | view | tbl=2\n```\n\n以上示例覆盖了ClickIconOfRow关键字各参数的常见用法，你可以根据实际需要进行组合和使用。"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "如何点击单元格中的文本",
         "output": "在进行WebUI自动化编写时，通过使用RobotFramework (RF) 提供的标准库和EasyUiLib关键字，可以进行点击单元格中的文本操作。具体的关键字为`ClickTextOfCell | row_name_or_id=1 | col_name_or_id=1 | text=* | tbl=1 | base=`，其中 row_name_or_id 和 col_name_or_id 用于定位表格中的行和列，text代表要点击的文本，tbl可以理解为表格编号，base是基准元素(特殊值POPUP表示弹出层/弹窗)。下面以文本“确定”为例，举例说明：\n\n1. 点击第一行第一列单元格中的“确定”文本：\n```RobotFramework\nClickTextOfCell | 1 | 1 | 确定\n```\n\n2. 点击表格中行名称为“row1”，列名称为col1的单元格中的“确定”文本：\n```RobotFramework\nClickTextOfCell | row1 | col1 | 确定\n```\n\n3. 点击弹窗中的表格第一行第一列单元格中的“确定”文本：\n```RobotFramework\nClickTextOfCell | 1 | 1 | 确定 | base=POPUP\n```\n\n以上即为点击单元格中的文本的具体操作方法和示例，具体的行、列和文本参数需根据实际的测试需求进行设定。"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "如何点击单元格中的元素",
         "output": "在进行WebUI自动化编写时，点击单元格中的元素可以使用 ClickElemOfCell 关键字。该关键字需要指定行名或行号、列名或列号、元素的jquery选择器。如果没有指定具体的jquery选择器（即selector=*），那么它将默认点击单元格中的任何一个元素。\n\n例如，如果我们想要点击“任务列表”表格中，行名为“Online”的行，列号是第2列中的id为btn的元素，我们可以这样编写测试脚本：\n```\nClickElemOfCell | Online | 2 | [id=btn] | tbl=任务列表\n```\n上述脚本表示点击“任务列表”表格中，行名为“Online”的行，第2列中的id为btn的元素。表格名通过tbl参数指定。\n\n同样，如果我们想要点击弹窗中的表格的第一行第一列中的 class 为 btn 的元素，我们可以这样编写测试脚本：\n```\nClickElemOfCell | 1 | 1 | [class=btn] | base=POPUP\n```\n上述脚本表示点击弹窗中的表格的第一行第一列中的 class 为 btn 的元素。因为操作是在弹窗中进行的，所以需要用base=POPUP来明确指定。"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "如何填写表格行，依次填入多个参数值",
         "output": "在进行WebUI自动化编写时，我们可以使用RobotFramework的关键字\"FillRow\"来填写表格行，依次填入多个参数值。\"FillRow\"关键字的使用格式是：“FillRow | row_name_or_id=1 | @args | tbl=1 | base= ”。其中，\"row_name_or_id\"代表表格中行的文本或行号（可为负数，-1表示最后一行），\"@args\"代表要填入的一个或多个值，\"tbl\"表示目标表格，\"base\"用于指定表格所在的基准元素（可以是jquery选择器，也可以是特殊值POPUP表示弹窗中的表格）。\n\n例如，我们要在名为\"学生信息\"的表格中，填写第3行的值为：\"张三\" \"男\" \"18岁\"，可以使用如下的脚本：\n```\nFillRow | 3 | 张三 | 男 | 18岁 | tbl=学生信息\n```\n\n如果我们要在弹窗中的表格的最后一行填入：\"数学\" \"95分\"，则可以使用：\n```\nFillRow | -1 | 数学 | 95分 | tbl=POPUP\n```\n\n请注意，“FillRow”是一次性将表格中的一行所有列的值都设置完成，如果表格列数和参数个数不一致，可能会导致设置失败或设置结果与预期不符"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "如何填写表格单元格",
         "output": "在进行WebUI自动化编写时，我们可以通过EasyUILib关键字 `FillCell` 来进行表格单元格的填写。\n\n这是一个例子：\n\n```robotframework\n# 将第一行的\"年龄\"单元格内容设置为\"20\"\nFillCell | 1 | 年龄 | 20\n```\n\n其中，`FillCell` 是主要的命令关键字，用于填写或设置表格单元格，紧接着的 `1` 表示行号，这里我们选择了第一行。`年龄` 表示列名，我们选择的是名为“年龄”的列。最后的 `20` 是我们需要填写进单元格的内容。\n\n如果你需要在特定的表格中寻找行和列，可以添加 `tbl` 参数来标识表格，例如：\n\n```robotframework\n# 在\"用户信息\"表格中，将第二行的\"性别\"单元格内容设置为\"女\"\nFillCell | 2 | 性别 | 女 | tbl=用户信息\n```\n\n在这个例子中，我们添加了 `tbl=用户信息` 参数来指定我们需要操作的表格。\n\n如果你的操作是在弹窗中进行，也可以使用 `base` 参数来确定基准元素：\n\n```robotframework\n# 在弹窗中，将第三行的\"地址\"单元格内容设置为\"北京\"\nFillCell | 3 | 地址 | 北京 | base=POPUP\n```\n\n在这个例子中，我们添加了 `base=POPUP` 参数来指定我们需要操作的是弹窗中的表格。\n\n+注意：在FillCell关键字中，行和列的索引都是从1开始的。"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "如何上传文件",
         "output": "在进行WebUI自动化编写时，我们可以使用EasyUiLib库中的`UploadFile`关键字来上传文件。这个关键字接受两个参数，第一个参数是你要上传文件的文件路径或URL，第二个参数（可选）是指定上传控件的索引值，索引值从0开始，0代表第一个上传控件，1代表第二个上传控件，以此类推。如果你不指定第二个参数，那么默认会上传到第一个控件。\n\n以下是一些具体的使用例子：\n\n1. 上传文件 \"http://1.cvs\"，并使用默认的第一个上传控件。\n\n    ```\n    UploadFile | http://1.cvs\n    ```\n\n2. 通过文件路径上传一个位于本地的文件 \"file1.txt\"，并指定上传到第二个上传控件。\n\n    ```\n    UploadFile | /path/to/file1.txt | idx=1\n    ```\n\n3. 使用变量`${file}`上传一个文件，并指定上传到第三个上传控件。这个例子中，`${file}`是一个已经定义好的变量，它包含了你要上传的文件路径。\n\n    ```\n    UploadFile | ${file} | idx=2\n    ```\n\n注意：在使用文件URL或文件路径时，要确保文件的URL或路径是正确的，且文件是可访问的，否则文件上传将会失败。"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "如何等待给定文本从页面消失",
         "output": "在进行WebUI自动化编写时，如果需要等待给定文本从页面消失，可以使用`WaitTextDisappear`关键字，此关键字将会等待直至指定的文本从页面消失。如果在指定的默认时间（通常为30秒）内文本仍未消失，测试用例将会失败。\n\n例如，以下是一些使用`WaitTextDisappear`关键字的例子：\n\n如果需要等待\"Loading...\"文本消失，可以使用以下代码：\n```\nWaitTextDisappear | Loading...\n```\n这段代码会等待直至\"Loading...\"文本从页面消失。\n\n如果需要等待\"正在处理\"文本消失，可以使用以下代码：\n```\nWaitTextDisappear | 正在处理\n```\n这段代码会等待直至\"正在处理\"文本从页面消失。\n\n注意：`WaitTextDisappear`关键字默认的超时时间是30秒，如果需要自定义等待时间，可以修改关键字的超时时间参数。例如，如果需要等待1分钟，可以使用以下代码：\n```\nWaitTextDisappear | Loading... | timeout=60\n```\n这段代码会等待直至1分钟内\"Loading...\"文本消失。如果1分钟内文本仍未消失，测试用例将会失败。"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "如何等待给定元素从页面消失",
         "output": "在进行WebUI自动化编写时，我们有时候需要等待某个给定的元素从页面上消失。这种情况在很多场景里是十分常见的，比如我们提交了一个表单后，可能需要等待加载的动态元素消失，然后才能进行后续的操作。\n\nRobotFramework和EasyUiLib为我们提供了相应的关键字来处理这种情况，具体的使用方式如下：\n\n我们可以使用`WaitElemDisappear`关键字来等待指定选择器的元素从页面消失。比如，我们想等待id为'loading'的元素消失，我们可以这样写：\n```\nWaitElemDisappear  | [id=loading]\n```\n在这个例子中，`[id=loading]`是一个jQuery选择器，它表示的是页面上id为'loading'的元素。\n\n还有一个关键字`WaitTextDisappear`可以用来等待指定文本从页面上消失。比如，我们想等待文本\"加载中...\"消失，我们可以这样写：\n```\nWaitTextDisappear  | 加载中...\n```\n在这个例子中，\"加载中...\"就是我们想要等待消失的文本。\n\n以上两种方式都可以帮助我们在WebUI自动化测试中等待指定的元素或者文本从页面上消失。"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "如何等待页面加载完成",
         "output": "在进行WebUI自动化编写时，我们经常需要在某些操作后等待页面加载完成以保证后续操作能够在正确的页面状态下进行。RobotFramework的EasyUiLib库为我们提供了一系列等待关键字，其中的WaitLoading关键字就是专门用于等待页面加载完成的。\n\nWaitLoading关键字默认会等待30秒，如果在这个时间内页面加载完成就会直接进行下一步操作，如果超过这个时间页面还未加载完成则会报错。我们也可以通过传递timeout参数来自定义等待的时间，例如我们可以使它等待60秒，如果60秒内页面加载完成就进行下一步操作，如果超过60秒页面还未加载完成就报错。\n\n例如：\n\n```RobotFramework\n# 等待加载，最多等1分钟\nWaitLoading | timeout=60\n```\n\n这条命令表示等待页面加载最多等待60秒。如果在60秒内页面加载完成则继续后续操作，否则测试失败。\n\n总的来说，如果你需要等待页面加载完成，你可以添加WaitLoading关键字到你的脚本中，在关键字后跟上你希望等待的最大时间，单位是秒。默认的等待时间是30秒，但你可以根据需要自定义这个时间。"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "如何等待页面出现给定的文本",
         "output": "在进行WebUI自动化编写时，我们可以使用`WaitText`关键字来实现等待页面出现给定的文本。该关键字接受任意数量的参数，每个参数都是要等待其出现的文本。它还接受一个可选的`timeout`参数，该参数表示等待的最长时间（以秒为单位）。如果在超时时间内，页面上任何位置都没有出现给定的文本，那么测试将失败。\n\n以下是一些使用`WaitText`关键字的示例：\n\n- 等待页面出现“登录成功”的文本，最多等待30秒（默认超时时间）：\n    ```robotframework\n    WaitText | 登录成功\n    ```\n- 等待页面出现“欢迎”或“登录”中的任一文本，最多等待60秒：\n    ```robotframework\n    WaitText | 欢迎 | 登录 | timeout=60\n    ```\n以上这些例子中，`WaitText`关键字将会持续检查页面，直到页面出现给定的文本或达到最大超时时间为止。如果页面在最大超时时间内显示了给定的任一文本，那么该关键字就会立即返回，并且测试将继续执行。否则，测试将因超时而失败。"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "如何等待页面出现给定的元素",
         "output": "在进行WebUI自动化编写时，可以使用WaitElem关键字来等待页面出现给定的元素。以下是一些例子：\n\n1. 等待页面出现id为my_id的元素：\n```\nWaitElem | [id=my_id]\n```\n\n2. 等待页面出现class为my_class的元素：\n```\nWaitElem | [class=my_class]\n```\n\n3. 等待页面出现文本为\"确定\"的按钮：\n```\nWaitElem | button:contains(确定)\n```\n\n4. 等待页面出现class为my_class且文本为\"提交\"的元素：\n```\nWaitElem | [class=my_class]:contains(提交)\n```\n\n5. 等待页面出现name属性为my_name的input元素：\n```\nWaitElem | input[name='my_name']\n```\n\n注意：默认的等待时间为30秒，如果需要自定义等待时间，可以在关键字后面添加`timeout`参数，例如等待60秒：\n```\nWaitElem | [id=my_id] | timeout=60\n```"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "如何等待指定时长",
         "output": "在进行WebUI自动化编写时，我们可以通过Robot Framework（RF）框架提供的 `Sleep` 关键字来实现等待指定的时长。这个关键字允许我们输入需要等待的时间长度。\n\n如下是一些示例：\n\n1. 如果我们需要等待10秒，我们可以这样写：\n   ```robot\n   Sleep  10s\n   ```\n   这段代码的意思是，让自动化测试脚本暂停执行10秒。\n\n2. 如果我们需要等待2分钟30秒，我们可以这样写：\n   ```robot\n   Sleep  2min30s\n   ```\n   这个例子中，自动化测试脚本将会暂停执行2分钟30秒。\n\n3. 如果我们需要等待1小时3分钟7秒，我们可以这样写：\n   ```robot\n   Sleep  1hour3min7s\n   ```\n   这个例子中，自动化测试脚本将会暂停执行1小时3分钟7秒。\n\n这些例子中的 `10s`、`2min30s`、`1hour3min7s` 都是 `Sleep` 关键字的参数，表示等待的时间长度。注意，时间长度的单位可以是秒（s）、分钟（min）或者小时（hour），它们可以组合使用。"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "如何等待页面标题包含给定的一个或多个文本",
         "output": "在进行WebUI自动化编写时，如果需要等待页面标题包含给定的一个或多个文本，我们可以使用关键字 `WaitTitleContainsAll` 或者 `WaitTitleContainsAny`。这两个关键字的功能稍有不同， `WaitTitleContainsAll` 用于检查页面标题是否同时包含给定的所有文本，而 `WaitTitleContainsAny` 则是检查页面标题是否包含给定的任一文本。如果满足条件，那么脚本将会继续执行，如果在一定时间内（默认是30秒）标题中仍未出现期待的文字，那么脚本将会停止执行并报错。\n\n举个例子，我们需要等待一个页面的标题同时出现“登录”和“成功”的文字，我们可以这样写脚本：\n```\nWaitTitleContainsAll | 登录 | 成功\n```\n另一个例子，我们需要等待一个页面的标题出现“错误”或者“失败”的文字，我们可以这样写脚本：\n```\nWaitTitleContainsAny | 错误 | 失败\n```"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "如何等待页面标题包含给定的任一文本",
         "output": "在进行WebUI自动化编写时，可以使用\"WaitTitleContainsAny\"关键字来等待页面标题包含给定的任一文本。以下是一些使用示例：\n\n```\n# 等待页面标题包含“首页”或“登录”\nWaitTitleContainsAny | 首页 | 登录\n\n# 等待页面标题包含“管理平台”或“用户中心”\nWaitTitleContainsAny | 管理平台 | 用户中心\n```"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "如何等待页面标题不包含给定文本",
         "output": "在进行WebUI自动化编写时，RobotFramework的EasyUiLib库提供了一个关键字叫 `WaitTitleNotContains`，这个关键字可以帮助我们等待页面标题不包含给定的文本。\n\n这是使用该关键字的一些具体示例：\n```robot\n# 等待页面标题不包含\"错误\"\nWaitTitleNotContains | 错误\n\n# 等待页面标题不包含\"加载中\"或\"正在加载\"\nWaitTitleNotContains | 加载中 | 正在加载\n```\n在第一个示例中，我们是在等待页面标题不再包含\"错误\"这个词。在第二个示例中，我们则是在等待页面标题不再包含\"加载中\"或\"正在加载\"这两个词。该关键字会一直等待，直到页面标题不再包含我们提供的任何一个文本。"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "如何等待页面URL包含给定的一个或多个文本",
         "output": "在进行WebUI自动化编写时，我们可以使用关键字`WaitURLContainsAll`或`WaitURLContainsAny`来等待页面URL包含给定的一个或多个文本。这两个关键字的区别在于，`WaitURLContainsAll`要求页面URL必须同时包含所有提供的文本信息，而`WaitURLContainsAny`则是只要页面URL包含任何一个提供的文本信息即可。\n\n以下是一些例子：\n\n1. 假设我们要等待一个URL中同时包含\"home\"和\"user\"这两个文本字符串，我们可以这样编写：\n```\nWaitURLContainsAll | home | user\n```\n\n2. 如果我们要等待URL中出现\"home\"或者\"user\"这两个文本字符串中的任何一个，我们可以这样编写：\n```\nWaitURLContainsAny | home | user\n```\n\n注意这里的\"home\"和\"user\"都是作为参数传递的，你可以替换为任何你期望在URL中出现的文本字符串。"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "如何等待页面URL包含给定的任一文本",
         "output": "在进行WebUI自动化编写时，我们可以使用 `WaitURLContainsAny` 关键字来等待页面URL包含给定的任一文本。这个关键字将持续等待，直到URL包含参数列表中的任一文本，或者直到超过默认超时时间。\n\n以下是一些使用示例：\n\n```robot\n# 等待页面URL包含 “login” 或 “signup”\nWaitURLContainsAny | login | signup \n\n# 等待页面URL包含 “product” 或 “category” 或 “cart”\nWaitURLContainsAny | product | category | cart \n\n# 等待页面URL包含 “checkout” 或 “payment”\nWaitURLContainsAny | checkout | payment \n```\n在这些例子中，测试将会等待直到页面URL包含指定的任一文本。如果超过了默认的超时时间，测试将失败。"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "如何等待页面URL不包含给定文本",
         "output": "在进行WebUI自动化编写时，我们经常需要等待某些条件满足才能进行下一步操作，比如等待页面URL不包含某个特定的文本。在使用RobotFramework和EasyUiLib库进行自动化测试时，我们可以使用 \"WaitURLNotContains\" 关键字来实现这个需求。\n\n\"WaitURLNotContains\" 关键字的作用是等待页面URL不包含给定的一个或多个文本。其使用方法非常简单，只需要将需要判断的文本作为参数传入即可，例如：\n\n```robotframework\n# 等待页面URL不包含\"error\"文本\nWaitURLNotContains | error\n```\n\n如果有多个文本需要判断，也可以一并传入：\n\n```robotframework\n# 等待页面URL不包含\"error\"和\"fail\"文本\nWaitURLNotContains | error | fail\n```\n\n在实际的自动化测试过程中，我们可以根据实际情况设置合理的超时时间，避免无意义的长时间等待。\n总结起来，\"WaitURLNotContains\" 关键字提供了一种简便有效的方法，帮助我们在自动化测试中处理等待页面URL不包含特定文本的需求。"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "如何刷新页面",
         "output": "在进行WebUI自动化编写时，如果需要刷新页面，可以使用关键字`RefreshPage`。以下是使用该关键字的例子：\n\n```\n# 刷新当前页面\nRefreshPage\n```\n\n以上的代码示例中，“RefreshPage”关键字可以帮助你在测试过程中的任何时候刷新当前页面。"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "如何返回上一个页面",
         "output": "在进行WebUI自动化编写时，我们可以使用`PageBack`关键字来返回上一个页面。例如，点击某个按钮后返回上一个页面：\n```\nClick | 某个按钮\nPageBack\n```\n或者在完成一些操作后返回上一个页面：\n```\nClick | 提交修改\nWaitLoading\nPageBack\n```"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "如何切换到新打开的窗口",
         "output": "在进行WebUI自动化编写时，我们可以使用RobotFramework的关键字\"ToNewWindow\"来切换到新打开的窗口。\n\n例如，你打开了一个页面，然后点开了一个新的窗口，此时你想切换到这个新打开的窗口进行操作，你可以这样做：\n```\nOpenUrl | ${页面地址1}   # 打开第一个页面\nClick | 打开新窗口        # 点击打开新的窗口\n\n# 切换到新窗口进行操作\nToNewWindow\n# 例如，校验新窗口中出现\"新窗口内容\"文本\nCheckHasText | 新窗口内容\n\n# 操作完毕后，你也可以切换回之前的窗口进行操作，例如：\nToPrevWindow\n# 例如，在原来的窗口中点击\"关闭\"按钮\nClick | 关闭\n```\n当你需要在多个窗口之间切换操作时，你可以通过简单地在脚本中添加\"ToNewWindow\"或\"ToPrevWindow\"来实现。"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "如何切换到之前的浏览器窗口",
         "output": "在进行WebUI自动化编写时，可以使用关键字`ToPrevWindow`来切换到之前的浏览器窗口。以下是一个示例：\n\n```robotframework\n# 先点击某个链接，该链接会打开一个新的浏览器窗口\nClickElem | a[target=_blank]\n\n# 切换到新打开的浏览器窗口\nToNewWindow\n\n# 在新窗口中进行一些操作，例如点击一个按钮\nClickElem | button:contains(提交)\n\n# 切换回之前的浏览器窗口\nToPrevWindow\n\n# 在原窗口继续进行操作，例如点击另一个链接\nClickElem | a:contains(下一页)\n```"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "如何切换浏览器",
         "output": "在进行WebUI自动化编写时，我们可以使用关键字`UiSwitchBrowser`来切换浏览器。这个关键字的参数可以是浏览器的名称或者是我们想要切换到的浏览器的索引。\n\n示例：\n\n```\n# 通过浏览器名称切换浏览器\nUiSwitchBrowser | Chrome\n\n# 通过浏览器索引切换浏览器，例如切换到第二个打开的浏览器\nUiSwitchBrowser | 2\n```\n\n上述代码中，第一行是通过浏览器名称切换到Chrome浏览器，第二行则是通过浏览器索引切换到第二个打开的浏览器。\n\n需要注意的是，浏览器的索引是从1开始的，打开的第一个浏览器索引为1，第二个为2，以此类推。"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "如何设置浏览器窗口大小",
         "output": "在进行WebUI自动化编写时，可以使用SetWindowSize关键字来设置浏览器窗口的大小。这个关键字接受两个参数，分别代表窗口的宽度和高度。例如：\n```robotframework\nSetWindowSize | 1920 | 1080\n```\n这行代码将会把浏览器窗口的大小设置为宽度为1920像素，高度为1080像素。\n\n你还可以单独设置窗口的宽度或者高度，使用的关键字分别是SetWindowWidth和SetWindowHeight，例如：\n```robotframework\nSetWindowWidth | 1920\nSetWindowHeight | 5000\n```\n第一行代码将会把浏览器窗口的宽度设置为1920像素，第二行代码将会把浏览器窗口的高度设置为5000像素。"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "如何设置浏览器窗口高度",
         "output": "在进行WebUI自动化编写时，我们可以使用EasyUiLib的关键字SetWindowHeight来设置浏览器窗口的高度。语法是`SetWindowHeight | height`，其中height是你想要设置的高度值。例如，如果我们想要将浏览器窗口的高度设置为800，我们可以这样编写测试脚本：\n\n```\nSetWindowHeight | 800\n```\n\n这行脚本会将浏览器窗口的高度设置为800像素。同样，如果我们想要将浏览器窗口的高度设置为1200，我们可以这样编写测试脚本：\n\n```\nSetWindowHeight | 1200\n```\n\n这行脚本会将浏览器窗口的高度设置为1200像素。这就是我们如何使用SetWindowHeight关键字来设置浏览器窗口的高度。"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "如何设置浏览器窗口宽度",
         "output": "在进行WebUI自动化编写时，可以使用关键字 SetWindowWidth 来设置浏览器窗口宽度。下面是一些使用示例：\n\n1. 设置浏览器窗口宽度为 1200 像素：\n```\nSetWindowWidth | 1200\n```\n\n2. 设置浏览器窗口宽度为 1920 像素：\n```\nSetWindowWidth | 1920\n```\n\n这些示例中，关键字后的数字即为需要设置的浏览器窗口宽度。通过调整这个数字，你可以轻松地根据需要更改浏览器窗口宽度。"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "如何将元素移动到视野内",
         "output": "在进行WebUI自动化编写时，可以使用关键字`MoveIntoView`将元素移动到视野内。此关键字需要传入一个jquery选择器参数，用于定位元素。例如：\n\n```robotframework\n# 将id为example的元素移动到视野内\nMoveIntoView | [id=example]\n\n# 将class包含example且文本为按钮的元素移动到视野内\nMoveIntoView | .example:contains(按钮)\n```\n\n如何将元素移动到视野内，请举些例子说明：\n\n在使用RobotFramework进行WebUI自动化编写时，可以通过`MoveIntoView`关键字将元素移动到视野内。这有助于确保在执行自动化步骤时，元素对用户可见并可以进行交互。以下是一些示例：\n\n1. 将id为\"submit\"的按钮元素移动到视野内：\n\n```robotframework\nMoveIntoView | [id=submit]\n```\n\n2. 将class为\"example\"的第3个div元素移动到视野内：\n\n```robotframework\nMoveIntoView | div.example:eq(2)\n```\n\n3. 将文本为\"查看详情\"的链接元素移动到视野内：\n\n```robotframework\nMoveIntoView | a:contains(查看详情)\n```"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "如何选中给定名称的表格行，请举些例子说明",
         "output": "在进行WebUI自动化编写时，我们可以使用`SelectTableRow`关键字来选中给定名称的表格行。\n\n例如：\n如果我们有一个表格，其中一行的名称是\"张三\"，我们想选中这一行，可以编写以下代码：\n```\nSelectTableRow | 张三\n```\n这段代码会在表格中查找名称（或者ID）是\"张三\"的行，并选中这一行。\n\n需要注意的是，这个关键字将查找表格中的所有行，如果有多个行的名称都是\"张三\"，它将只选中第一个找到的行。如果你想选中其他的行，你需要在调用`SelectTableRow`关键字时指定行的索引。例如，选中第二个\"张三\"所在的行，可以编写以下代码：\n```\nSelectTableRow | 张三 | idx=1\n```\n同样的，如果你需要在特定的表格中查找并选中行，你可以通过设置`base`参数指定基准元素。例如，如果你想在弹窗中的表格中选中\"张三\"所在的行，可以编写以下代码：\n```\nSelectTableRow | 张三 | base=POPUP\n```\n以上就是关于如何使用RobotFramework和EasyUiLib来选中给定名称的表格行的说明和示例。"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "如何判断元素是否为禁用状态，请举些例子说明",
         "output": "在进行WebUI自动化编写时，我们可以使用EasyUiLib关键字中的`IsElementDisabled | selector`来判断元素是否为禁用状态。其中，`selector`是指要检查的元素的jquery选择器。如果元素是禁用的，该关键字返回True，否则返回False。我们可以结合RF的`Should Be True`关键字来进行断言。\n\n以下是一些实际的使用示例：\n\n```robotframework\n# 示例如下，首先我们用FindElem定位到要判断是否禁用的元素，然后用IsElementDisabled判断该元素是否被禁用，最后用RF的Should Be True对结果进行断言。\n\n# 查找id为btnSubmit的button元素\n${elem}  FindElem | button[id='btnSubmit']\n\n# 判断该元素是否为禁用状态\n${status}  IsElementDisabled | ${elem} \n\n# 断言status为True，即元素应为禁用状态\nShould Be True  ${status}\n\n# 或者，我们也可以直接把jquery选择器传给IsElementDisabled关键字来判断元素是否为禁用状态，如下所示：\n\n# 判断id为btnSubmit的button元素是否为禁用状态，并将结果赋值给status\n${status}  IsElementDisabled | button[id='btnSubmit']\n\n# 断言status为True，即元素应为禁用状态\nShould Be True  ${status}\n```\n\n以上就是判断元素是否为禁用状态的方法及其示例。"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "如何判断元素是否为可用状态，请举些例子说明",
         "output": "在进行WebUI自动化编写时，RobotFramework中具有一个关键字叫做IsElementEnabled，这个关键字的功能就是判断页面元素是否为可用状态。它接受一个参数，这个参数是表示你想要判断的页面元素的jquery选择器。如果页面元素处于可用状态，即处于enabled状态，那么它返回True，否则返回False。\n\n例如，我们有一个确定按钮想要判断它是否可用。其jquery选择器是button:contains(确定)，那么我们可以这样写：\n```\n${status}  IsElementEnabled | button:contains(确定)\n```\n在这段代码中，button:contains(确定)就是确定按钮的jquery选择器，IsElementEnabled关键字会返回该元素是否处于enabled状态，返回结果赋值给变量status。接下来可以通过判断status的值来确定元素是否可用。\n\n另一个例子是判断一个ID为submit的输入框是否可用，可以写成：\n```\n${status}  IsElementEnabled | input[id='submit']\n```\n同样的，input[id='submit']是输入框的jquery选择器，IsElementEnabled关键字会返回输入框是否处于enabled状态，返回结果同样赋值给变量status。\n\n这样，就可以很方便判断页面元素是否为可用状态了。"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "如何校验页面字段是否包含给定文本，请举些例子说明",
         "output": "在进行WebUI自动化编写时，校验页面字段是否包含给定文本，可以使用RobotFramework的EasyUiLib库中的关键字 `CheckFieldContains`。\n\n关键字 `CheckFieldContains` 的用法是：\n```\nCheckFieldContains | filedName | txt1 | txt2 | ...\n\n# 其中，filedName 是你想要校验的字段名，txt1、txt2等是你想要校验的文本。该关键字会校验指定的页面字段是否同时包含所有提供的文本。\n```\n\n下面举几个例子说明：\n\n1、校验页面字段“学生名字”是否包含“张三”和“李四”。\n```robotframework\nCheckFieldContains | 学生名字 | 张三 | 李四\n```\n\n2、校验页面字段“课程名”是否包含“数学”。\n```robotframework\nCheckFieldContains | 课程名 | 数学\n```\n\n3、校验页面字段“公告”是否包含“考试”和“明天”。\n```robotframework\nCheckFieldContains | 公告 | 考试 | 明天\n```\n\n注意：`CheckFieldContains` 关键字会校验页面字段是否同时包含所有指定的文本，如果你想校验页面字段是否包含任一指定的文本，需要使用其他关键字，或者多次使用 `CheckFieldContains` 关键字进行校验。"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "如何点击页面空白处，请举例子说明",
         "output": "在进行WebUI自动化编写时，如果需要点击页面的空白处，可以使用EasyUiLib的ClickWhiteArea关键字。这个关键字不需要任何参数，只需要按照以下格式写在代码中即可。\n\n示例代码如下：\n\n```robotframework\nClickWhiteArea\n```\n\n这行代码会让自动化测试脚本在执行时点击页面的空白处。"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "如何校验页面是否出现白屏错误",
         "output": "在进行WebUI自动化编写时，可以使用关键字 CheckWhiteScreen 来校验页面是否出现白屏错误。以下是一些例子：\n\n1. 登录后，检查主页面是否白屏：\n```\n# 输入用户名和密码，点击登录按钮\nBatchSetFields | 用户名=user1 | 密码=pwd1\nClick | 登录\n\n# 检查主页面是否白屏\nCheckWhiteScreen\n```\n\n2. 点击一个按钮后，检查新页面是否白屏：\n```\n# 点击查看详情按钮\nClick | 查看详情\n\n# 检查新页面是否白屏\nCheckWhiteScreen\n```\n\n3. 切换到其他标签页后，检查页面是否白屏：\n```\n# 点击切换到第二个标签页\nClick | 标签页2\n\n# 检查第二个标签页内容是否白屏\nCheckWhiteScreen\n```"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "如何一次性批量设置多个页面字段",
         "output": "在进行WebUI自动化编写时，我们可以使用“BatchSetFields”关键字来一次性批量设置多个页面字段。使用这个关键字需要传入一个字典形式的参数，字典的键是字段名，字典的值是你需要设置的值。\n\n例如，我们需要一次性设置用户名和密码字段，代码如下：\n\n```robotframework\nBatchSetFields | 用户名=user1 | 密码=pwd1\n```\n\n在以上示例代码中，“用户名=user1 密码=pwd1”就是我们需要传入的参数。其中，“用户名”和“密码”是字段名，“user1”和“pwd1”分别是用户名和密码字段的值。这样运行后，页面上的“用户名”字段就会被设置为“user1”，“密码”字段就会被设置为“pwd1”。\n\n另外，如果我们需要在特定文本附近的字段上执行批量设置，可以添加“near”参数并指定文本值。例如，我们需要在“学生信息”文本下方的字段上执行批量设置，代码如下：\n\n```robotframework\nBatchSetFields | 姓名=user1  年龄=18 | near=学生信息\n```\n\n在以上示例中，“near=学生信息”表示我们要操作的字段是靠近“学生信息”文本的，在运行后，“姓名”字段会被设置为“user1”，“年龄”字段会被设置为“18”。"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "如何点击一个给定的文本",
         "output": "在进行WebUI自动化编写时，对于点击一个给定文本有多种方法。以下是一些基于RobotFramework和EasyUiLib的示例：\n\n1. 直接点击文本，比如要点击文本\"确定\"，你可以这样写：\n```robotframework\nClick | 确认\n```\n\n2. 可以使用\"ClickElem\"关键字通过jquery选择器点击元素，比如要点击包含\"取消\"文本的button，你可以这样写：\n```robotframework\nClickElem | button:contains(取消)\n```\n\n3. 当页面上存在多个相同的文本时，可以使用\"idx\"参数指定点击第几个，比如要点击第二个\"通过\"文本，你可以这样写：\n```robotframework\nClick | 通过 | idx=1\n```\n\n4. 当需要点击的文本处于特定元素内时，可以通过\"base\"参数指定基准元素，比如要点击id为\"a\"的元素中的\"OK\"文本，你可以这样写：\n```robotframework\nClick | OK | base=[id=a]\n```\n\n5. 当需要依次点击多个文本时，可以使用\"ClickTextOneByOne\"关键字，比如先点击\"添加\"，再点击\"确定\"，你可以这样写：\n```robotframework\nClickTextOneByOne | 添加 | 确定\n```"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "如何选中一个表格行",
         "output": "在进行WebUI自动化编写时，选中一个表格行的操作可以通过使用RobotFramework的`SelectTableRow`关键字来完成。这个关键字需要至少一个参数，即行标识参数。行标识参数可以是表格行中的文本，也可以直接是行号。下面举几个例子来详细说明：\n\n例如，我们有一个表格，其中有一个表格行的内容包含\"张三\"，我们可以通过以下代码来选中这一行：\n```\nSelectTableRow | 张三\n```\n在这个示例中，\"张三\"就是行标识参数，代表的是表格中的一行文本。\n\n再比如，我们想要选中这个表格的第二行，我们可以使用行号作为行标识参数，通过以下代码实现：\n```\nSelectTableRow | 2\n```\n在这个示例中，数字\"2\"就是行标识参数，代表的是表格的行号。\n\n另外，如果我们想选中一个弹窗中表格的某一行，我们可以在`SelectTableRow`关键字里增加基准元素参数，如下：\n```\nSelectTableRow | 张三 | base=POPUP\n```\n在这个示例中，\"POPUP\"就是基准元素参数，代表的是弹窗元素，\"张三\"还是行标识参数。"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "如何对元素截图对比",
         "output": "在进行WebUI自动化编写时，对元素截图对比可以使用ImageDiff关键字。\n\n例如：\n\n1. 截取id为x的元素的图片并和基准图对比，相似度为0.95：\n```\nImageDiff | [id=x] | sim=0.95\n```\n\n2. 截取 ${elem} 的图片，命名为：图1，并和基准图对比：\n```\nImageDiff | ${elem} | pic_name=图1\n```\n\n3. 截屏对比：\n```\nImageDiff\n```"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "如何点击弹窗中的元素",
         "output": "在进行WebUI自动化编写时，如果需要点击弹窗中的元素，我们可以使用RobotFramework (RF) 的EasyUiLib库中的关键字 Click 和 ClickElem，并将基准元素base的值设置为特殊值“POPUP”。\n\n当你想要点击弹窗中的具有特定文本的元素时，可以使用关键字 Click。例如，如果你想要点击弹窗中的“确认”按钮，可以写成：\n\n```RobotFramework\nClick | 确认 | base=POPUP\n```\n\n如果你想要点击弹窗中的与特定jquery选择器匹配的元素，可以使用关键字 ClickElem。例如，如果你想要点击弹窗中id为 'submit' 的按钮，可以写成：\n\n```RobotFramework\nClickElem | [id=submit] | base=POPUP\n```\n\n通过以上的方式，我们可以很容易地在自动化测试中点击弹窗中的元素。"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "如何填写弹框中的页面字段",
         "output": "在进行WebUI自动化编写时，你可以使用以下方法填写弹框中的字段。\n\n例如：\n\n1. 在弹窗中设置姓名为张三：\n\n```robotframework\nSetField | 姓名 | 张三 | base=POPUP\n```\n\n2. 在弹窗中的年龄字段输入18：\n\n```robotframework\nSetField | 年龄 | 18 | base=POPUP\n```\n\n3. 在弹窗中选择性别为男：\n\n```robotframework\nSetField | 性别 | 男 | base=POPUP\n```\n\n注意：在这些例子中，我们使用了关键字 `SetField` 和参数 `base=POPUP`。这将确保我们在弹窗中填写字段。如果你要操作的不是弹窗上的字段，那么不需要使用 `base=POPUP` 参数。"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "如何操作弹窗中的表格，如点击/填写/获取值等",
         "output": "在进行WebUI自动化编写时，我们可以使用RobotFramework的EasyUiLib库来操作弹窗中的表格，通常`base`参数设置为特殊值`POPUP`来代表弹窗。以下是一些示例说明：\n\n1. 若需要点击弹窗中的表格单元格中的文本，例如点击第一行状态列中的'disable'，我们可以使用`ClickTextOfCell`关键字，同样`base`参数设置为`POPUP`，代码如下：\n```robotframework\nClickTextOfCell | 1 | 状态 | disable | base=POPUP\n```\n\n2. 如果要在弹窗中的表格填写值，比如我想设置第5行的值为'男', '25', '170cm'，可以使用`FillRow`关键字，代码如下：\n```robotframework\nFillRow | 5 | 男 | 25 | 170cm | base=POPUP\n```\n\n3. 如果我们想获取弹窗中表格的某个单元格的值，我们可以使用`GetCellValue`关键字。比如获取第二行名为'年龄'的列的值，代码如下：\n```robotframework\n${val}  GetCellValue | 2 | 年龄 | base=POPUP\n```"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "如何勾选表格行，也就是让表格行被选中",
         "output": "在进行WebUI自动化编写时，要勾选或选择表格行，可以使用关键字 `SelectTableRow`，它的参数是表格行的名称或索引。例如：\n```robotframework\n# 选中张三所在表格行\nSelectTableRow | 张三\n```\n上述命令将会选中名称为 \"张三\"的表格行。\n\n如果你知道要选择的行的索引，你也可以直接传递索引号，如：\n```robotframework\n# 选中第3行\nSelectTableRow | 3\n```\n上述命令将会选中第3行。\n\n另外，一些表格可能会有复选框，可以通过 `ClickElemOfRow` 关键字来点击复选框以选中表格行，如：\n```robotframework\n# 勾选张三所在表格行的复选框\nClickElemOfRow | 张三 | :checkbox\n```\n上述命令将会点击张三所在行的复选框，通常这会选中整行。"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "如何选中弹窗中的表格行",
         "output": "在进行WebUI自动化编写时，我们可以使用EasyUiLib提供的关键字来选中弹窗中的表格行。具体方式如下：\n\n使用`SelectTableRow`关键字可以选中弹窗中的表格行，语法是 `SelectTableRow | row_name_or_id | tbl=1 | base=`。其中，`row_name_or_id`是表格行的名称或者行号，`tbl`参数是指定要操作的是第几个表格，默认是第一个表格。`base`参数则是基准元素的设置，用于指定要操作的元素在哪个容器中，当我们需要选中的表格行在弹出层或者弹窗中时，可以将`base`参数设置为特殊值`POPUP`。\n\n例如，我们要选中弹窗中的第3行，可以这样写：\n```robotframework\nSelectTableRow | 3 | tbl=1 | base=POPUP\n```\n\n如果我们要选中弹窗中名字为\"张三\"的行，可以这样写：\n```robotframework\nSelectTableRow | 张三 | tbl=1 | base=POPUP\n```\n\n注意：在使用`SelectTableRow`关键字前，需要确保弹窗已经弹出来了，否则可能找不到指定的表格行。"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "如何校验一个按钮是不可点击的，也就是禁用的",
         "output": "在进行WebUI自动化编写时，我们可以使用EasyUiLib库中的`CheckElemDisabled`关键字来进行元素禁用状态的校验。该关键字可以帮助我们检查一个给定的元素是否处于禁用，也就是不可点击的状态。\n\n比如我们有一个名为\"提交\"的按钮，我们可以使用如下语句来校验此按钮是否处于禁用状态：\n```robot\nCheckElemDisabled | button:contains(提交)\n```\n以上代码表示检查名为\"提交\"的按钮是否处于禁用状态。\n\n同样我们可以使用RF的标准库关键字`Element Should Be Disabled`来校验元素禁用状态，例如：\n```robot\nElement Should Be Disabled | button:contains(提交)\n```\n以上代码同样表示检查名为\"提交\"的按钮是否处于禁用状态。\n\n另外一种方法是先通过`FindElem`或`FindByText`关键字获取到元素，然后对获取到的元素进行禁用状态的校验，例如：\n```robot\n${buttonElem}  FindElem | button:contains(提交)  # 获取名为\"提交\"的按钮元素\nCheckElemDisabled | ${buttonElem}  # 检查获取到的元素是否处于禁用状态\n```"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "如何校验一个按钮是启用状态的，也就是可以点击的",
         "output": "在进行WebUI自动化编写时，我们可以使用`CheckElemEnabled`关键字来校验一个按钮是启用状态的，也就是可以点击的。这个关键字需要一个参数，这个参数表示需要校验的元素，可以是元素的jquery选择器或者所代表的元素。\n\n例如，我们有一个叫做\"提交\"的按钮，我们想要校验这个按钮是启用的。我们可以使用以下代码：\n\n```\nCheckElemEnabled | button:contains(提交)\n```\n\n这行代码会校验页面上文字为\"提交\"的按钮是否处于启用状态。\n\n另一个例子，我们想要校验id为\"btnSubmit\"的按钮是否处于启用状态。我们可以使用以下代码：\n\n```\nCheckElemEnabled | [id=btnSubmit]\n```\n\n这行代码会校验id为\"btnSubmit\"的按钮是否处于启用状态。\n\n这里的选择器可以根据实际的页面元素进行调整，只要能确保唯一定位到需要校验的按钮即可。"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "如何在校验页面是否有错误时，排除一些文案",
         "output": "在进行WebUI自动化编写时，你可以使用关键字`CheckErrExclude`来在校验页面是否有错误时排除一些特定的文案。这个关键字需要提供一个或多个文本参数，表示在校验页面中的错误信息时，这些文本将被排除。\n\n例如：\n\n```robot\n# 校验页面是否有错误信息，排除\"成功\"和\"进行中\"这两个文案\nCheckErrExclude | 成功 | 进行中\n```\n\n这个例子中，如果页面上有错误信息，但这些错误信息中包含\"成功\"或者\"进行中\"，那么这个校验将不会报错"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "如何在校验页面是否有错误时，额外增加对一些文案",
         "output": "在RobotFramework中，我们可以使用关键字“CheckErrInclude”来校验页面是否存在异常提示信息，其中我们指定的文本也会被算作异常。\n\n例如，我们要校验页面是否有\"系统异常\"、\"无法连接\"或者\"无法获取数据\"的提示信息，我们可以这样写：\n\n```\nCheckErrInclude | 系统异常 | 无法连接 | 无法获取数据\n```\n\n如果想要额外增加一种文案，例如\"服务不可用\"，我们只需要在CheckErrInclude的参数列表中增加该文案即可：\n\n```\nCheckErrInclude | 系统异常 | 无法连接 | 无法获取数据 | 服务不可用\n```\n\n以上代码会在页面中搜索这几种错误提示信息，如果发现这些提示信息，那么测试就会失败，因为这些错误提示信息被我们定义为异常。"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "如何校验页面无报错（排除‘异常’这个文案），也无白屏",
         "output": "在进行WebUI自动化编写时，校验页面无报错（排除‘异常’这个文案）和无白屏，可以使用以下代码示例：\n\n```\n# 校验页面无报错（排除'异常'这个文案）\nCheckErrExclude | 异常\n\n# 校验页面无白屏\nCheckWhiteScreen\n```"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "如何发送一个 HTTP 请求到给定 URL",
         "output": "在进行WebUI自动化编写时，我们可以利用`UiSendRequest`关键字发送一个HTTP请求到给定URL。下面是一些示例：\n\n如果我们想向\"https://ab.com\"发送一个POST请求，请求体如`{\"name\": \"a\"}`，请求头如`{\"header1\": \"val1\"}`，我们可以编写如下脚本：\n```\n${resp_json}  UiSendRequest | POST | https://ab.com | {\"name\": \"a\"} | {\"header1\": \"val1\"}\n```\n\n如果我们想向\"https://ab.com\"发送一个GET请求，请求头如`{\"header1\": \"val1\"}`，我们可以编写如下脚本：\n```\n${resp_json}  UiSendRequest | GET | https://ab.com | ${None} | {\"header1\": \"val1\"}\n```\n在上述脚本中，`${resp_json}`用于接收服务器返回的JSON格式的相应数据。"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "如何切换到新打开的浏览器窗口",
         "output": "在进行WebUI自动化编写时，RobotFramework (RF) 提供了`ToNewWindow`关键字来切换到新打开的浏览器窗口。下面是具体的例子：\n\n```\nOpenBrowser | http://example.com  # 打开一个新的浏览器窗口，访问 http://example.com\nClick | 新窗口链接  # 假设页面上有个链接，点击后会在新窗口打开一个页面\nToNewWindow  # 切换到新打开的浏览器窗口\n```\n在这个例子中，首先打开一个新的浏览器窗口，然后在当前页面上点击一个链接，该链接会在新窗口中打开一个新页面。然后，`ToNewWindow`关键字被用于切换到新打开的窗口。\n\n有时，如果需要在多个窗口之间切换，可以使用`ToPrevWindow`关键字切换到先前的窗口。例如:\n\n```\nOpenBrowser | http://example.com  # 打开一个新的浏览器窗口，访问 http://example.com\nClick | 新窗口链接  # 假设页面上有个链接，点击后会在新窗口打开一个页面\nToNewWindow  # 切换到新打开的浏览器窗口\n# 在新窗口中进行一些操作\nToPrevWindow  # 切换回到先前的窗口\n```\n在这个例子中，首先打开一个新的浏览器窗口，然后在当前页面上点击一个链接，该链接会在新窗口中打开一个新页面。然后，`ToNewWindow`关键字被用于切换到新打开的窗口。在新窗口中进行一些操作后，使用`ToPrevWindow`关键字切回到先前的窗口。"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "如何将一个 2024-11-12 09:08:07 格式的日期转换成时间戳",
         "output": "在进行WebUI自动化编写时，RobotFramework (RF) 中 Standard Library 的 DateTime 库提供了处理日期和时间的关键字。其中可以用于将日期转换成时间戳的关键字是 `Convert Date`。\n\n示例代码如下：\n\n```\n${date}    Set Variable   2024-11-12 09:08:07\n${timestamp}    Convert Date   ${date}   result_format=epoch    # 将日期转换为时间戳（epoch）\nLog  ${timestamp}\n```\n在上述代码中，`Convert Date` 关键字用来将日期字符串转换为不同格式。其中 `result_format=epoch` 参数被用来指定函数输出为时间戳。执行上述脚本，最终会在控制台打印出对应的时间戳。\n\n注意：需要保证传入的日期字符串格式与你在 `Convert Date` 中定义的 `date_format` 一致，否则将无法正确转换。在上述例子中，没有指定 `date_format` 参数，所以默认的日期格式为 `%Y-%m-%d %H:%M:%S`，这与我们 `set variable` 设置的日期字符串 `2024-11-12 09:08:07` 是一致的。"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "如何校验表格中没有数据",
         "output": "在进行WebUI自动化编写时，如果需要校验表格中没有数据，你可以使用RobotFramework中的CheckRowCount关键字来进行验证，该关键字用于校验表格行的数量。如果表格中没有数据，那么表格的行数应该为0。下面是一些例子：\n\n```robot\n# 校验表格'客户列表'没有数据，即行数为0\nCheckRowCount | 0 | tbl=客户列表\n\n# 校验弹窗中的表格没有数据\nCheckRowCount | 0 | base=POPUP\n\n# 校验第5个表格没有数据\nCheckRowCount | 0 | tbl=5\n```"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "如何获取字符串的 md5",
         "output": "在进行WebUI自动化编写时，RobotFramework没有内置的关键字来获取字符串的md5。但我们可以使用python的标准库hashlib来获取字符串的md5。\n\nRobotFramework支持直接运行python代码，我们只需要将python代码写在Evaluate关键字的参数中，然后用${}来包含我们的表达式即可。\n\n下面是一个例子：\n```\n${str}  Set Variable  This is a string\n${md5}  Evaluate  hashlib.md5($str.encode('utf-8')).hexdigest()  modules=hashlib\nLog  ${md5}\n```\n在上述代码中，我们首先用Set Variable关键字设置了一个变量str，其值为\"This is a string\"，然后我们用Evaluate关键字来运行python代码计算该字符串的md5值。\n\n这段python代码hashlib.md5($str.encode('utf-8')).hexdigest()会对字符串进行utf-8编码，然后利用hashlib.md5()计算其md5值，最后用hexdigest()将其转换为16进制的字符串。\n\n将这段python代码放在Evaluate关键字的参数中，注意我们用$来引用变量str，然后用modules参数加载python的hashlib模块，这样我们就可以在此表达式中使用hashlib。\n\n最后我们用Log关键字打印出计算得到的md5值。\n\n这样我们就可以在RobotFramework中获取字符串的md5了。"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "如何判断单元格中是否包含目标文本",
         "output": "在进行WebUI自动化编写时，如果想判断单元格中是否包含目标文本，可以使用 EasyUiLib 提供的 `IsCellContainsText` 关键字。该关键字需要提供行名或行号，列名或列号，期望的文本值，以及可选的表格标识和基准元素。最后，它将返回True或False，表示单元格中是否包含目标文本。\n\n举一个具体的例子，比如我们有一张名为 “成绩单”的表格，我们想要判断该表格中姓名为 \"张三\" 的行，科目列是否包含文本 \"数学\"，可以写成如下：\n\n```\n${exists} IsCellContainsText | 张三 | 科目 | 数学 | tbl=成绩单\n```\n\n如果我们想要判断名为“列表”的表格中，第2行第3列的单元格是否包含文本 \"通过\"，我们可以写成如下：\n\n```\n${exists}  IsCellContainsText | 2 | 3 | 通过 | tbl=列表\n```\n\n如果我们想判断弹出层中的某表格中，行名为 \"Tom\"，列名为 \"年龄\" 的单元格是否包含文本 \"18\"，我们可以这样写：\n\n```\n${exists}  IsCellContainsText | Tom | 年龄 | 18 | base=POPUP\n```\n\n这些例子展示了如何使用 `IsCellContainsText` 关键字来检查特定的单元格中是否包含特定的文本。"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "如何判断单元格中是否包含给定元素",
         "output": "在进行WebUI自动化编写时，可以使用EasyUiLib关键字IsCellContainsElem来判断单元格中是否包含给定元素。以下是一些使用该关键字的例子：\n\n1. 判断第1行第2列的单元格中是否包含id为\"x\"的span元素：\n```\n${result}  IsCellContainsElem | 1 | 2 | span[id=\"x\"]\n```\n\n2. 判断名为\"张三\"的行和\"年龄\"列对应的单元格中是否包含class为\"age\"的div元素：\n```\n${result}  IsCellContainsElem | 张三 | 年龄 | div[class=age]\n```\n\n3. 判断最后一行和第3列的单元格中是否包含文本为\"OK\"的按钮元素：\n```\n${result}  IsCellContainsElem | -1 | 3 | button:contains(OK)\n```\n\n在上述例子中，IsCellContainsElem关键字的返回结果是True或False，表示判断的元素是否存在于指定的单元格中。其中，row_name_or_id表示表格行中的文本或行号，col_name_or_id表示表格列的列名或列号，selector为待判断元素的jquery选择器。"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "Get Current Date 如何使用",
         "output": "“Get Current Date” 是一种Robot Framework的内置关键字，可以用来获取当前的日期和时间。\n\n例如，如果我们想要获取前一天的日期，我们可以使用如下代码：\n\n```\n${date}  Get Current Date  result_format=%Y-%m-%d  increment=-1 day\n```\n\n在这个例子中，“Get Current Date” 参数说明：\n\n- 参数“result_format”用来指定日期的格式，这里使用的是年-月-日的格式。\n- 参数“increment”用来指定日期的增量，这里设置为-1 day，即获取前一天的日期。\n\n所以，如果今天是2022年1月20日，上述代码将会返回“2022-01-19”。"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "如何使用 Get Current Date 获取7天后的时间，格式为：2022-07-08 09:11:12",
         "output": "在进行WebUI自动化编写时，你可以使用 `Get Current Date` 关键字获取当前时间，并通过 `increment` 参数来获取当前时间7天后的日期。`increment` 参数表示要增加到返回的日期的可选时间增量，支持负值。`result_format` 参数表示返回日期的格式。\n\n例子代如下：\n```\n# 获取当前时间7天后的时间\n# increment 参数值为 \"7 days\"\n${date_in_seven_days}   Get Current Date  increment=7 days  result_format=%Y-%m-%d %H:%M:%S\n```\n在这个例子中，我们使用了`Get Current Date`关键字，使用了 `increment=7 days` 来获取当前时间7天后的日期，`result_format=%Y-%m-%d %H:%M:%S` 来指定结果日期的格式。得到的 `${date_in_seven_days}` 就是7天后的时间，并且格式为：2022-07-08 09:11:12。"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "如何使用 Get Current Date 获取1小时15分钟23秒后的时间，格式为：2023-01-02 05:12:14",
         "output": "在进行WebUI自动化编写时，可以使用RobotFramework的`Get Current Date`关键字获取当前时间，并可以通过它的`increment`参数增加指定的时间，格式为：hours:minutes:seconds。如下例子所示，该例子将获取1小时15分钟23秒后的时间，输出格式为：2023-01-02 05:12:14。\n\n```\n${future_time}   Get Current Date   increment=01:15:23   result_format=%Y-%m-%d %H:%M:%S\nLog   ${future_time}\n```\n\n在上面的例子中，`Get Current Date`关键字被用于获取当前时间，并通过`increment=01:15:23`参数增加1小时15分钟23秒。`result_format=%Y-%m-%d %H:%M:%S`用于指定输出的时间格式为：2023-01-02 05:12:14，然后使用`Log`关键字打印这个未来的时间。"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "如何使用 Get Current Date 获取7小时8分钟之前的时间，格式为：2023-01-02 05:12:14",
         "output": "在进行WebUI自动化编写时，您可以使用RobotFramework的Get Current Date关键字获取7小时8分钟之前的时间。增量参数支持负值，这意味着我们可以倒推时间。通过设置increment为\"-7 hours 8 minutes\"即可获取7小时8分钟之前的时间。\n\n下面是一个示例：\n```\n${past_time}    Get Current Date    increment=-7 hours 8 minutes    result_format=%Y-%m-%d %H:%M:%S\nLog    ${past_time}\n```\n在这个例子中，Get Current Date关键字的increment参数被设置为\"-7 hours 8 minutes\"来获取7小时8分钟前的时间。result_format参数被设置为\"%Y-%m-%d %H:%M:%S\"来指定输出时间的格式。执行这个脚本，${past_time}就会保存7小时8分钟之前的时间。\n"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "如何使用 Get Current Date 获取2天前的时间，格式为：2023-02-02",
         "output": "在进行WebUI自动化编写时，如果需要使用 Get Current Date 来获取2天前的时间，设置increment参数为“- 2 days”，并设置result_format参数为\"%Y-%m-%d\"。这样就能够返回格式为 \"2023-02-02\"的2天前的日期。\n\n以下是具体的使用示例：\n```\n${date} =  Get Current Date  increment=-2 days  result_format=%Y-%m-%d\n```\n在这个示例中，${date}将会获取到2天前的日期，并且格式设定为\"%Y-%m-%d\"，即年-月-日的形式。"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "如何使用 Get Current Date 获取 5小时3分钟后的时间戳",
         "output": "在进行WebUI自动化编写时，可以使用Get Current Date关键字来获取当前时间，并通过increment参数设置时间增量，来获取当前时间后的某个时间点。如要获取5小时3分钟后的时间戳，可以通过以下代码实现：\n\n```\n${current_time}  Get Current Date  increment=5hours3minutes  result_format=epoch\n```\n\n这里，我们设置了increment参数为5小时3分钟，result_format参数为timestamp，表示返回的时间结果为时间戳格式。最终，将该时间戳存储在变量current_time中。"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "如何使用 SetFiled 来设置给定名称的页面字段的值",
         "output": "在进行WebUI自动化编写时，我们可以使用 SetField 关键字来操作页面字段并设置其值。SetField 的语法如下：\n\n```\nSetField | name | @args | idx=0 | enter=False | base= | near=\n```\n\n其中，参数的含义如下：\n\n- name：需要操作的页面字段的名字\n- @args：需要填入的一个或多个值\n- idx：表示第几个 name 字段，默认0表示第一个，-1表示最后一个\n- enter：表示是否在输入完后按下回车，False表示不按回车，True表示按下回车\n- base：表示操作的是给定基准元素中的字段。特殊值POPUP表示弹出层/弹窗\n- near：表示靠近哪个文本附近进行操作，例如在某文本的下方\n\n下面是一些示例：\n\n1. 设置姓名字段为“张三”，代码如下：\n\n```\nSetField | 姓名 | 张三\n```\n\n2. 设置第2个年龄字段为“18”，并按下回车，代码如下：\n\n```\nSetField | 年龄 | 18 | idx=1 | enter=True\n```\n\n3. 在弹窗中设置性别字段为“man”，代码如下：\n\n```\nSetField | 性别 | man | base=POPUP\n```\n\n4. 在“学生信息”文本下方设置性别字段为“woman”，代码如下：\n\n```\nSetField | 性别 | woman | near=学生信息\n```\n\n以上就是 SetField 关键字的使用方法和一些示例，希望能对您有所帮助。"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "如何使用 FillArea 来设置给定页面区域的值",
         "output": "在进行WebUI自动化编写时，我们可以使用 \"FillArea\" 关键字来操作页面上jquery选择器代表的控件区域，并依次填入一个或多个值到控件中。这个关键字非常有用，它可以帮助我们灵活地处理WebUI中的各种控件，使自动化测试更加高效。\n\n使用 FillArea 关键字的具体格式如下：\n```\nFillArea | selector | @args\n```\n其中，\"selector\" 是你要操作的页面区域对应的jquery选择器，\"@args\" 是你要填入控件中的一个或多个值，其中可以包括特殊值OPTIONS_i，表示选中第i个选项，i从1开始。\n\n举几个例子来说明 FillArea 的使用。\n\n如果我们想在class包含A的div中输入\"ct\" \"=\" \"NY\"，就可以使用以下代码：\n```\nFillArea | div[class*=A] | ct | = | NY\n```\n这段代码会找到class包含A的div元素，然后在其中依次输入\"ct\" \"=\" \"NY\"。\n\n如果我们想要选中某个包含多个选项的控件的第三个选项，可以使用以下代码：\n```\nFillArea | select[id='options'] | OPTIONS_3\n```\n这段代码会找到id为'options'的选项控件，然后选中第三个选项。\n\n通过以上的描述和示例，我们可以看出 FillArea 关键字的用法既简单又强大，可以帮助我们在进行WebUI自动化编写时更好地处理页面上的各种控件。"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "Convert Date 关键字它可以进行日期的格式转换，请举些例子说明如何使用",
         "output": "在进行WebUI自动化编写时，Convert Date 是一款很有用的关键词，它可以进行日期的格式转换。它接收以下参数：\n\n- date：支持各种日期格式。\n- result_format：返回日期的格式。\n- exclude_millis：设置为任何真值时，将四舍五入并丢弃毫秒，如在毫秒处理中解释的那样。\n- date_format：指定可能的自定义时间戳格式。\n\n使用示例如下：\n\n若输入的日期为 \"20140528 12:05:03.111\"，希望转换为默认的日期格式 \"2014-05-28 12:05:03.111\"，我们可以这样写：\n```\n${date}  Convert Date  20140528 12:05:03.111 \nShould Be Equal  ${date}  2014-05-28 12:05:03.111\n```\n\n如果我们希望将日期转换为epoch（1970年1月1日至给定日期的秒数），可以这样写：\n```\n${date}  Convert Date  ${date}  epoch \nShould Be Equal  ${date}  ${1401267903.111}\n```\n\n如果我们的输入日期是 \"5.28.2014 12:05\"，希望转换为 \"2014-05-28 12:05:00\" 并且排除毫秒，我们可以这样写：\n```\n${date}  Convert Date  5.28.2014 12:05  exclude_millis=yes  date_format=%m.%d.%Y %H:%M \nShould Be Equal  ${date}  2014-05-28 12:05:00\n```\n以上是 \"Convert Date\" 关键词的基础使用，根据需求可以灵活使用。"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "Convert Time 关键字用于将时间从一种格式转换为另一种格式，请举些例子说明如何使用",
         "output": "Convert Time是一个在Robot Framework中用于将时间从一种格式转换为另一种格式的关键字。它的主要参数包括：\n\n1. time：需要转换的时间，可以是支持的任何时间格式。\n2. result_format：返回的时间格式。\n3. exclude_millis：当设置为任何真值时，会按照毫秒处理的说明进行舍入和删除毫秒。\n\n举个例子：\n\n1. 如果我们想把10秒转换为数字格式，可以这么写：\n```\n${time}  Convert Time  10 seconds\nShould Be Equal  ${time}  ${10}\n```\n上述代码中，首先使用`Convert Time`关键字将10秒转换为数字格式，并将结果保存到变量`${time}`中。然后使用`Should Be Equal`关键字比较刚刚转换得到的`${time}`和10是否相等。\n\n2. 如果我们想将1小时1秒转换为`verbose`格式，可以这么写：\n```\n${time}  Convert Time  1:00:01  verbose\nShould Be Equal  ${time}  1 hour 1 second\n```\n上述代码中，首先使用`Convert Time`关键字将1小时1秒转换为`verbose`格式，并将结果保存到变量`${time}`中。然后使用`Should Be Equal`关键字比较刚刚转换得到的`${time}`和字符串`1 hour 1 second`是否相等。\n\n3. 如果我们想将3661.5秒转换为`timer`格式，可以这么写：\n```\n${time}  Convert Time  ${3661.5}  timer\nShould Be Equal  ${time}  01:01:01.500\n```\n上述代码中，首先使用`Convert Time`关键字将3661.5秒转换为`timer`格式，并将结果保存到变量`${time}`中。此处不进行比较，直接将转换后的结果保存。\n\n总的来说，`Convert Time`关键字非常适合在处理时间相关的测试场景时使用，例如等待某个操作完成，比较两个时间点之间的差异等。"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "请详细介绍 Run Keyword And Return Status 关键字，请举些例子说明如何使用",
         "output": "在进行WebUI自动化编写时，`Run Keyword And Return Status` 关键字用于执行给定的关键字并返回一个布尔值，表示执行结果。具体来说，如果执行的关键字成功，它将返回 `True`；如果失败，则返回 `False`。这在与 `Run Keyword If` 结合使用时非常有用。例如：\n\n```robot\n# 示例：检查关键字执行的成功状态\n${passed} =  Run Keyword And Return Status  CheckHasText  登录成功\n\n# 根据执行状态决定是否运行其他关键字\nRun Keyword If  ${passed}  Log  登录成功\n```\n\n在这个例子中，`CheckHasText` 用于检查页面是否包含 \"登录成功\" 文本。如果检查成功，`Run Keyword And Return Status` 返回 `True`，然后通过 `Run Keyword If` 执行 `Log` 关键字来记录信息。"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "请详细介绍 Run Keyword And Ignore Error 关键字，请举些例子说明如何使用",
         "output": "在进行WebUI自动化编写时，`Run Keyword And Ignore Error` 是一个非常有用的关键字，用于执行指定的关键字并忽略可能的错误。这个关键字会返回两个值，第一个是执行状态：如果成功则是字符串 \"PASS\"，如果失败则是 \"FAIL\"；第二个是返回值或者错误信息。\n\n以下是几个使用该关键字的示例：\n\n### 示例1：基本使用\n\n```robot\n*** Test Cases ***\nExample Test Case\n    ${status}  ${result}   Run Keyword And Ignore Error  Some Keyword  arg1  arg2\n    Log Many  ${status}  ${result}\n```\n\n在这个示例中，`Some Keyword` 是一个带有参数 `arg1` 和 `arg2` 的关键字。如果执行时出错，错误信息会存储在 `${result}` 中，而 `${status}` 会是 \"FAIL\"。\n\n### 示例2：在条件判断中使用\n\n```robot\n*** Test Cases ***\nConditional Test Case\n    ${status}  ${result}   Run Keyword And Ignore Error  Some Keyword\n    Run Keyword If  '${status}' == 'PASS'  Log  Keyword executed successfully\n    Run Keyword If  '${status}' == 'FAIL'  Log  Keyword execution failed with error: ${result}\n```\n\n在这个示例中，我们根据执行状态判断是否成功，并记录日志。\n\n### 示例3：与其他关键字结合使用\n\n```robot\n*** Test Cases ***\nCombined Test Case\n    ${status}  ${result}   Run Keyword And Ignore Error  Another Keyword\n    Run Keyword Unless  '${status}' == 'PASS'  Log  Corrective action needed: ${result}\n    Run Keyword And Continue On Failure  Some Recovery Keyword\n```\n\n在这个示例中，如果 `Another Keyword` 失败，我们会记录错误信息，并继续运行一个恢复操作。\n\n在 Robot Framework 5.0 中，建议使用原生的 `TRY/EXCEPT` 功能进行错误处理，因为它提供了更灵活和强大的机制来处理异常情况。"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "请详细介绍 TRY/EXCEPT 语法，请举些例子说明如何使用",
         "output": "在进行WebUI自动化编写时，TRY/EXCEPT语法用于处理可能会发生错误的代码段。TRY块中放置可能导致异常的代码，而EXCEPT块处理这些异常。TRY/EXCEPT结构可以确保即使发生错误，程序也不会立即中断。\n\n以下为TRY/EXCEPT用法的例子：\n\n```robot\n*** Test Cases ***\nTry Except Example\n    TRY\n        # 尝试点击可能不存在的元素\n        ClickElem  |  button:contains(不存在)\n    EXCEPT\n        # 处理异常，例如输出错误信息\n        Log  |  元素未找到，点击失败\n    ELSE\n        # 如果没有异常发生，执行下列代码\n        Log  |  点击成功\n    FINALLY\n        # 无论是否发生异常，始终执行\n        Log  |  测试结束\n```\n\n在这个例子中，TRY块中尝试点击一个可能不存在的按钮。如果出现异常（例如元素未找到），EXCEPT块中的代码将会执行，输出错误信息。ELSE块在没有异常时执行。FINALLY块无论结果如何都会执行，用于收尾操作。"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "请详细介绍 TRY/FINALLY 语法，请举些例子说明如何使用",
         "output": "在进行WebUI自动化编写时，TRY/FINALLY 语法提供了一种在测试执行时确保一定代码块总会被执行的机制。TRY/FINALLY 结构常用于在测试中需要无论成功或失败都执行的操作，例如清理工作或资源释放。\n\n以下是关于如何使用 TRY/FINALLY 语法的示例：\n\n```robot\n*** Test Cases ***\n示例用例\n    TRY\n        # 尝试执行的代码块\n        Click    登录\n        WaitText    欢迎页面\n    FINALLY\n        # 无论上面的代码成功与否，都会执行这里的代码\n        RefreshPage\n\n# 在这个示例中，无论 \"登录\" 和 \"欢迎页面\" 的操作是否成功，页面都会刷新。\n```\n\n在进行WebUI自动化编写时，TRY/FINALLY 确保在测试过程中，无论前面操作是否抛出错误，FINALLY 中的操作都会执行，从而保证测试环境的清理或资源状态的一致性。"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "请详细介绍 LoginFeiShu 这个登录飞书关键字的用法，请举些例子说明如何使用",
         "output": "在进行WebUI自动化编写时，`LoginFeiShu` 关键字用于登录飞书应用。该关键字需要提供一个会话参数和一个可选的URL参数。默认的URL是`https://passport.feishu.cn`。以下是其使用示例：\n\n```robot\n*** Variables ***\n${SESSION}    my_session\n${URL}        https://passport.feishu.cn/login\n\n*** Test Cases ***\n登录飞书默认链接\n    LoginFeiShu    ${SESSION}\n\n登录飞书指定链接\n    LoginFeiShu    ${SESSION}    url=${URL}\n```\n\n在第一个示例中，使用`LoginFeiShu`关键字登录到默认的飞书登录页面。在第二个示例中，使用一个指定的URL来登录飞书。"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "如何查找给定基准元素周围上下左右的满足条件的元素",
         "output": "在进行WebUI自动化编写时，可以使用EasyUiLib中的关键字来查找给定基准元素周围上下左右的满足条件的元素。以下是一些使用示例：\n\n1. **查找基准元素‘验证码’下方的文本‘登录’：**\n   \n   ```robot\n   FindTextToTheDirectionOf | 验证码 | bottom | 登录\n   ```\n\n2. **查找基准元素‘暂不处理’右下方的class包含‘cancel’的元素：**\n   \n   ```robot\n   FindElemToTheDirectionOf | 暂不处理 | bottomRight | [class*=cancel]\n   ```\n\n3. **查找基准元素`${elem}`左上方的name为‘a’的元素：**\n\n   ```robot\n   FindElemToTheDirectionOf | ${elem} | topLeft | [name=a]\n   ```\n\n4. **查找‘知道了’上方的‘关闭’图标：**\n\n   ```robot\n   FindIconToTheDirectionOf | 知道了 | top | close\n   ```\n\n这些示例展示了如何使用方向（如top、bottom、left、right等）来查找基准元素附近的目标元素、文本或图标。"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "如何校验给定基准元素周围上下左右存在满足条件的元素/文本/icon",
         "output": "在进行WebUI自动化编写时，可以使用EasyUiLib中的一些关键字校验给定基准元素周围上下左右存在满足条件的元素、文本或icon。以下是一些例子说明如何使用：\n\n1. **校验基准元素左侧是否存在指定文本：**\n\n```robot\nCheckHasTextToTheDirectionOf | 基准元素 | left | 指定文本\n```\n\n2. **校验基准元素右侧是否存在指定元素：**\n\n```robot\nCheckHasElemToTheDirectionOf | 基准元素 | right | [jquery选择器]\n```\n\n3. **校验基准元素上方是否存在指定icon：**\n\n```robot\nCheckHasIconToTheDirectionOf | 基准元素 | top | icon名称\n```\n\n4. **校验基准元素下方是否存在指定文本：**\n\n```robot\nCheckHasTextToTheDirectionOf | 基准元素 | bottom | 文本1\n```\n\n5. **校验基准元素右上方是否存在指定的元素：**\n\n```robot\nCheckHasElemToTheDirectionOf | 基准元素 | topRight | [jquery选择器]\n```\n\n这些方法允许灵活地校验基准元素周围各个方向的特定内容是否存在，从而保障自动化测试的准确性。"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "如何校验弹框中存在给定文案",
         "output": "在进行WebUI自动化编写时，可以使用`CheckHasText`关键字来校验弹框中存在给定文案。以下是一些示例：\n\n```robot\n# 校验弹框中存在“确认”文案\nCheckHasText | 确认 | base=POPUP\n\n# 校验弹框中同时存在“提示”和“是否继续”文案\nCheckHasText | 提示 | 是否继续 | base=POPUP\n\n# 校验弹框中存在“错误”或“警告”中的任意一个文案\nCheckHasAnyText | 错误 | 警告 | base=POPUP\n```\n\n这些示例展示了如何在弹框中验证指定的文本存在。"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "请详细介绍 Convert Date 这个关键字的用法，请举些例子说明如何使用",
         "output": "在进行WebUI自动化编写时，`Convert Date`关键字用于在支持的日期格式之间进行转换。以下是几个使用示例及其说明：\n\n1. **基本转换示例**：\n   - ```robot\n     ${date} = Convert Date 20140528 12:05:03.111\n     Should Be Equal ${date}  2014-05-28 12:05:03.111\n     ```\n   - 该示例将日期格式`20140528 12:05:03.111`转换为`2014-05-28 12:05:03.111`。\n\n2. **转换为纪元时间戳**：\n   - ```robot\n     ${date} = Convert Date ${date}  epoch\n     Should Be Equal ${date}  ${1401267903.111}\n     ```\n   - 日期被转换为纪元时间戳格式。\n\n3. **自定义日期格式和去除毫秒**：\n   - ```robot\n     ${date} = Convert Date 5.28.2014 12:05  exclude_millis=yes  date_format=%m.%d.%Y %H:%M\n     Should Be Equal ${date}  2014-05-28 12:05:00\n     ```\n   - 使用自定义格式`%m.%d.%Y %H:%M`解析日期，并通过`exclude_millis=yes`去除毫秒信息，结果返回`2014-05-28 12:05:00`。"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "请详细介绍 Convert Time 这个关键字的用法，请举些例子说明如何使用",
         "output": "在进行WebUI自动化编写时，`Convert Time`关键字用于在不同的时间格式之间进行转换。以下是一些使用示例：\n\n1. 将秒数转换为默认格式的数字：\n   ```robot\n   ${time} = Convert Time  10 seconds\n   Should Be Equal  ${time}  ${10}\n   ```\n\n2. 将时间格式转换为详细说明的格式：\n   ```robot\n   ${time} = Convert Time  1:00:01  verbose\n   Should Be Equal  ${time}  1 hour 1 second\n   ```\n\n3. 将带有毫秒的秒数转换为计时器格式，并排除毫秒：\n   ```robot\n   ${time} = Convert Time  ${3661.5}  timer  exclude_milles=yes\n   Should Be Equal  ${time}  01:01:02\n   ```\n\n通过这些示例，可以有效地处理和转换时间格式，以符合测试需求。"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "请详细介绍 Add Time To Date 这个关键字的用法，请举些例子说明如何使用",
         "output": "在进行WebUI自动化编写时，`Add Time To Date` 是一个用于处理日期和时间的关键字，可以向给定日期添加时间，并返回结果日期。\n\n### 用法说明\n\n- **参数说明**：\n  - `date`: 需要添加时间的日期，支持多种日期格式。\n  - `time`: 增加的时间，支持多种时间格式。\n  - `result_format`: 返回的日期格式。\n  - `exclude_millis`: 如果设置为 `true`，则舍去毫秒部分。\n  - `date_format`: 日期的自定义格式。\n\n### 示例\n\n```robot\n# 将日期 \"2014-05-28 12:05:03.111\" 加上7天\n${date} =  Add Time To Date  2014-05-28 12:05:03.111  7 days\nShould Be Equal  ${date}  2014-06-04 12:05:03.111\n\n# 将日期 \"2014-05-28 12:05:03.111\" 增加 01:02:03.004 时间\n${date} =  Add Time To Date  2014-05-28 12:05:03.111  01:02:03.004\nShould Be Equal  ${date}  2014-05-28 13:07:06.115\n```\n\n在这个示例中，通过 `Add Time To Date` 可以直接调整和计算日期与时间，非常适合在自动化测试中对日期进行动态操作。"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "请详细介绍 Subtract Date From Date 这个关键字的用法，请举些例子说明如何使用",
         "output": "在进行WebUI自动化编写时，`Subtract Date From Date` 关键字用于计算两个日期之间的时间差。其参数包括：\n\n- `date1`: 基准日期。\n- `date2`: 被减日期。\n- `result_format`: 返回时间的格式，如`number`或`verbose`。\n- `exclude_millis`: 如果为真，舍弃毫秒。\n- `date1_format` 和 `date2_format`: 自定义日期格式。\n\n示例：\n\n```robot\n${time} = Subtract Date From Date  2014-05-28 12:05:52  2014-05-28 12:05:10\nShould Be Equal  ${time}  ${42}\n\n${time} = Subtract Date From Date  2014-05-28 12:05:52  2014-05-27 12:05:10  verbose\nShould Be Equal  ${time}  1 day 42 seconds\n```"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "请详细介绍 Subtract Time From Date 这个关键字的用法，请举些例子说明如何使用",
         "output": "在进行WebUI自动化编写时，`Subtract Time From Date` 是一个用于从给定日期减去指定时间并返回结果日期的关键字。\n\n示例用法：\n\n```robot\n*** Test Cases ***\n减去日期示例\n    # 从 2014-06-04 12:05:03.111 减去 7 天\n    ${date} =  Subtract Time From Date  2014-06-04 12:05:03.111  7 days\n    # 验证结果和预期日期是否相等\n    Should Be Equal  ${date}  2014-05-28 12:05:03.111\n\n减去时间示例\n    # 从 2014-05-28 13:07:06.115 减去 01:02:03:004 (1小时2分钟3秒4毫秒)\n    ${date} =  Subtract Time From Date  2014-05-28 13:07:06.115  01:02:03:004\n    # 验证结果和预期日期是否相等\n    Should Be Equal  ${date}  2014-05-28 12:05:03.111\n```\n\n关键字参数：\n- `date`: 要减去时间的日期。\n- `time`: 要减去的时间。\n- `result_format`: 返回日期的格式。\n- `exclude_millis`: 如果设置为真，舍去毫秒。\n- `date_format`: 自定义日期格式。\n\n通过这些示例，你可以了解到如何使用`Subtract Time From Date`关键字来处理日期和时间操作。"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "请详细介绍 FindElemToTheDirectionOf 这个关键字的用法，请举些例子说明如何查找基准元素给定方位（上下左右四面八方）的目标元素",
         "output": "在进行WebUI自动化编写时，`FindElemToTheDirectionOf` 关键字用于查找基准元素在指定方位的目标元素。它有助于在页面布局复杂时精确定位需要操作的元素。以下是其用法及例子：\n\n### 关键字签名：\n\n```\n${elem}  FindElemToTheDirectionOf | the_base | direction | selector=* | idx=0\n```\n\n- **the_base**: 基准元素，可以是文本或元素的定位方式。\n- **direction**: 方向，包括 `left`、`right`、`top`、`bottom`、`topLeft`、`bottomRight`、`topRight`、`bottomLeft`。\n- **selector**: jQuery选择器，用于找到目标元素。\n- **idx**: 索引，用于在有多个目标元素时选择特定的一个。\n\n### 示例：\n\n1. **查找左边的元素**\n\n   查找文本“提交”左边的第一个按钮：\n   ```robotframework\n   ${elem}  FindElemToTheDirectionOf | 提交 | left | button\n   ```\n\n2. **查找右边的元素**\n\n   查找基准元素 `${base_elem}` 右边的 class 包含 “active” 的 div：\n   ```robotframework\n   ${elem}  FindElemToTheDirectionOf | ${base_elem} | right | div[class*=active]\n   ```\n\n3. **查找上面的元素**\n\n   查找文本“描述”上面的输入框：\n   ```robotframework\n   ${elem}  FindElemToTheDirectionOf | 描述 | top | input\n   ```\n\n4. **查找下面的元素**\n\n   查找基准文本“标题”下方的第二个 span：\n   ```robotframework\n   ${elem}  FindElemToTheDirectionOf | 标题 | bottom | span | idx=1\n   ```\n\n5. **查找右下方的元素**\n\n   查找元素 `${elem}` 右下方的 class 包含 “button”的第一个图标：\n   ```robotframework\n   ${elem}  FindElemToTheDirectionOf | ${elem} | bottomRight | svg[class*=button]\n   ```\n\n6. **查找左上方的元素**\n\n   查找“结束”左上方的第一个 div：\n   ```robotframework\n   ${elem}  FindElemToTheDirectionOf | 结束 | topLeft | div\n   ```\n\n这些例子展示了如何利用 `FindElemToTheDirectionOf` 关键字在页面上查找特定方向上的元素，帮助自动化测试人员更加高效地定位并操控Web页面元素。"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "请详细介绍 FindTextToTheDirectionOf 这个关键字的用法，请举些例子说明如何查找基准元素给定方位（上下左右四面八方）的目标文本",
         "output": "在进行WebUI自动化编写时，`FindTextToTheDirectionOf` 关键字用于查找基准元素在指定方向的目标文本。这个关键字允许我们根据基准元素和给定的方向（如上、下、左、右、左上、右下等）定位目标文本。以下是一些典型用法：\n\n```\n# 查找“用户名”上方的“提示”文本\n${hint}  FindTextToTheDirectionOf | 用户名 | top | 提示\n\n# 查找“提交”按钮下方的“确认”文本\n${confirmation}  FindTextToTheDirectionOf | 提交 | bottom | 确认\n\n# 查找“搜索”按钮左边的“标签”文本\n${label}  FindTextToTheDirectionOf | 搜索 | left | 标签\n\n# 查找“帮助”链接右边的“联系我们”文本\n${contact}  FindTextToTheDirectionOf | 帮助 | right | 联系我们\n\n# 查找“登录”文本左上方的“安全提示”文本\n${securityNotice}  FindTextToTheDirectionOf | 登录 | topLeft | 安全提示\n\n# 查找“设置”右下方的“选项”文本\n${options}  FindTextToTheDirectionOf | 设置 | bottomRight | 选项\n\n# 查找基准元素“导航栏”下右方的“快速链接”文本\n${quickLinks}  FindTextToTheDirectionOf | 导航栏 | bottomRight | 快速链接\n\n# 查找“密码”字段上左方的“密保问题”文本\n${securityQuestion}  FindTextToTheDirectionOf | 密码 | topLeft | 密保问题\n```\n\n这些例子展示了如何使用 `FindTextToTheDirectionOf` 关键字在页面布局中基于相对位置查找特定文本。"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "请详细介绍 FindIconToTheDirectionOf 这个关键字的用法，请举些例子说明如何查找基准元素给定方位（上下左右四面八方）的目标Icon",
         "output": "在进行WebUI自动化编写时，`FindIconToTheDirectionOf`关键字用于查找基准元素在指定方向上的目标Icon。这个关键字可以帮助我们精确定位页面元素并获取其信息。以下是一些使用此关键字的示例：\n\n1. **查找基准元素右侧的一个特定Icon**\n\n   ```robot\n   ${icon}  FindIconToTheDirectionOf | 基准元素文本 | right | icon='目标Icon名称'\n   ```\n\n2. **查找基准元素左侧的第二个Icon**\n\n   ```robot\n   ${icon}  FindIconToTheDirectionOf | 基准元素文本 | left | idx=1\n   ```\n\n3. **查找基准元素上方的Icon**\n\n   ```robot\n   ${icon}  FindIconToTheDirectionOf | 基准元素文本 | top\n   ```\n\n4. **查找基准元素下方特定名称的Icon**\n\n   ```robot\n   ${icon}  FindIconToTheDirectionOf | 基准元素文本 | bottom | icon='特定Icon名称'\n   ```\n\n5. **查找屏幕中心左下方的Icon**\n\n   ```robot\n   ${icon}  FindIconToTheDirectionOf | SCREEN_CENTER | bottomLeft\n   ```\n\n这些示例展示了如何使用`FindIconToTheDirectionOf`关键字从不同方向查找基准元素附近的Icon。"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "请详细介绍 CheckHasElemToTheDirectionOf 这个关键字的用法，请举些例子说明如何校验基准元素给定方位（上下左右四面八方）存在目标元素",
         "output": "在进行WebUI自动化编写时，`CheckHasElemToTheDirectionOf` 关键字用于校验基准元素在指定方向上是否存在目标元素。此关键字非常适用于需要动态判断页面元素布局的场景。\n\n基本使用格式为：\n```\nCheckHasElemToTheDirectionOf | 基准元素 | 方向 | 选择器 | idx=0\n```\n\n- `基准元素`：开始查找的参考元素。\n- `方向`：目标元素相对于基准元素的位置，可以是 `left`、`right`、`top`、`bottom`、`topLeft`、`bottomRight`、`topRight`、`bottomLeft`。\n- `选择器`：用jQuery语法选择目标元素。\n- `idx`：指定目标元素在符合条件的元素中的索引，默认是第一个。\n\n### 示例：\n\n1. **校验基准元素右侧是否存在class包含`btn`的按钮：**\n   ```plaintext\n   CheckHasElemToTheDirectionOf | 基准元素选择器 | right | button[class*=btn]\n   ```\n\n2. **校验基准元素上方的第二个`div`是否存在：**\n   ```plaintext\n   CheckHasElemToTheDirectionOf | 基准元素选择器 | top | div | idx=1\n   ```\n\n3. **校验基准元素左上方是否存在id为`header`的元素：**\n   ```plaintext\n   CheckHasElemToTheDirectionOf | 基准元素选择器 | topLeft | [id=header]\n   ```\n\n4. **校验屏幕下方中心的class为`footer`的div是否存在：**\n   ```plaintext\n   CheckHasElemToTheDirectionOf | SCREEN_CENTER | bottom | div[class=footer]\n   ```\n\n通过这些例子，可以灵活判断页面上相对布局的元素是否存在，这对自动化测试场景十分有用。"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "请详细介绍 CheckHasTextToTheDirectionOf 这个关键字的用法，请举些例子说明如何校验基准元素给定方位（上下左右四面八方）存在目标文本",
         "output": "在进行WebUI自动化编写时，`CheckHasTextToTheDirectionOf` 关键字用于校验基准元素在指定方向存在的目标文本。以下是其用法示例：\n\n### 用法说明\n\n- **参数**：\n  - `the_base`: 基准元素，可以是文本或特殊标识。\n  - `direction`: 方向，包括 `left`、`right`、`top`、`bottom`。\n  - `text`: 要校验的目标文本。\n  - `idx`: (可选) 指定多个符合条件的元素中的第几个，从 `0` 开始。\n\n### 示例代码\n\n```robot\n# 校验 \"提交\" 元素右边存在 \"确认\"\nCheckHasTextToTheDirectionOf | 提交 | right | 确认\n\n# 校验 \"用户名\" 上方存在 \"登录\"\nCheckHasTextToTheDirectionOf | 用户名 | top | 登录\n\n# 校验 \"完成\" 左边存在 \"取消\"\nCheckHasTextToTheDirectionOf | 完成 | left | 取消\n\n# 校验 \"总计\" 下方存在 \"明细\"\nCheckHasTextToTheDirectionOf | 总计 | bottom | 明细\n\n# 校验\"选项\" 右边存在2个 \"删除\"\nCheckHasTextToTheDirectionOf | 选项 | right | 删除 | idx=1\n```\n\n这些示例展示了如何使用 `CheckHasTextToTheDirectionOf` 在不同方向查找文本，确保页面布局正确并满足测试要求。"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "请详细介绍 CheckHasIconToTheDirectionOf 这个关键字的用法，请举些例子说明如何校验基准元素给定方位（上下左右四面八方）存在目标Icon",
         "output": "在进行WebUI自动化编写时，`CheckHasIconToTheDirectionOf` 这个关键字用于校验基准元素给定方位存在目标Icon。该关键字的使用方法包括以下几个参数：\n\n- `the_base`: 基准元素，可以是指定文本、元素选择器等。\n- `direction`: 目标Icon的位置方向，可以是 `left`、`right`、`top`、`bottom`、`topLeft`、`bottomRight`、`topRight`、`bottomLeft`。\n- `icon`: 需要校验的目标Icon名称。\n- `idx`: 如果同一方向有多个Icon，`idx` 用来指定要校验的是第几个，索引从0开始。\n\n示例代码：\n\n```robot\n# 校验基准元素‘提交’右边存在‘edit’图标\nCheckHasIconToTheDirectionOf | 提交 | right | edit\n\n# 校验 class 包含 'header' 的元素下方存在 'close' 图标\nCheckHasIconToTheDirectionOf | [class*=header] | bottom | close\n\n# 校验屏幕中心上方的第一个 'settings' 图标是否存在\nCheckHasIconToTheDirectionOf | SCREEN_CENTER | top | settings | idx=0\n\n# 校验基准元素 ‘完成’ 左上角存在 'checkmark' 图标\nCheckHasIconToTheDirectionOf | 完成 | topLeft | checkmark\n\n# 校验 class 包含 'footer' 的元素左侧第二个 'arrow' 图标\nCheckHasIconToTheDirectionOf | [class*=footer] | left | arrow | idx=1\n```"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "请举些例子说明如何点击弹窗中心给定方位（上下左右..）的元素/文本/icon",
         "output": "在进行WebUI自动化编写时，可以使用以下示例来点击弹窗中心给定方位的元素、文本或icon， 基准元素的特殊值POPUP表示弹窗中心：\n\n```robot\n# 点击弹窗中心上方的\"确认\"按钮\nClickTextToTheDirectionOf | POPUP | top | 确认\n\n# 点击弹窗中心右方的class包含\"save\"的元素\nClickElemToTheDirectionOf | POPUP | right | [class*=save]\n\n# 点击弹窗中心下方的\"关闭\"小图标\nClickIconToTheDirectionOf | POPUP | bottom | close\n\n# 点击弹窗中心左方的\"取消\"文本\nClickTextToTheDirectionOf | POPUP | left | 取消\n\n# 点击弹窗中心右上方的\"编辑\"图标\nClickIconToTheDirectionOf | POPUP | topRight | edit\n\n# 点击弹窗中心左下方的class包含\"delete\"的元素\nClickElemToTheDirectionOf | POPUP | bottomLeft | [class*=delete]\n```"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "请举些例子说明如何等待给定名称的页面字段的值包含目标文本",
         "output": "在进行WebUI自动化编写时，可以使用`WaitFieldContainsAll`关键字来等待给定名称的页面字段的值包含目标文本。以下是一些示例：\n\n```robot\n# 等待字段名为“用户名”的字段包含文本“张三”\nWaitFieldContainsAll | 用户名 | 张三\n\n# 等待第2个字段名为“地址”的字段包含文本“上海”\nWaitFieldContainsAll | 地址 | 上海 | idx=1\n\n# 在基准元素为弹窗的情况下，等待字段名为“邮箱”的字段包含文本“example.com”\nWaitFieldContainsAll | 邮箱 | example.com | base=POPUP\n\n# 等待字段名为“描述”的字段包含多个文本“关键字1”和“关键字2”\nWaitFieldContainsAll | 描述 | 关键字1 | 关键字2\n```\n\n这样就可以在页面加载时，确保特定字段的值符合预期内容。"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "`Get Current Date` 关键字用于获取当前的时间，`increment` 参数可以用来调整时间，请举些例子说明如何使用",
         "output": "在进行WebUI自动化编写时，`Get Current Date` 关键字用于获取当前的时间，`increment` 参数可以用来调整时间。例如：\n\n- 如果需要获取当前时间的30分钟后，可以使用：`Get Current Date | increment=30 minutes`\n- 如果需要获取当前时间的1天前，可以使用：`Get Current Date | increment=-1 day`\n- 如果需要获取当前时间的2小时10分钟后，可以使用：`Get Current Date | increment=2 hours 10 minutes`\n\n这些示例展示了如何通过`increment`参数调整时间。\n\n以下是更多示例：\n# 获取当前日期并加一天\n${tomorrow}  Get Current Date  increment=1 day\n\n# 获取当前日期并减去两个小时\n${two_hours_ago}  Get Current Date  increment=-2 hours\n\n# 获取当前日期并加一周\n${next_week}  Get Current Date  increment=1 week\n\n# 获取当前日期并减去三十分钟\n${half_hour_ago}  Get Current Date  increment=-30 minutes"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "请举些例子说明 SetPopupField 的主要功能，以及如何使用",
         "output": "在进行WebUI自动化编写时，`SetPopupField`主要用于在弹窗中操作页面字段的关联控件区域，填写指定的值。以下是一些使用`SetPopupField`的例子：\n\n1. 在弹窗中设置姓名为“李四”：\n   ```\n   SetPopupField | 姓名 | 李四\n   ```\n\n2. 在弹窗中设置第2个表单的年龄为“20”：\n   ```\n   SetPopupField | 年龄 | 20 | idx=1\n   ```\n   \n3. 在弹窗中靠近“地址”文本区域输入“北京市朝阳区”：\n   ```\n   SetPopupField | 地址 | 北京市朝阳区 | near=地址\n   ```\n   \n4. 在弹窗中设置职业为“工程师”，并输入回车：\n   ```\n   SetPopupField | 职业 | 工程师 | enter=True\n   ```\n   \n这些例子展示了如何在弹窗中使用`SetPopupField`来进行数据输入和表单填写。"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "不知道要怎么做，如何编写 WebUI 自动化用例",
         "output": "<thought>\n由于没有具体的操作指示，这是一个开放性的问题。我将展示如何使用RobotFramework中可用的关键字来构建一个通用的自动化测试脚本。假设我们需要进行一些基本的点击操作，比如点击某个文本，点击特定元素，以及在弹窗中进行操作。我将使用给定的关键字示例来展示如何编写这些操作。\n</thought>\n\n<code_block>\n# 点击第一个包含“示例文本”的元素\nClick | 示例文本 | idx=0\n\n# 点击选择器选择的元素\nClickElem | div[class='example-class']:eq(0)\n\n# 依次点击添加和确认按钮\nClickTextOneByOne | 添加 | 确认\n\n# 点击弹窗中的取消按钮\nClick | 取消 | base=POPUP\n\n# 点击空白区域以取消选择\nClickWhiteArea\n</code_block>"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "Press Keys 关键字有什么作用，何时使用，请举例说明",
         "output": "在进行WebUI自动化编写时，`Press Keys`关键字用于模拟用户向元素或活动浏览器发送按键操作。当`locator`参数为`None`时，按键将发送到当前活动的浏览器。如果提供了`locator`，按键将发送到指定的元素，并且如果找不到元素，则关键字会失败。按键参数可以是一个或多个字符串，也可以是字符串与[Selenium Keys](https://seleniumhq.github.io/selenium/docs/api/py/webdriver/selenium.webdriver.common.keys.html)的组合。Selenium Keys和字符串之间用`+`字符分隔，例如`CONTROL+c`。支持同时按下多个Selenium Keys，例如`ALT+ARROW_DOWN`。\n\n示例用法：\n```robot\n# 向一个文本输入框发送字符串\"AAAAA\"\nPress Keys | text_field | AAAAA\n\n# 向当前活动的浏览器发送字符串\"BBBBB\"\nPress Keys | None | BBBBB\n\n# 向一个文本输入框发送\"END\"字符串\nPress Keys | text_field | E+N+D\n\n# 同时按下\"ALT\"键和\"ARROW_DOWN\"键，然后释放\nPress Keys | text_field | ALT+ARROW_DOWN\n```\n这些示例展示了如何使用`Press Keys`关键字在自动化测试中模拟键盘输入操作。"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "Robot Framework 中有许多内置变量，他们可用于获取用例，之前的用例，测试套件等多种测试对象的元数据，请举例说明",
         "output": "在进行WebUI自动化编写时，Robot Framework 提供了一些内置变量，用于获取测试用例、之前用例和测试套件等的元数据。以下是几个示例说明：\n\n- `${TEST NAME}`：当前测试用例的名称，适用于测试用例中。\n- `@{TEST TAGS}`：当前测试用例的标签，以字母顺序排列，适用于测试用例中，可以动态修改。\n- `${TEST DOCUMENTATION}`：当前测试用例的文档说明，可以动态设置，适用于测试用例中。\n- `${PREV TEST NAME}`：上一个测试用例的名称，如果没有执行测试则为空字符串，适用于所有地方。\n- `${PREV TEST STATUS}`：上一个测试用例的状态，可能是 PASS、FAIL 或空字符串，适用于所有地方。\n- `${PREV TEST MESSAGE}`：上一个测试用例的错误信息，如果有，适用于所有地方。\n- `${SUITE NAME}`：当前测试套件的完整名称，适用于所有地方。\n- `${SUITE SOURCE}`：套件文件或目录的绝对路径，适用于所有地方。\n- `${SUITE DOCUMENTATION}`：当前测试套件的文档说明，可以动态设置，适用于所有地方。"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "如何搜索浏览器发出的到给定接口的请求，请举例说明",
         "output": "在进行WebUI自动化编写时，可以使用 `Search Requests` 关键字来搜索浏览器发出的请求。\n\n# 示例1：搜索请求 url 中包含 '/api/data'，且请求方式为 GET 的最后一个请求\n${resp_json}  Search Requests  /api/data  GET  last\n\n# 示例2：搜索请求 url 中包含 '/api/user'，且请求方式为 POST 的第一个请求\n${resp_json}  Search Requests  /api/user  POST  first\n\n# 示例3：搜索请求 url 中包含 '/products'，且请求方式为 DELETE 的所有请求\n${resp_json}  Search Requests  /products  DELETE  all\n\n# 示例4：搜索请求 url 中包含 '/orders'，且请求方式为 PUT 的最后两个请求\n${resp_json}  Search Requests  /orders  PUT  last2\n\n# 示例5：搜索请求 url 中包含 '/reviews'，且请求方式为 PATCH 的最后三个请求，且请求体包含模式 'status.*approved'\n${resp_json}  Search Requests  /reviews  PATCH  last3  status.*approved\n\n这些例子展示了如何利用 `Search Requests` 关键字搜索特定条件的网络请求。通过不同的 `mode` 和 `req_body_pattern` 参数可以进一步过滤和定位请求。"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "try catch 如何使用",
         "output": "<thought>\ntry catch场景需要使用RobotFramework提供的TRY/EXCEPT结构来实现。TRY块中放置可能抛出异常的关键词，EXCEPT块中放置处理异常的关键词。\n</thought>\n\n<code_block>\n# 尝试点击一个可能不存在的文本\nTRY\n    Click | 不存在的文本\nEXCEPT\n    # 捕获异常后点击取消\n    Click | 取消\nEND\n</code_block>"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "${exist}是什么意思",
         "output": "<thought>\n在RobotFramework中，${exist}通常是一个变量，用于在测试中保存一些值。根据上下文，它可能用于判断某个元素是否存在，或者某个条件是否为真。在这种情况下，我们需要检查页面上是否存在特定的文本或元素。假设我们需要验证某个文本是否存在，我们可以使用Click或者ClickElem关键字来查找和验证元素的存在性。如果需要用到条件控制语句，我们会使用RF内置的IF/ELSE结构。\n</thought>\n\n<code_block>\n# 假设我们要检查文本\"示例文本\"是否存在，并进行相应操作\n\n# 点击文本\"示例文本\"以检查其存在性\nClick | 示例文本\n\n# 如果文本存在，则执行某个操作，否则执行另一个操作\nIF    ${exist} == True\n    # 文本存在时的操作\n    Click | 下一步\nELSE\n    # 文本不存在时的操作\n    Click | 取消\nEND\n</code_block>"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "2025-01-02 21:18:58.938 把这样的怎么转成yyyy-mm-dd",
         "output": "<thought>\n对于日期格式转换问题，Robot Framework 的 BuiltIn 库提供了一些日期和时间处理的关键字。在这个场景中，可以使用 Convert Date 关键字将日期从一种格式转换为另一种格式。首先，我们需要确定当前日期时间的格式，然后利用 Convert Date 将其转换为目标格式 yyyy-mm-dd。\n</thought>\n\n<code_block>\n# 将日期转换为所需格式\n${converted_date}  Convert Date  2025-01-02 21:18:58.938  result_format=%Y-%m-%d\n\n# 输出转换后的日期以便验证\nLog  ${converted_date}\n</code_block>"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "如何清除浏览器中的 cookies",
         "output": "<thought>\n为了清除Cookie，在Robot Framework中可以利用SeleniumLibrary中的Delete All Cookies关键字。SeleniumLibrary是Robot Framework的一个常用扩展库，提供了对Web浏览器的操作功能，其中包括管理浏览器Cookie的能力。使用Delete All Cookies关键字可以直接删除当前会话中的所有Cookie。\n</thought>\n\n<code_block>\n# 清除所有Cookie\nDelete All Cookies\n</code_block>"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "如何获取当前页面的 cookie，请多举几个例子说明",
         "output": "在进行WebUI自动化编写时，如果需要获取当前页面的cookie，可以使用SeleniumLibrary的`Get Cookies`关键字。以下是几个使用示例：\n\n# 示例1：获取cookie并以字符串形式返回，适合用于日志记录或HTTP请求头\n${cookies_string}   Get Cookies\nLog  ${cookies_string}\n\n# 示例2：获取cookie并以字典形式返回，适合用于传递给requests库的Create Session关键字\n${cookies_dict}   Get Cookies  as_dict=True\nCreate Session  my_session  http://example.com  cookies=${cookies_dict}\n\n# 示例3：直接在测试中使用cookie字符串验证\nShould Contain  ${cookies_string}  sessionid=\n\n# 示例4：在其他请求中使用获取到的cookie字典\n${cookies}   Get Cookies  as_dict=True\n${response}   http.Request  GET  http://example.com  cookies=${cookies}\n\n以上示例展示了如何通过`Get Cookies`关键字获取当前页面的cookie，并且展示了两种返回格式（字符串和字典）的应用。"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "如何获取给定名称的 cookie？如从 cookie中获取 session_id",
         "output": "在进行WebUI自动化编写时，可以使用SeleniumLibrary的`Get Cookie`关键字来获取给定名称的cookie。以下是一些示例：\n\n1. 获取名为`session_id`的cookie：\n   ```robot\n   ${cookie}   Get Cookie  session_id\n   Should Be Equal  ${cookie.name}  session_id\n   ${session_value}   ${cookie.value}\n   ```\n\n2. 获取名为`user_token`的cookie：\n   ```robot\n   ${cookie}   Get Cookie  user_token\n   Should Be Equal  ${cookie.name}  user_token\n   ${user_token_value}   ${cookie.value}\n   ```\n\n3. 获取名为`auth_key`的cookie，并检查其过期时间：\n   ```robot\n   ${cookie}   Get Cookie  auth_key\n   Should Be Equal  ${cookie.name}  auth_key\n   Should Be True  ${cookie.expiry.year} > 2023\n   ```\n\n通过这些示例，可以看到如何获取不同名称的cookie，同时可以利用获取的cookie对象进行进一步的属性检查和验证。"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "如何校验页面元素中包含指定文本",
         "output": "在进行WebUI自动化编写时，可以使用多种关键字来校验某个元素中是否包含指定文本。以下是一些示例：\n\n1. **使用`CheckFieldContains`关键字：**\n   - 校验页面中名为\"描述\"的字段同时包含文本\"完成\"和\"成功\"。\n     ``` \n     CheckFieldContains | 描述 | 完成 | 成功\n     ```\n\n   - 校验第3个名为\"摘要\"的字段中包含文本\"详细信息\"。\n     ```\n     CheckFieldContains | 摘要 | 详细信息 | idx=2\n     ```\n\n2. **使用`CheckHasText`关键字：**\n   - 校验页面是否同时包含文本\"提交成功\"和\"已处理\"。\n     ``` \n     CheckHasText | 提交成功 | 已处理 \n     ```\n\n   - 在弹窗中校验是否有文本\"操作完成\"。\n     ```\n     CheckHasText | 操作完成 | base=POPUP\n     ```\n\n3. **使用`GetElemText`结合`Should Contain`关键字：**\n   - 获取id为\"提示\"的元素文本，并验证其包含\"成功\"。\n     ```\n     ${val}  GetElemText | [id='提示']\n     Should Contain | ${val} | 成功\n     ```\n\n4. **使用`FindElem`结合`GetElemText`：**\n   - 查找class为\"result\"的元素，并验证其文本中包含\"通过\"。\n     ```\n     ${elem}  FindElem | [class*=result]\n     ${text}  GetElemText | ${elem}\n     Should Contain | ${text} | 通过\n     ```\n\n通过使用这些关键字及组合方法，可以灵活地校验页面中元素是否包含指定的文本。"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "如何开启对给定接口的mock，请多举几个例子说明",
         "output": "在进行WebUI自动化编写时，我们可以使用`Start Mock`关键字来开启对给定接口的mock。以下是一些示例：\n\n```robot\n# 对 URL 中包含 /api/v1/user 的 GET 请求进行 mock，mock 数据存放在 mock_user.json\nStart Mock  /api/v1/user  GET  mock_data_path=mock_user.json\n\n# 对 URL 中包含 /api/v2/products 的 POST 请求进行 mock，mock 数据存放在 products_mock.json\nStart Mock  /api/v2/products  POST  mock_data_path=products_mock.json\n\n# 对 URL 中包含 /api/v3/orders 的 PUT 请求进行 mock，mock 数据存放在 orders_mock.json\nStart Mock  /api/v3/orders  PUT  mock_data_path=orders_mock.json\n\n# 对 URL 中包含 /api/v3/orders/details 的 GET 请求，且请求体匹配 order_id=.* 的接口进行 mock，mock 数据存放在 details_mock.json\nStart Mock  /api/v3/orders/details  GET  order_id=.*  mock_data_path=details_mock.json\n\n# 对 URL 包含 /api/v4/accounts 的 DELETE 请求进行 mock，mock 数据存放在 accounts_mock.json\nStart Mock  /api/v4/accounts  DELETE  mock_data_path=accounts_mock.json\n\n# 对请求 URL 中包含 example.com/api/list, 且方法为 GET 的接口进行 mock，mock 数据从 mock_list_data.json 加载\nStart Mock  example.com/api/list  GET  mock_data_path=mock_list_data.json\n```\n\n这些示例展示了如何对不同请求方式（GET、POST、PUT、DELETE）的接口进行mock，同时提供了mock数据存放路径的设置。"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "如何使用  GetValuesFromJson 关键字从 json 对象中获取数据",
         "output": "在进行WebUI自动化编写时，`GetValuesFromJson`关键字用于从 JSON 对象中获取指定键的值。可以从简单到复杂的 JSON 结构获取数据。以下是几个使用示例：\n\n```robot\n# 示例1: 获取简单的 JSON 数据中的值\n${json_obj} =  Create Dictionary  {\"name\": \"张三\", \"age\": 25}\n${name} =  GetValuesFromJson  ${json_obj}  name\n# ${name} 现在是 \"张三\"\n\n# 示例2: 从嵌套的 JSON 对象中获取值\n${json_obj} =  Create Dictionary  {\"person\": {\"name\": \"李四\", \"age\": 30}}\n${name} =  GetValuesFromJson  ${json_obj}  person:name\n# ${name} 现在是 \"李四\"\n\n# 示例3: 获取数组中的值\n${json_obj} =  Create Dictionary  {\"students\": [{\"name\": \"王五\"}, {\"name\": \"赵六\"}]}\n${student1_name} =  GetValuesFromJson  ${json_obj}  students:name  index=0\n# ${student1_name} 现在是 \"王五\"\n\n# 示例4: 从复杂结构的 JSON 中提取值，可以跨层级提取\n${json_obj} =  Create Dictionary  {\"school\": {\"classes\": [{\"grade\": 1, \"teacher\": {\"name\": \"张老师\"}}, {\"grade\": 2, \"teacher\": {\"name\": \"李老师\"}}]}}\n${teacher_name} =  GetValuesFromJson  ${json_obj}  school:teacher:name  index=1\n# ${teacher_name} 现在是 \"李老师\"\n```"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "RobotFramework 中如何创建变量",
         "output": "在进行WebUI自动化编写时，RobotFramework中创建变量的方式有多种，以下是几个例子：\n\n1. 使用关键字 `Set Variable` 创建简单变量：\n   ```\n   ${x}  Set Variable  3  # 设置变量 x 的值为 3\n   ${name}  Set Variable  张三  # 设置变量 name 的值为 张三\n   ${y}  Set Variable  ${SPACE}  # 将变量 y 设置为空格\n   ${z}  Set Variable  Hello, World!  # 设置变量 z 的值为 Hello, World!\n   ```\n\n2. 创建列表变量：\n   ```\n   @{list}  Create List  item1  item2  item3  # 创建一个包含三个元素的列表变量 list\n   @{names}  Create List  张三  李四  王五  # 创建一个包含名字的列表变量 names\n   ```\n\n3. 创建字典变量：\n   ```\n   &{person}  Create Dictionary  姓名=张三  年龄=30  性别=男  # 创建一个字典变量 person\n   &{student}  Create Dictionary  学号=123456  班级=5班  # 创建一个字典变量 student\n   ```\n\n这些例子展示了在RobotFramework中如何使用简单变量、列表变量和字典变量。通过这些方式可以在自动化脚本中灵活地存储和使用数据。"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "RobotFramework 中如何使用循环",
         "output": "在进行WebUI自动化编写时，RobotFramework 提供了多种循环方式，可以用于处理重复任务。以下是几种常见的循环使用方法：\n\n1. **For循环基础用法：**\n\n```robot\n*** Test Cases ***\nExample For Loop\n    FOR  ${index}  IN  1  2  3\n        Log  当前循环次数: ${index}\n    END\n```\n\n2. **For循环使用列表：**\n\n```robot\n*** Test Cases ***\nLoop Over List\n    @{items}  Create List  item1  item2  item3\n    FOR  ${item}  IN  @{items}\n        Log  当前项目: ${item}\n    END\n```\n\n3. **For循环使用范围：**\n\n```robot\n*** Test Cases ***\nLoop With Range\n    FOR  ${index}  IN RANGE  1  5\n        Log  当前范围值: ${index}\n    END\n```\n\n4. **嵌套For循环：**\n\n```robot\n*** Test Cases ***\nNested For Loops\n    FOR  ${outer}  IN  1  2\n        FOR  ${inner}  IN  A  B\n            Log  外循环: ${outer} 内循环: ${inner}\n        END\n    END\n```\n\n5. **带步长的For循环：**\n\n```robot\n*** Test Cases ***\nLoop With Step\n    FOR  ${index}  IN RANGE  0  10  2\n        Log  当前步长值: ${index}\n    END\n```\n\n这些示例展示了如何在RobotFramework中使用不同类型的循环，用于处理各种自动化场景下的重复操作。"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "RobotFramework 中如何使用条件判断语句",
         "output": "在进行WebUI自动化编写时，RobotFramework 可以通过以下几种方法使用条件判断语句：\n\n1. **Run Keyword If**\n   ```robot\n   *** Test Cases ***\n   示例条件判断\n       ${x}   Set Variable  5\n       Run Keyword If  ${x} > 3  Log  x 大于 3\n       Run Keyword If  ${x} < 3  Log  x 小于 3  ELSE  Log  x 不小于 3\n   ```\n   \n2. **Run Keywords**\n   ```robot\n   *** Test Cases ***\n   多个关键字的条件判断\n       ${status}   Set Variable  PASS\n       Run Keyword If  '${status}' == 'PASS'  RunKeywords  Log  测试通过  AND  Log  继续执行\n       Run Keyword If  '${status}' != 'PASS'  RunKeywords  Log  测试未通过  AND  Log  停止执行\n   ```\n\n3. **Inline If-Else**\n   ```robot\n   *** Test Cases ***\n   内联条件判断\n       ${x}   Set Variable  10\n       ${result}   Set Variable If  ${x} > 5  结果：大于5  结果：小于等于5\n       Log  ${result}\n   ```\n\n4. **Run Keyword Unless**\n   ```robot\n   *** Test Cases ***\n   条件不成立时执行\n       ${y}   Set Variable  Red\n       Run Keyword Unless  '${y}' == 'Blue'  Log  颜色不是蓝色\n   ```\n\n5. **Variables in Keyword Names**\n   ```robot\n   *** Test Cases ***\n   使用变量作为关键字名称\n       ${action}   Set Variable  Click\n       ${element}   Set Variable  OK\n       ${full_keyword}   Set Variable  ${action} ${element}\n       Run Keyword  ${full_keyword}\n   ```\n\n通过这些方法，RobotFramework 提供了灵活和可读的方式来实现复杂的自动化流程中的条件控制逻辑。"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "RobotFramework 中如何读取文件内容",
         "output": "在进行WebUI自动化编写时，可以使用Robot Framework中的OperatingSystem库中的`Get File`关键字来读取文件内容到变量中。例如，假设我们要读取一个文本文件的内容，可以这样做：\n\n# 读取文件内容到变量\n${file_content}  Get File  file_path\n\n这里的`file_path`是你的文件路径，这行代码会将文件的内容读取到变量`${file_content}`中。"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "如何判断元素是否可以滚动",
         "output": "在进行WebUI自动化编写时，可以使用`IsScrollable`关键字来判断元素或文案所在区域是否可以滚动。下面是一个示例代码：\n\n```robotframework\n# 判断元素id为example的区域是否可以纵向滚动\n${status}  IsScrollable  [id=example]  direction=y\nShould Be True  ${status}  # 校验该元素可以纵向滚动\n\n# 判断文本“示例”所在的区域是否可以横向滚动\n${status}  IsScrollable  示例  direction=x\nShould Be True  ${status}  # 校验该区域可以横向滚动\n```"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "如何判断页面是否存在弹窗，请多列举几个例子说明",
         "output": "在进行WebUI自动化编写时，可以使用以下方法判断页面是否存在弹窗：\n\n1. 使用 `IsPopupExists` 关键字：\n\n```robot\n# 判断页面上是否存在任何弹窗\n${status}  IsPopupExists\n```\n\n2. 使用 `IsPopupExists` 关键字并指定文本：\n\n```robot\n# 判断页面上是否存在包含 '提示' 文本的弹窗\n${status}  IsPopupExists | 提示\n```\n\n3. 结合条件判断来输出结果：\n\n```robot\n# 判断页面上是否存在弹窗，并根据结果执行相应操作\n${status}  IsPopupExists\nIF  ${status}\n    Log  弹窗已存在\nELSE\n    Log  没有弹窗\nEND\n```\n\n4. 等待特定弹窗出现：\n\n```robot\n# 等待页面上包含 '警告' 的弹窗出现\nWaitText | 警告 | base=POPUP\n```"
     },
     {
-        "instruction": "使用 RobotFramework 和 EasyUiLib 编写WebUI 自动化常见 FAQ",
+        "instruction": "使用RobotFramework和EasyUiLib编写WebUI自动化的常见问题解答",
         "input": "如何判断 checkbox 是否已经勾选，请多举例几个说明",
         "output": "在进行WebUI自动化编写时，可以使用`IsCheckboxSelected`关键字来判断checkbox是否已经勾选。以下是一些示例：\n\n```robot\n# 判断名为“已阅读”的复选框是否已勾选\n${status}  IsCheckboxSelected | 已阅读\n# 校验结果是否为True\nShould Be True  ${status}\n\n# 判断“CET-4”附近的“PASS”复选框是否已勾选\n${status}  IsCheckboxSelected | PASS | near=CET-4\n# 如果未勾选，则输出未勾选\nIF  not ${status}\n    Log  'PASS复选框未勾选'\nEND\n\n# 判断索引为2的复选框是否已勾选\n${status}  IsCheckboxSelected | 2\n# 使用条件判断输出状态\nIF  ${status}\n    Log  '复选框已选中'\nELSE\n    Log  '复选框未选中'\nEND\n\n# 判断 base 为[id='x']的名为“选项”的复选框是否已勾选\n${status}  IsCheckboxSelected | 选项 | base=[id='x']\n# 校验是否为False\nShould Be False  ${status}\n```\n\n在这些例子中，通过不同的参数和位置来判断checkbox是否处于选中状态，并根据判断结果进行相应的操作。"
     }
