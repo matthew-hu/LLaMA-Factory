@@ -705,6 +705,14 @@
     },
     "folder": "python"
   },
+    "giraffe_web_ui_with_thought_all": {
+    "file_name": "giraffe_web_ui_with_thought_all.json",
+    "columns": {
+      "prompt": "instruction",
+      "query": "input",
+      "response": "output"
+    }
+  },
   "giraffe_web_ui_with_thought": {
     "file_name": "giraffe_web_ui_with_thought.json",
     "columns": {
@@ -713,16 +721,16 @@
       "response": "output"
     }
   },
-  "giraffe_web_ui_with_thought2": {
-    "file_name": "giraffe_web_ui_with_thought2.json",
+  "giraffe_web_ui_with_thought_similar": {
+    "file_name": "giraffe_web_ui_with_thought_similar.json",
     "columns": {
       "prompt": "instruction",
       "query": "input",
       "response": "output"
     }
   },
-  "giraffe_web_ui_with_thought3": {
-    "file_name": "giraffe_web_ui_with_thought3.json",
+    "giraffe_web_ui_with_thought_en": {
+    "file_name": "giraffe_web_ui_with_thought_en.json",
     "columns": {
       "prompt": "instruction",
       "query": "input",
@@ -739,14 +747,6 @@
   },
   "giraffe_web_ui_with_faq": {
     "file_name": "giraffe_web_ui_with_faq.json",
-    "columns": {
-      "prompt": "instruction",
-      "query": "input",
-      "response": "output"
-    }
-  },
-  "giraffe_web_ui_with_thought_en": {
-    "file_name": "giraffe_web_ui_with_thought_en.json",
     "columns": {
       "prompt": "instruction",
       "query": "input",
