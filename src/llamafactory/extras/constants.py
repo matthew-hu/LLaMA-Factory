@@ -533,6 +533,17 @@ register_model_group(
             DownloadSource.DEFAULT: "deepseek-ai/DeepSeek-V3",
             DownloadSource.MODELSCOPE: "deepseek-ai/DeepSeek-V3",
         },
+        "DeepSeek-V3-671B-0324-Chat": {
+            DownloadSource.DEFAULT: "deepseek-ai/DeepSeek-V3-0324",
+            DownloadSource.MODELSCOPE: "deepseek-ai/DeepSeek-V3-0324",
+        },
+    },
+    template="deepseek3",
+)
+
+
+register_model_group(
+    models={
         "DeepSeek-R1-1.5B-Distill": {
             DownloadSource.DEFAULT: "deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B",
             DownloadSource.MODELSCOPE: "deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B",
@@ -566,7 +577,7 @@ register_model_group(
             DownloadSource.MODELSCOPE: "deepseek-ai/DeepSeek-R1",
         },
     },
-    template="deepseek3",
+    template="deepseekr1",
 )
 
 
@@ -737,6 +748,13 @@ register_model_group(
             DownloadSource.DEFAULT: "THUDM/GLM-4-32B-0414",
             DownloadSource.MODELSCOPE: "ZhipuAI/GLM-4-32B-0414",
         },
+    },
+    template="glm4",
+)
+
+
+register_model_group(
+    models={
         "GLM-Z1-9B-0414-Chat": {
             DownloadSource.DEFAULT: "THUDM/GLM-Z1-9B-0414",
             DownloadSource.MODELSCOPE: "ZhipuAI/GLM-Z1-9B-0414",
@@ -746,7 +764,7 @@ register_model_group(
             DownloadSource.MODELSCOPE: "ZhipuAI/GLM-Z1-32B-0414",
         },
     },
-    template="glm4",
+    template="glmz1",
 )
 
 
@@ -1395,6 +1413,29 @@ register_model_group(
         },
     },
     template="marco",
+)
+
+
+register_model_group(
+    models={
+        "MiMo-7B-Base": {
+            DownloadSource.DEFAULT: "XiaomiMiMo/MiMo-7B-Base",
+            DownloadSource.MODELSCOPE: "XiaomiMiMo/MiMo-7B-Base",
+        },
+        "MiMo-7B-Instruct": {
+            DownloadSource.DEFAULT: "XiaomiMiMo/MiMo-7B-SFT",
+            DownloadSource.MODELSCOPE: "XiaomiMiMo/MiMo-7B-SFT",
+        },
+        "MiMo-7B-Instruct-RL": {
+            DownloadSource.DEFAULT: "XiaomiMiMo/MiMo-7B-RL",
+            DownloadSource.MODELSCOPE: "XiaomiMiMo/MiMo-7B-RL",
+        },
+        "MiMo-7B-RL-ZERO": {
+            DownloadSource.DEFAULT: "XiaomiMiMo/MiMo-7B-RL-ZERO",
+            DownloadSource.MODELSCOPE: "XiaomiMiMo/MiMo-7B-RL-ZERO",
+        },
+    },
+    template="mimo",
 )
 
 
@@ -2405,6 +2446,77 @@ register_model_group(
 
 register_model_group(
     models={
+        "Qwen3-0.6B-Base": {
+            DownloadSource.DEFAULT: "Qwen/Qwen3-0.6B-Base",
+            DownloadSource.MODELSCOPE: "Qwen/Qwen3-0.6B-Base",
+        },
+        "Qwen3-1.7B-Base": {
+            DownloadSource.DEFAULT: "Qwen/Qwen3-1.7B-Base",
+            DownloadSource.MODELSCOPE: "Qwen/Qwen3-1.7B-Base",
+        },
+        "Qwen3-4B-Base": {
+            DownloadSource.DEFAULT: "Qwen/Qwen3-4B-Base",
+            DownloadSource.MODELSCOPE: "Qwen/Qwen3-4B-Base",
+        },
+        "Qwen3-8B-Base": {
+            DownloadSource.DEFAULT: "Qwen/Qwen3-8B-Base",
+            DownloadSource.MODELSCOPE: "Qwen/Qwen3-8B-Base",
+        },
+        "Qwen3-14B-Base": {
+            DownloadSource.DEFAULT: "Qwen/Qwen3-14B-Base",
+            DownloadSource.MODELSCOPE: "Qwen/Qwen3-14B-Base",
+        },
+        "Qwen3-30B-A3B-Base": {
+            DownloadSource.DEFAULT: "Qwen/Qwen3-30B-A3B-Base",
+            DownloadSource.MODELSCOPE: "Qwen/Qwen3-30B-A3B-Base",
+        },
+        "Qwen3-0.6B-Instruct": {
+            DownloadSource.DEFAULT: "Qwen/Qwen3-0.6B",
+            DownloadSource.MODELSCOPE: "Qwen/Qwen3-0.6B",
+        },
+        "Qwen3-1.7B-Instruct": {
+            DownloadSource.DEFAULT: "Qwen/Qwen3-1.7B",
+            DownloadSource.MODELSCOPE: "Qwen/Qwen3-1.7B",
+        },
+        "Qwen3-4B-Instruct": {
+            DownloadSource.DEFAULT: "Qwen/Qwen3-4B",
+            DownloadSource.MODELSCOPE: "Qwen/Qwen3-4B",
+        },
+        "Qwen3-8B-Instruct": {
+            DownloadSource.DEFAULT: "Qwen/Qwen3-8B",
+            DownloadSource.MODELSCOPE: "Qwen/Qwen3-8B",
+        },
+        "Qwen3-14B-Instruct": {
+            DownloadSource.DEFAULT: "Qwen/Qwen3-14B",
+            DownloadSource.MODELSCOPE: "Qwen/Qwen3-14B",
+        },
+        "Qwen3-32B-Instruct": {
+            DownloadSource.DEFAULT: "Qwen/Qwen3-32B",
+            DownloadSource.MODELSCOPE: "Qwen/Qwen3-32B",
+        },
+        "Qwen3-30B-A3B-Instruct": {
+            DownloadSource.DEFAULT: "Qwen/Qwen3-30B-A3B",
+            DownloadSource.MODELSCOPE: "Qwen/Qwen3-30B-A3B",
+        },
+        "Qwen3-235B-A22B-Instruct": {
+            DownloadSource.DEFAULT: "Qwen/Qwen3-235B-A22B",
+            DownloadSource.MODELSCOPE: "Qwen/Qwen3-235B-A22B",
+        },
+        "Qwen3-14B-Instruct-AWQ": {
+            DownloadSource.DEFAULT: "Qwen/Qwen3-14B-AWQ",
+            DownloadSource.MODELSCOPE: "Qwen/Qwen3-14B-AWQ",
+        },
+        "Qwen3-32B-Instruct-AWQ": {
+            DownloadSource.DEFAULT: "Qwen/Qwen3-32B-AWQ",
+            DownloadSource.MODELSCOPE: "Qwen/Qwen3-32B-AWQ",
+        },
+    },
+    template="qwen3",
+)
+
+
+register_model_group(
+    models={
         "Qwen2-Audio-7B": {
             DownloadSource.DEFAULT: "Qwen/Qwen2-Audio-7B",
             DownloadSource.MODELSCOPE: "Qwen/Qwen2-Audio-7B",
@@ -2421,10 +2533,14 @@ register_model_group(
 
 register_model_group(
     models={
+        "Qwen2.5-Omni-3B": {
+            DownloadSource.DEFAULT: "Qwen/Qwen2.5-Omni-3B",
+            DownloadSource.MODELSCOPE: "Qwen/Qwen2.5-Omni-3B",
+        },
         "Qwen2.5-Omni-7B": {
             DownloadSource.DEFAULT: "Qwen/Qwen2.5-Omni-7B",
             DownloadSource.MODELSCOPE: "Qwen/Qwen2.5-Omni-7B",
-        }
+        },
     },
     template="qwen2_omni",
     multimodal=True,
