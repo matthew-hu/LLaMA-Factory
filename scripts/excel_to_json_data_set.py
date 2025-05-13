@@ -171,5 +171,16 @@ with open('../data/giraffe_web_ui_with_thought_all.json', 'w') as outfile:
     json.dump(similar_data, outfile, ensure_ascii=False, indent=4)
 
 
+# 将现有格式数据转换成推理形式
+with (open('../data/giraffe_web_ui_with_reason_all.json', 'w') as reason_file):
+    for item in similar_data:
+        item['output'] = item['output'].replace(
+            '<thought>', '<think>').replace(
+            '</thought>', '</think>').replace(
+            '<code_block>', '```robot').replace(
+            '</code_block>', '```')
+    json.dump(similar_data, reason_file, ensure_ascii=False, indent=4)
+
+
 if __name__ == '__main__':
     pass
