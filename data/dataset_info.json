@@ -705,8 +705,16 @@
     },
     "folder": "python"
   },
-    "giraffe_web_ui_with_thought_all": {
+  "giraffe_web_ui_with_thought_all": {
     "file_name": "giraffe_web_ui_with_thought_all.json",
+    "columns": {
+      "prompt": "instruction",
+      "query": "input",
+      "response": "output"
+    }
+  },
+  "giraffe_web_ui_with_reason_all": {
+    "file_name": "giraffe_web_ui_with_reason_all.json",
     "columns": {
       "prompt": "instruction",
       "query": "input",
